@@ -10,6 +10,6 @@
     <!--开启服务注解-->
     <mvc:annotation-driven/>
     <!--开启视图-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
 
 </beans>
