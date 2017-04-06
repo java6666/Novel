@@ -22,7 +22,7 @@
             <!--通过下面的名字，将value传给上面的对象，作为参数去读取mvc的配置文件-->
             <param-name>contextConfigLocation</param-name>
             <!-- 自定义配置文件地，名字和地址都要给，就是我们配置的springMVCc.xml文件的地址 -->
-            <param-value>classpath*:spring-MVC.xml</param-value>
+            <param-value>classpath*:spring-mvc.xml</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
