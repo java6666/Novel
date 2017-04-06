@@ -33,6 +33,6 @@
         <property name="sqlSessionFactoryBeanName" value="factory"/>
         <property name="basePackage" value="model.dao"/>
         <!--只有标注了Repository注解的才配置-->
-        <!--  <property name="annotationClass" value="org.springframework.stereotype.Repository"/>-->
+          <!--<property name="annotationClass" value="org.springframework.stereotype.Repository"/>-->
     </bean>
 </beans>
