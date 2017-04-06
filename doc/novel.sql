@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : Mr_Deer
+Source Server         : Mr_Dee
 Source Server Version : 50530
 Source Host           : localhost:3306
 Source Database       : novel
