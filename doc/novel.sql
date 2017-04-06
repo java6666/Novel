@@ -1,25 +1,24 @@
 /*
-SQLyog Ultimate v10.00 Beta1
-MySQL - 5.5.54 : Database - noval
-*********************************************************************
-*/
+Navicat MySQL Data Transfer
 
-/*!40101 SET NAMES utf8 */;
+Source Server         : Mr_Deer
+Source Server Version : 50530
+Source Host           : localhost:3306
+Source Database       : novel
 
-/*!40101 SET SQL_MODE=''*/;
+Target Server Type    : MYSQL
+Target Server Version : 50530
+File Encoding         : 65001
 
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`noval` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+Date: 2017-04-06 16:23:19
+*/
 
-USE `noval`;
+SET FOREIGN_KEY_CHECKS=0;
 
-/*Table structure for table `novel_category` */
-
+-- ----------------------------
+-- Table structure for novel_category
+-- ----------------------------
 DROP TABLE IF EXISTS `novel_category`;
-
 CREATE TABLE `novel_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '小说分类主键',
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '分类名字',
@@ -27,12 +26,14 @@ CREATE TABLE `novel_category` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*Data for the table `novel_category` */
+-- ----------------------------
+-- Records of novel_category
+-- ----------------------------
 
-/*Table structure for table `novel_detail` */
-
+-- ----------------------------
+-- Table structure for novel_detail
+-- ----------------------------
 DROP TABLE IF EXISTS `novel_detail`;
-
 CREATE TABLE `novel_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '小说主键id',
   `category_id` int(11) DEFAULT NULL COMMENT '分类id',
@@ -51,12 +52,14 @@ CREATE TABLE `novel_detail` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*Data for the table `novel_detail` */
+-- ----------------------------
+-- Records of novel_detail
+-- ----------------------------
 
-/*Table structure for table `novel_user` */
-
+-- ----------------------------
+-- Table structure for novel_user
+-- ----------------------------
 DROP TABLE IF EXISTS `novel_user`;
-
 CREATE TABLE `novel_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户主键id',
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户名',
@@ -65,12 +68,14 @@ CREATE TABLE `novel_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*Data for the table `novel_user` */
+-- ----------------------------
+-- Records of novel_user
+-- ----------------------------
 
-/*Table structure for table `novel_user_info` */
-
+-- ----------------------------
+-- Table structure for novel_user_info
+-- ----------------------------
 DROP TABLE IF EXISTS `novel_user_info`;
-
 CREATE TABLE `novel_user_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户信息主键id',
   `user_id` int(11) NOT NULL COMMENT '用户id',
@@ -80,9 +85,6 @@ CREATE TABLE `novel_user_info` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*Data for the table `novel_user_info` */
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+-- ----------------------------
+-- Records of novel_user_info
+-- ----------------------------
