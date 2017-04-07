@@ -8,7 +8,7 @@ package model.entity.user;
 public class UserEntity {
     private Integer id;                             //用户id
     private String userName;                    //用户名
-    private String pasword;                     //密码
+    private String password;                     //密码
     private Integer userType;                   //用户类型
 
     public Integer getId() {
@@ -28,11 +28,11 @@ public class UserEntity {
     }
 
     public String getPasword() {
-        return pasword;
+        return password;
     }
 
-    public void setPasword(String pasword) {
-        this.pasword = pasword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Integer getUserType() {

@@ -10,7 +10,7 @@ public class UserInfoEntity {
     private Integer userId;                 //关联的用户id
     private String realName;               //用户真实姓名
     private Integer phone;                  //用户电话
-    private Integer moeny;                  //用户余额
+    private Integer money;                  //用户余额
 
     public Integer getId() {
         return id;
@@ -44,11 +44,11 @@ public class UserInfoEntity {
         this.phone = phone;
     }
 
-    public Integer getMoeny() {
-        return moeny;
+    public Integer getMoney() {
+        return money;
     }
 
-    public void setMoeny(Integer moeny) {
-        this.moeny = moeny;
+    public void setMoney(Integer money) {
+        this.money = money;
     }
 }
