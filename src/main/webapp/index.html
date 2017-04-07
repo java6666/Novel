@@ -21,6 +21,10 @@
   	<link rel="stylesheet" href="css/main/zerogrid.css">
 	<link rel="stylesheet" href="css/main/style.css">
     <link rel="stylesheet" href="css/main/responsive.css">
+	<link rel="stylesheet" href="css/main/login.css">
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
 	<!--[if lt IE 8]>
        <div style=' clear: both; text-align:center; position: relative;'>
@@ -48,7 +52,7 @@
 			<div class="wrap-nav">
 				<div class="menu">
 					<ul>
-						<li><a href="index.html">登录</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#myModal">登录</a></li>
 						<li><a href="#">注册</a></li>
 						<li><a href="#">作者中心</a></li>
 						<li><a href="#">充值</a></li>
@@ -57,8 +61,12 @@
 				</div>
 				<div>
 					<form>
-						<span class="search">搜索：</span><input type="text">
-						<button>GO</button>
+						<label class="search" style="float: left">搜索</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="firstname" style="height: 25px;width: 200px"
+								   placeholder="请输入关键字">
+						</div>
+						<button class="btn btn-default btn-sm" style="float: right;margin-top: -25px;height: 25px">GO</button>
 					</form>
 				</div>
 			</div>
@@ -68,7 +76,7 @@
 <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >Website Template</a></div>
 
 <!--------------Content--------------->
-<section id="content">
+<section id="">
 	<div class="wrap-content zerogrid">
 		<div class="row block">
 			<div id="main-content" class="col-2-3">
@@ -220,5 +228,28 @@
 		<p>Copyright © 2012 - <a href="http://www.cssmoban.com" target="_blank">Free Basic Html5 Templates</a> by Zerotheme.com</p>
 	</div>
 </footer>
-
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="container" style="margin-top: 270px">
+		<section id="content">
+			<form action="">
+				<h1>登录</h1>
+				<div>
+					<input type="text" placeholder="用户名" required="" id="username" />
+				</div>
+				<div>
+					<input type="password" placeholder="密码" required="" id="password" />
+				</div>
+				<div>
+					<input type="submit" value="Log in" />
+					<a href="#">Lost your password?</a>
+					<a href="#">Register</a>
+				</div>
+			</form><!-- form -->
+			<div class="button">
+				<a href="#">Download source file</a>
+			</div><!-- button -->
+		</section><!-- content -->
+	</div><!-- container -->
+</div>
 </body></html>
