@@ -33,7 +33,7 @@ a.button:hover{}
 
 /* -------------------------------------------- */
 /* ------------------Header-------------------- */
-header {background:#333333; margin-bottom:30px;}
+header {background:#ffffff; margin-bottom:30px;}
 header .wrap-header{height: 130px;}
 
 header #logo {position:absolute; top:40px; padding:5px; width: 100%;}
@@ -41,13 +41,29 @@ header #logo {position:absolute; top:40px; padding:5px; width: 100%;}
 /* -------------------------------------------- */
 /* ------------------Navigation---------------- */
 nav {}
-nav .wrap-nav{position:absolute; top:50px; right:10px; height: 37px;}
+/*登录和注册的css样式*/
+.log-inBox{
+	margin-left: 90%
+}
+.log-inBox span a{
+	font: normal bold 15px 宋体;
+	color: grey;
+	text-decoration:none
+}
+.log-inBox span a:hover{
+	font: normal bold 15px 宋体;
+	color: red;
+	text-decoration:none
+}
 
-.menu ul {list-style: none;margin: 0;padding: 0;}
-.menu  ul li {position: relative;float: left;padding: 6px 5px 0px 5px; background:#333;}
-.menu  ul li:hover {background-color:#DA251D;}
-.menu  ul li a {font-size: 14px; line-height:14px;color: #CCC;display: block;padding: 6px 10px;margin-bottom: 5px;z-index: 6;position: relative;font-weight:bold; text-transform:uppercase;}
-.menu  ul li:hover a {color:#ffffff;}
+nav .wrap-nav{position:absolute; top:50px; margin-left:40%; height: 37px;}
+
+.menu ul {list-style: none;margin: 0;padding: 0;text-align: center;background:#333333;height: 40px}
+.menu  ul li {position: relative;float: left;padding: 6px 5px 0px 5px;width: 15%}
+.menu  ul li:hover {background-color: #212121;border-top:3px solid #ff6341}
+.menu  ul li a {font-size: 14px; line-height:14px;color: #ffffff;display: block;padding: 6px 10px;margin-bottom: 5px;z-index: 6;position: relative;font-weight:bold; text-transform:uppercase;}
+.menu  ul li:hover a {}
+
 
 .minimenu{display:none;}
 .minimenu{position: relative;margin: 0px;background:#999;}

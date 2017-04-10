@@ -46,31 +46,51 @@
 <body>
 <!--------------Header--------------->
 <header>
+    <div class="log-inBox">
+			<span >
+		<a href="#">
+			登录&nbsp;
+		</a>
+	</span>
+        |
+        <span>
+		<a href="#">
+			&nbsp;注册
+		</a>
+	</span>
+    </div>
+
+    <!--<span style="margin-left: 90%;font: normal bold 15px 宋体">登录&nbsp;|&nbsp;注册</span>-->
+    <div id="logo"><a href="#"><img src="./images/indexLogo.jpg"/></a></div>
+
     <div class="wrap-header zerogrid">
-        <div id="logo"><a href="#"><img src="./images/indexLogo.jpg"/></a></div>
         <nav>
             <div class="wrap-nav">
-                <div class="menu">
-                    <ul>
-                        <li><a href="#" data-toggle="modal" data-target="#myModal">登录</a></li>
-                        <li><a href="#">注册</a></li>
-                        <li><a href="#">作者中心</a></li>
-                        <li><a href="#">充值</a></li>
-                        <li><a href="#">管理</a></li>
-                    </ul>
-                </div>
                 <div>
-                    <form>
-                        <label class="search" style="float: left">搜索</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="firstname" style="height: 25px;width: 200px"
-                                   placeholder="请输入关键字">
+                    <form class="bs-example bs-example-form" role="form" style="width: 300px">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="请输入关键字">
+                            <span class="input-group-addon">
+								<button class="glyphicon glyphicon-search" style="width: 100%;height: 100%"></button>
+							</span>
                         </div>
-                        <button class="btn btn-default btn-sm" style="float: right;margin-top: -25px;height: 25px">GO</button>
                     </form>
                 </div>
             </div>
+            <div style="clear: both"></div>
         </nav>
+    </div>
+    <div class="menu" style="width:100%">
+        <ul>
+            <li><a href="#" data-toggle="modal" data-target="#myModal">分类作品</a></li>
+            <li><a href="#">全部作品</a></li>
+            <li><a href="#">排行</a></li>
+            <li><a href="#">完结</a></li>
+            <li><a href="#">免费</a></li>
+            <li><a href="#">作者中心</a></li>
+            <!--这里新增一个浮动-->
+            <div style="clear: both"></div>
+        </ul>
     </div>
 </header>
 <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >Website Template</a></div>
