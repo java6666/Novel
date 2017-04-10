@@ -6,10 +6,11 @@ package model.entity.user;
  * 用户基本信息
  */
 public class UserEntity {
-    private Integer id;                             //用户id
+    private Integer id;                           //用户id
     private String userName;                    //用户名
     private String password;                     //密码
-    private Integer userType;                   //用户类型
+    private Integer userType;                   //用户类型1.管理员2.作者3.普通用户
+    private Integer accountType;                //账户状态1.正常2.封停3.删除
 
     public Integer getId() {
         return id;
@@ -27,7 +28,7 @@ public class UserEntity {
         this.userName = userName;
     }
 
-    public String getPasword() {
+    public String getPassword() {
         return password;
     }
 
@@ -41,5 +42,13 @@ public class UserEntity {
 
     public void setUserType(Integer userType) {
         this.userType = userType;
+    }
+
+    public Integer getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(Integer accountType) {
+        this.accountType = accountType;
     }
 }
