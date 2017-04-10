@@ -94,8 +94,9 @@
                                 <li><a href="cellection.html">我的书架</a></li>
                                 <li class="active"><a href="buy.html">已购书籍</a></li>
                                 <li><a href="个人页面_升级作者.html">升级作者</a></li>
-                                <li><a href="#">更改密码</a></li>
-                                <li><a href="#">联系我们</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
+                                <li><a href="个人页面_消息.html">消息 <span class="badge">3</span></a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#myModal2">联系我们</a></li>
                             </ul>
                         </div>
                     </div>
@@ -210,5 +211,57 @@
             </div><!-- button -->
         </section><!-- content -->
     </div><!-- container -->
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 300px;text-align: center;margin-top: 150px;margin-left: 170px">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    联系方式
+                </h4>
+            </div>
+            <div class="modal-body">
+                <h3>
+                    021-88888888
+                </h3>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+    <div class="modal-dialog" style="width: 400px;margin-top: 100px">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #2e6da4;height: 70px">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel2" style="color: white;text-align: center">密码修改</h4>
+            </div>
+            <div>
+                <form>
+                    <div class="form-group"><label style="margin-left: 50px;margin-top: 28px">旧密码：</label>
+                        <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
+                    </div>
+                    <div class="form-group"><label style="margin-left: 50px;margin-top: 28px">新密码：</label>
+                        <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
+                    </div>
+                    <div class="form-group"><label style="margin-left: 45px;margin-top: 28px">重复密码：</label>
+                        <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">确认修改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
 </div>
 </body></html>
