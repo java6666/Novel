@@ -90,8 +90,8 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="example-navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="个人页面_个人信息.html">个人信息</a></li>
-                                <li><a href="cellection.html">我的书架</a></li>
+                                <li><a href="个人页面_个人信息.html">个人信息</a></li>
+                                <li class="active"><a href="cellection.html">我的书架</a></li>
                                 <li><a href="buy.html">已购书籍</a></li>
                                 <li><a href="个人页面_升级作者.html">升级作者</a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
@@ -103,54 +103,60 @@
                 </nav>
             </div>
         </div>
-        <div class="col-xs-offset-1 col-xs-6">
-            <div class="col-xs-offset-1 col-xs-9" style="height: 50px">
-            </div>
-            <div class="col-xs-offset-1 col-xs-9" style="height: 100px">
-                <h3>个人信息</h3>
-                <hr/>
+        <div class="col-xs-offset-1 col-xs-9">
+            <h3>收藏小说</h3>
+            <div style="float: right"><a href="collection_del.html">编辑</a></div>
+            <div style="margin-top: 50px">
+                <table class="table table-striped">
+                    <thead>
+                    <tr class="text-center">
+                        <td><b>书名</b></td>
+                        <td><b>作者</b></td>
+                        <td><b>收藏日期</b></td>
+                        <td><b>阅读至</b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="text-center">
+                        <td>《无限恐怖》</td>
+                        <td>鱼鱼</td>
+                        <td>2017-05-29</td>
+                        <td>29章 生死之战</td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 100px">
+                            <span class="	glyphicon glyphicon-eye-open"></span> 继续阅读
+                        </button></td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 70px">
+                            <span class="glyphicon glyphicon-circle-arrow-down"></span> 下载
+                        </button></td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>《无限恐怖》</td>
+                        <td>鱼鱼</td>
+                        <td>2017-05-29</td>
+                        <td>29章 生死之战</td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 100px">
+                            <span class="	glyphicon glyphicon-eye-open"></span> 继续阅读
+                        </button></td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 70px">
+                            <span class="glyphicon glyphicon-circle-arrow-down"></span> 下载
+                        </button></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
 
-
-            <div class="form-group" style="width: 300px">
-                <label>用户名</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="form-group" style="width: 300px">
-                <label>电话</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="form-group" style="width: 300px">
-                <label>余额（金币）</label>
-                <input readonly="true" type="text" value="5" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>性别</label>
-                <select class="form-control" style="width: 300px">
-                    <option value ="女">女</option>
-                    <option value ="男">男</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>头像</label>
-                <input type="file">
-                <p class="help-block">上传头像</p>
-            </div>
-            <button type="submit" class="btn btn-default">保存</button>
+            <div style="margin-left: 200px"><ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li class="disabled"><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul></div>
         </div>
-        <div class="col-xs-3">
-            <div class="col-xs-offset-1 col-xs-9" style="height: 50px">
-            </div>
-            <div class="col-xs-3" style="height: 600px">
-
-                <div style=" margin-left: -15px;height: 600px;width: 350px">
-                    <a>
-                        <img src="images/feifei.jpg" style="height: 600px;width: 350px">
-                    </a>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
 <!--------------Footer--------------->
@@ -207,41 +213,17 @@
         </section><!-- content -->
     </div><!-- container -->
 </div>
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width: 300px;text-align: center;margin-top: 150px;margin-left: 170px">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    联系方式
-                </h4>
-            </div>
-            <div class="modal-body">
-                <h3>
-                    021-88888888
-                </h3>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
-<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="width: 400px;margin-top: 100px">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #2e6da4;height: 70px">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel2" style="color: white;text-align: center">密码修改</h4>
+                <h4 class="modal-title" id="myModalLabel" style="color: white;text-align: center">密码修改</h4>
             </div>
             <div>
                 <form>
                     <div class="form-group"><label style="margin-left: 50px;margin-top: 28px">旧密码：</label>
-                        <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
+                            <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
                     </div>
                     <div class="form-group"><label style="margin-left: 50px;margin-top: 28px">新密码：</label>
                         <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
@@ -254,6 +236,31 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                 <button type="button" class="btn btn-primary">确认修改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 300px;text-align: center;margin-top: 150px;margin-left: 170px">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel2">
+                    联系方式
+                </h4>
+            </div>
+            <div class="modal-body">
+                <h3>
+                    021-88888888
+                </h3>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->

@@ -81,18 +81,18 @@
     <div class="row">
         <div class="col-xs-2" style="height: 600px">
             <div style=" margin-left: -15px;height: 150px;width: 150px">
-                <a>
-                    <img src="images/touxiang.jpg" style="height: 150px;width: 150px">
-                </a>
-            </div>
+            <a>
+                <img src="images/touxiang.jpg" style="height: 150px;width: 150px">
+            </a>
+        </div>
             <div style="margin-left:-15px;margin-top: 50px">
                 <nav class="navbar navbar-default" role="navigation">
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="example-navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="个人页面_个人信息.html">个人信息</a></li>
+                                <li><a href="个人页面_个人信息.html">个人信息</a></li>
                                 <li><a href="cellection.html">我的书架</a></li>
-                                <li><a href="buy.html">已购书籍</a></li>
+                                <li class="active"><a href="buy.html">已购书籍</a></li>
                                 <li><a href="个人页面_升级作者.html">升级作者</a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
                                 <li><a href="个人页面_消息.html">消息 <span class="badge">3</span></a></li>
@@ -103,54 +103,59 @@
                 </nav>
             </div>
         </div>
-        <div class="col-xs-offset-1 col-xs-6">
-            <div class="col-xs-offset-1 col-xs-9" style="height: 50px">
-            </div>
-            <div class="col-xs-offset-1 col-xs-9" style="height: 100px">
-                <h3>个人信息</h3>
-                <hr/>
+        <div class="col-xs-offset-1 col-xs-9">
+            <h3>已购小说</h3>
+            <div style="margin-top: 50px">
+                <table class="table table-striped">
+                    <thead>
+                    <tr class="text-center">
+                        <td><b>书名</b></td>
+                        <td><b>作者</b></td>
+                        <td><b>购买日期</b></td>
+                        <td><b>阅读至</b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="text-center">
+                        <td>《无限恐怖》</td>
+                        <td>鱼鱼</td>
+                        <td>2017-05-29</td>
+                        <td>29章 生死之战</td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 100px">
+                            <span class="	glyphicon glyphicon-eye-open"></span> 继续阅读
+                        </button></td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 70px">
+                            <span class="glyphicon glyphicon-circle-arrow-down"></span> 下载
+                        </button></td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>《无限恐怖》</td>
+                        <td>鱼鱼</td>
+                        <td>2017-05-29</td>
+                        <td>29章 生死之战</td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 100px">
+                            <span class="	glyphicon glyphicon-eye-open"></span> 继续阅读
+                        </button></td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 70px">
+                            <span class="glyphicon glyphicon-circle-arrow-down"></span> 下载
+                        </button></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
 
-
-            <div class="form-group" style="width: 300px">
-                <label>用户名</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="form-group" style="width: 300px">
-                <label>电话</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="form-group" style="width: 300px">
-                <label>余额（金币）</label>
-                <input readonly="true" type="text" value="5" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>性别</label>
-                <select class="form-control" style="width: 300px">
-                    <option value ="女">女</option>
-                    <option value ="男">男</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>头像</label>
-                <input type="file">
-                <p class="help-block">上传头像</p>
-            </div>
-            <button type="submit" class="btn btn-default">保存</button>
+            <div style="margin-left: 200px"><ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li class="disabled"><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul></div>
         </div>
-        <div class="col-xs-3">
-            <div class="col-xs-offset-1 col-xs-9" style="height: 50px">
-            </div>
-            <div class="col-xs-3" style="height: 600px">
-
-                <div style=" margin-left: -15px;height: 600px;width: 350px">
-                    <a>
-                        <img src="images/feifei.jpg" style="height: 600px;width: 350px">
-                    </a>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
 <!--------------Footer--------------->
@@ -207,6 +212,7 @@
         </section><!-- content -->
     </div><!-- container -->
 </div>
+<!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="width: 300px;text-align: center;margin-top: 150px;margin-left: 170px">
