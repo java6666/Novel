@@ -16,11 +16,11 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`novel` /*!40100 DEFAULT CHARACTER SET u
 
 USE `novel`;
 
-/*Table structure for table `novel_adcdumn` */
+/*Table structure for table `novel_advert` */
 
-DROP TABLE IF EXISTS `novel_adcdumn`;
+DROP TABLE IF EXISTS `novel_advert`;
 
-CREATE TABLE `novel_adcdumn` (
+CREATE TABLE `novel_advert` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '广告栏主键',
   `create_date` datetime DEFAULT NULL COMMENT '创建日期',
   `create_by` int(11) DEFAULT NULL COMMENT '创建者',
@@ -29,7 +29,7 @@ CREATE TABLE `novel_adcdumn` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*Data for the table `novel_adcdumn` */
+/*Data for the table `novel_advert` */
 
 /*Table structure for table `novel_category` */
 
@@ -48,6 +48,19 @@ CREATE TABLE `novel_category` (
 /*Data for the table `novel_category` */
 
 insert  into `novel_category`(`id`,`name`,`create_date`,`create_by`,`modify_date`,`modifu_by`) values (1,'玄幻','2017-04-09 16:28:03',1,'2017-04-09 16:28:08',1),(2,'言情','2017-04-09 16:28:57',1,'2017-04-09 16:31:23',1),(3,'军事','2017-04-09 16:29:07',1,'2017-04-09 16:31:25',1),(4,NULL,NULL,1,'2017-04-09 16:31:27',1),(5,'穿越','2017-04-09 16:37:54',1,'2017-04-09 16:37:57',1),(6,'推理','2017-04-09 16:38:05',1,'2017-04-09 16:38:08',1),(7,'修真','2017-04-09 16:38:34',1,'2017-04-09 16:38:37',1),(8,'都市','2017-04-09 16:38:48',1,'2017-04-09 16:38:50',1),(9,'游戏','2017-04-09 16:39:01',1,'2017-04-09 16:39:03',1);
+
+/*Table structure for table `novel_category_connect` */
+
+DROP TABLE IF EXISTS `novel_category_connect`;
+
+CREATE TABLE `novel_category_connect` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '小说表与类型表连接表id',
+  `novel_id` int(11) DEFAULT NULL COMMENT '小说表id',
+  `category_id` int(11) DEFAULT NULL COMMENT '小说类型表id',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `novel_category_connect` */
 
 /*Table structure for table `novel_comment` */
 
@@ -92,6 +105,21 @@ CREATE TABLE `novel_detail` (
 
 /*Data for the table `novel_detail` */
 
+/*Table structure for table `novel_emailbox` */
+
+DROP TABLE IF EXISTS `novel_emailbox`;
+
+CREATE TABLE `novel_emailbox` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '邮箱表主键id',
+  `addressee_id` int(11) DEFAULT NULL COMMENT '发件人id',
+  `recipinents_id` int(11) DEFAULT NULL COMMENT '收件人id',
+  `content` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '消息内容',
+  `create_date` datetime DEFAULT NULL COMMENT '发件时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `novel_emailbox` */
+
 /*Table structure for table `novel_user` */
 
 DROP TABLE IF EXISTS `novel_user`;
@@ -100,7 +128,8 @@ CREATE TABLE `novel_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户主键id',
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户名',
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户密码',
-  `userType` int(11) DEFAULT NULL COMMENT '用户类型',
+  `user_type` int(11) DEFAULT NULL COMMENT '用户类型1.管理员2.作者3.普通用户',
+  `account_type` int(11) DEFAULT NULL COMMENT '账号状态1.正常2.封停3.删除',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -115,7 +144,8 @@ CREATE TABLE `novel_user_author` (
   `birth_date` date DEFAULT NULL COMMENT '作者出生年月',
   `pen_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '作者笔名',
   `birth_address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '作者出生地',
-  `author_introduce` varchar(510) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '作者介绍'
+  `author_introduce` varchar(510) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '作者介绍',
+  `create_date` datetime DEFAULT NULL COMMENT '升级为作者时间'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_user_author` */
@@ -128,6 +158,7 @@ CREATE TABLE `novel_user_buy` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '小说购买主键',
   `user_id` int(11) DEFAULT NULL COMMENT '用户id',
   `novel_id` int(11) DEFAULT NULL COMMENT '小说id',
+  `create_date` datetime DEFAULT NULL COMMENT '购买日期',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -141,6 +172,7 @@ CREATE TABLE `novel_user_collection` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '收藏书籍主键',
   `user_id` int(11) DEFAULT NULL COMMENT '用户id',
   `detail_id` int(11) DEFAULT NULL COMMENT '小说id',
+  `create_date` datetime DEFAULT NULL COMMENT '收藏日期',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -156,7 +188,8 @@ CREATE TABLE `novel_user_info` (
   `phone` int(11) DEFAULT NULL COMMENT '用户电话',
   `money` int(11) DEFAULT NULL COMMENT '用户余额',
   `gender` tinyint(4) DEFAULT NULL COMMENT '0.女1.男',
-  `head_sculpture_path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '头像路径'
+  `head_sculpture_path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '头像路径',
+  `create_date` datetime DEFAULT NULL COMMENT '用户注册日期'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_user_info` */
