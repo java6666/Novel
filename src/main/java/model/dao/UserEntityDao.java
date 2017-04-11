@@ -7,4 +7,5 @@ import model.entity.user.UserEntity;
  */
 public interface UserEntityDao {
     UserEntity selectUserByUser(UserEntity userEntity);
+    UserEntity selectUserById(int id);
 }

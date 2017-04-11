@@ -7,6 +7,8 @@
         <result property="recipientsId" column="recipinents_id"/>
         <result property="content" column="content"/>
         <result property="createDate" column="create_date"/>
+        <association property="addressee" select="model.dao.UserEntityDao.selectUserById" column="addressee_id"/>
+        <association property="recipients" select="model.dao.UserEntityDao.selectUserById" column="recipinents_id"/>
     </resultMap>
     <select id="selectByInId" resultMap="emailBoxDao">
         SELECT * FROM novel_emailbox WHERE recipinents_id=#{id}

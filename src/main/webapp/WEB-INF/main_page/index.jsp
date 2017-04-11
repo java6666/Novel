@@ -113,7 +113,7 @@
                 <li><a href="#">作者中心</a></li>
             </c:if>
             <c:if test="${sessionScope.superUser.userType==3}">
-                <li><a href="#">个人中心</a></li>
+                <li><a href="/user/mail">个人中心</a></li>
             </c:if>
             <!--这里新增一个浮动-->
             <div style="clear: both"></div>
