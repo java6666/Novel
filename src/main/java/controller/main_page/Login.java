@@ -34,4 +34,10 @@ public class Login {
         }
         return "/WEB-INF/main_page/index.jsp";
     }
+
+    @RequestMapping(path = "/logout",method = RequestMethod.GET)
+    public String logout(HttpSession session){
+        session.invalidate();//把session销毁
+        return "/WEB-INF/main_page/index.jsp";
+    }
 }
