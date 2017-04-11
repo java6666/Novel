@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="model.dao.UserEntityDao" >
+<resultMap id="userDao" type="model.entity.user.UserEntity">
+    <id property="id" column="id"/>
+    <result property="userName" column="username"/>
+    <result property="password" column="password"/>
+    <result property="userType" column="user_type"/>
+    <result property="accountType" column="account_type"/>
+</resultMap>
 
-
+    <select id="selectUserByUser" resultMap="userDao">
+        SELECT * FROM novel_user WHERE username=#{userName} and password=#{password}
+    </select>
 </mapper>
