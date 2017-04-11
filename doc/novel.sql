@@ -43,11 +43,11 @@ CREATE TABLE `novel_category` (
   `modify_date` datetime DEFAULT NULL COMMENT '修改日期',
   `modifu_by` int(11) DEFAULT NULL COMMENT '修改者',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_category` */
 
-insert  into `novel_category`(`id`,`name`,`create_date`,`create_by`,`modify_date`,`modifu_by`) values (1,'玄幻','2017-04-09 16:28:03',1,'2017-04-09 16:28:08',1),(2,'言情','2017-04-09 16:28:57',1,'2017-04-09 16:31:23',1),(3,'军事','2017-04-09 16:29:07',1,'2017-04-09 16:31:25',1),(4,NULL,NULL,1,'2017-04-09 16:31:27',1),(5,'穿越','2017-04-09 16:37:54',1,'2017-04-09 16:37:57',1),(6,'推理','2017-04-09 16:38:05',1,'2017-04-09 16:38:08',1),(7,'修真','2017-04-09 16:38:34',1,'2017-04-09 16:38:37',1),(8,'都市','2017-04-09 16:38:48',1,'2017-04-09 16:38:50',1),(9,'游戏','2017-04-09 16:39:01',1,'2017-04-09 16:39:03',1);
+insert  into `novel_category`(`id`,`name`,`create_date`,`create_by`,`modify_date`,`modifu_by`) values (1,'玄幻','2017-04-09 16:28:03',1,'2017-04-09 16:28:08',1),(2,'言情','2017-04-09 16:28:57',1,'2017-04-09 16:31:23',1),(3,'军事','2017-04-09 16:29:07',1,'2017-04-09 16:31:25',1),(9,'武侠','2017-04-11 13:23:12',1,'2017-04-11 13:23:15',1),(4,'穿越','2017-04-09 16:37:54',1,'2017-04-09 16:37:57',1),(5,'推理','2017-04-09 16:38:05',1,'2017-04-09 16:38:08',1),(6,'修真','2017-04-09 16:38:34',1,'2017-04-09 16:38:37',1),(7,'都市','2017-04-09 16:38:48',1,'2017-04-09 16:38:50',1),(8,'游戏','2017-04-09 16:39:01',1,'2017-04-09 16:39:03',1);
 
 /*Table structure for table `novel_category_connect` */
 
@@ -58,9 +58,11 @@ CREATE TABLE `novel_category_connect` (
   `novel_id` int(11) DEFAULT NULL COMMENT '小说表id',
   `category_id` int(11) DEFAULT NULL COMMENT '小说类型表id',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_category_connect` */
+
+insert  into `novel_category_connect`(`id`,`novel_id`,`category_id`) values (1,1,6),(2,2,1),(3,2,4);
 
 /*Table structure for table `novel_comment` */
 
@@ -73,9 +75,11 @@ CREATE TABLE `novel_comment` (
   `create_date` datetime DEFAULT NULL COMMENT '评论日期',
   `create_by` int(11) DEFAULT NULL COMMENT '评论者',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_comment` */
+
+insert  into `novel_comment`(`id`,`novel_detail_id`,`content`,`create_date`,`create_by`) values (1,1,'这书不错','2017-04-11 13:29:07',3),(2,2,'这书不好看','2017-04-11 13:29:29',3);
 
 /*Table structure for table `novel_detail` */
 
@@ -83,7 +87,6 @@ DROP TABLE IF EXISTS `novel_detail`;
 
 CREATE TABLE `novel_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '小说主键id',
-  `category_id` int(11) DEFAULT NULL COMMENT '分类id',
   `novel_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '小说名字',
   `novel_summary` varchar(510) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '小说摘要',
   `novel_author` int(11) DEFAULT NULL COMMENT '小说作者',
@@ -101,9 +104,11 @@ CREATE TABLE `novel_detail` (
   `create_by` int(11) DEFAULT NULL COMMENT '小说发布者',
   `modify_by` int(11) DEFAULT NULL COMMENT '小说更新者',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_detail` */
+
+insert  into `novel_detail`(`id`,`novel_name`,`novel_summary`,`novel_author`,`novel_file_path`,`novel_filename`,`novel_pic_path`,`novel_pic_name`,`novel_click_rate`,`novel_buy_count`,`novel_total`,`novel_is_finish`,`price`,`create_date`,`modify_date`,`create_by`,`modify_by`) values (1,'凡人修仙','《凡人修仙传》是网络作家忘语连载于起点中文网的一部玄幻修仙型小说。小说讲述了一个普通的山村穷小子，偶然之下，跨入到一个江湖小门派，成了一名记名弟子。虽然资质平庸，但依靠自身的坚持不懈和合理算计一步步渐成大道。',2,NULL,NULL,NULL,NULL,334,122,'43242',1,0,'2017-04-11 13:11:45','2017-04-11 13:11:48',2,2),(2,'穿越黑棺','告诉你们一个秘密，李阳有一口铁箱子，称之为黑棺，居然能穿越世界，电影、电视剧、动漫……',2,NULL,NULL,NULL,NULL,231,NULL,NULL,NULL,NULL,NULL,'2017-04-11 13:19:07',2,2);
 
 /*Table structure for table `novel_emailbox` */
 
@@ -116,9 +121,11 @@ CREATE TABLE `novel_emailbox` (
   `content` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '消息内容',
   `create_date` datetime DEFAULT NULL COMMENT '发件时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_emailbox` */
+
+insert  into `novel_emailbox`(`id`,`addressee_id`,`recipinents_id`,`content`,`create_date`) values (1,1,2,'hello','2017-04-11 13:30:05'),(2,2,1,'嗨!','2017-04-11 13:30:27');
 
 /*Table structure for table `novel_user` */
 
@@ -131,9 +138,11 @@ CREATE TABLE `novel_user` (
   `user_type` int(11) DEFAULT NULL COMMENT '用户类型1.管理员2.作者3.普通用户',
   `account_type` int(11) DEFAULT NULL COMMENT '账号状态1.正常2.封停3.删除',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_user` */
+
+insert  into `novel_user`(`id`,`username`,`password`,`user_type`,`account_type`) values (1,'zhangsan','123',1,1),(2,'xiaoming','123',2,1),(3,'biaojie','123',3,1);
 
 /*Table structure for table `novel_user_author` */
 
@@ -150,6 +159,8 @@ CREATE TABLE `novel_user_author` (
 
 /*Data for the table `novel_user_author` */
 
+insert  into `novel_user_author`(`user_id`,`birth_date`,`pen_name`,`birth_address`,`author_introduce`,`create_date`) values (2,'1995-08-24','三毛','台湾','1964年，得到文化大学创办人张其昀先生的特许，到该校哲学系当旁听生，课业成绩优异。','2017-04-11 13:26:49');
+
 /*Table structure for table `novel_user_buy` */
 
 DROP TABLE IF EXISTS `novel_user_buy`;
@@ -160,9 +171,11 @@ CREATE TABLE `novel_user_buy` (
   `novel_id` int(11) DEFAULT NULL COMMENT '小说id',
   `create_date` datetime DEFAULT NULL COMMENT '购买日期',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_user_buy` */
+
+insert  into `novel_user_buy`(`id`,`user_id`,`novel_id`,`create_date`) values (1,3,1,'2017-04-11 13:24:56'),(2,3,2,'2017-04-11 13:25:00');
 
 /*Table structure for table `novel_user_collection` */
 
@@ -174,9 +187,11 @@ CREATE TABLE `novel_user_collection` (
   `detail_id` int(11) DEFAULT NULL COMMENT '小说id',
   `create_date` datetime DEFAULT NULL COMMENT '收藏日期',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_user_collection` */
+
+insert  into `novel_user_collection`(`id`,`user_id`,`detail_id`,`create_date`) values (1,3,1,'2017-04-11 13:25:23'),(2,3,2,'2017-04-11 13:25:26'),(3,2,1,'2017-04-11 13:25:34'),(4,2,2,'2017-04-11 13:25:38');
 
 /*Table structure for table `novel_user_info` */
 
@@ -193,6 +208,8 @@ CREATE TABLE `novel_user_info` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_user_info` */
+
+insert  into `novel_user_info`(`user_id`,`real_name`,`phone`,`money`,`gender`,`head_sculpture_path`,`create_date`) values (1,'张三',2147483647,0,1,NULL,'2017-04-11 12:46:17'),(2,'小明',2147483647,0,1,NULL,'2017-04-11 12:46:51');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
