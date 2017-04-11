@@ -71,7 +71,7 @@
 	</span>
             |
             <span>
-		<a href="#">
+		<a href="/logout">
 			&nbsp;注销
 		</a>
 	</span>
@@ -105,7 +105,15 @@
             <li><a href="#">排行</a></li>
             <li><a href="#">完结</a></li>
             <li><a href="#">免费</a></li>
-            <li><a href="#">作者中心</a></li>
+            <c:if test="${sessionScope.superUser.userType==1}">
+                <li><a href="#">管理</a></li>
+            </c:if>
+            <c:if test="${sessionScope.superUser.userType==2}">
+                <li><a href="#">作者中心</a></li>
+            </c:if>
+            <c:if test="${sessionScope.superUser.userType==3}">
+                <li><a href="#">个人中心</a></li>
+            </c:if>
             <!--这里新增一个浮动-->
             <div style="clear: both"></div>
         </ul>
