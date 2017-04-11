@@ -16,6 +16,8 @@
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/images/**" location="/images/"/>
     <mvc:resources mapping="/bootstrap/**" location="/bootstrap/"/>
+    <mvc:resources mapping="/assets/**" location="/assets/"/>
+
 
     <!-- 配置springMVC的上传文件配置，SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
 <!--    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
