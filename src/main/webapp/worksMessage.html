@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]>
+<html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+    <meta charset="utf-8">
+    <title>zBasicB001 Free Html5 Responsive Template</title>
+    <meta name="description"
+          content="Free Html5 Templates and Free Responsive Themes Designed by Kimmy | zerotheme.com">
+    <meta name="author" content="www.zerotheme.com">
+
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" href="css/main/zerogrid.css">
+    <link rel="stylesheet" href="css/main/style.css">
+    <link rel="stylesheet" href="css/main/responsive.css">
+    <link rel="stylesheet" href="css/main/login.css">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- fonts -->
+    <link href="//fonts.googleapis.com/css?family=Muli:300,400" rel="stylesheet">
+    <!-- /fonts -->
+    <!-- css -->
+    <link href="css/bootstrap.css" rel="stylesheet" type='text/css' media="all"/>
+    <link href="css/style1.css" rel="stylesheet" type='text/css' media="all"/>
+
+
+    <!--[if lt IE 8]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0"
+                 height="42" width="820"
+                 alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."/>
+        </a>
+    </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5.js"></script>
+    <script src="js/css3-mediaqueries.js"></script>
+    <![endif]-->
+
+    <link href='./images/favicon.ico' rel='icon' type='image/x-icon'/>
+    <style rel="stylesheet">
+        .search {
+            font-size: 14px;
+            color: #CCC;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<!--------------Header--------------->
+<header>
+    <div class="wrap-header zerogrid">
+        <div id="logo"><a href="#"><img src="./images/logo.png"/></a></div>
+        <nav>
+            <div class="wrap-nav">
+                <div class="menu">
+                    <ul>
+                        <li><a href="#">小说首页</a></li>
+                        <li><a href="#">作者福利</a></li>
+                        <li><a href="#">用户名</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-off" style="color: red"></span>&nbsp;退出</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!--------------Content--------------->
+<section id="">
+    <div class="wrap-content zerogrid">
+        <div class="row block">
+            <div id="main-content" class="col-2-5">
+                <form action="/upload" method="post" data-toggle="validator" role="form">
+                    <div class="form-group w3layouts w3 w3l">
+                        <label for="bookname" class="control-label">书名</label>
+                        <input type="text" class="form-control" id="bookName" placeholder="书 名" data-error="请输入书名"
+                               required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group agileits w3layouts w3">
+                        <label for="typename" class="control-label">类 型</label>
+                        <input type="text" class="form-control" id="typeName" placeholder="类型" data-error="请输入类型"
+                               required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="form-group agileits w3layouts w3">
+                        <label for="typename" class="control-label">上 传 封 面</label><br/>
+                        <input type="file" name="upload" id="attachment" style="display: none"
+                               onchange="jQuery('#path').val(jQuery('#attachment').val())">
+                        <input type="button" class="btn btn-default" value="上传封面"
+                               onclick="jQuery('#attachment').click()" data-error="请上传封面"
+                               required>
+                    </div>
+
+                    <div class="form-group agileits w3layouts w3">
+                        <label for="typename" class="control-label">内 容 简 介</label>
+                        <textarea class="form-control" id="contentname" placeholder="内容简介" data-error="请输入简介"
+                                  required style="width: 400px;height: 160px"></textarea>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                        <input id="check_id" type="checkbox" onclick="foo()"> 同意小说网协议<br/><br/>
+                        <button type="submit" class="btn btn-lg" id="submit" disabled>Submit</button>
+                    </div>
+                </form>
+                <script src="js/jquery-1.10.2.min.js"></script>
+                <script src="js/bootstrap.min.js"></script>
+                <script src="js/validator.min.js"></script>
+                <!-- /js files -->
+            </div>
+        </div>
+    </div>
+</section>
+<!--------------Footer--------------->
+<footer>
+    <div class="wrap-footer zerogrid">
+        <div class="row">
+            <div class="col-1-3">
+                <div class="wrap-col">
+                    <div class="box">
+                        <div class="heading"><h2>小说网重要声明</h2></div>
+                        <div class="content">
+                            <p>本网站为网友写作提供上传空间储存平台，请上传有合法版权的作品，如发现本站有侵犯权利人版权内容的，请向本站投诉，投诉邮箱：tousu@hongxiu.com
+                                一经核实，本站将立即删除相关作品并对上传人作封号处理。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2-3">
+                <div class="wrap-col">
+                    <div class="box">
+                        <div class="heading"><h2>Text Heading</h2></div>
+                        <div class="content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis
+                                auctor. Sed accumsan libero quis mi commodo et suscipit enim lacinia. Morbi rutrum
+                                vulputate est sed faucibus. Nulla sed nisl mauris, id tristique tortor. Sed iaculis
+                                dapibus urna nec dictum. Proin non enim odio. Proin vitae turpis libero, eget feugiat
+                                enim. Sed fringilla facilisis convallis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright © 2012 - <a href="http://www.cssmoban.com" target="_blank">Free Basic Html5 Templates</a> by
+            Zerotheme.com</p>
+    </div>
+</footer>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="container" style="margin-top: 160px">
+        <section id="content">
+            <form action="">
+                <h1>登录</h1>
+                <div>
+                    <input type="text" placeholder="用户名" required="" id="username"/>
+                </div>
+                <div>
+                    <input type="password" placeholder="密码" required="" id="password"/>
+                </div>
+                <div>
+                    <input type="submit" value="Log in"/>
+                    <a href="#">Lost your password?</a>
+                    <a href="#">Register</a>
+                </div>
+            </form><!-- form -->
+            <div class="button">
+                <a href="#">Download source file</a>
+            </div><!-- button -->
+        </section><!-- content -->
+    </div><!-- container -->
+</div>
+</body>
+<script>
+    function foo() {
+        if (document.getElementById("check_id").checked == true) {
+            document.getElementById("submit").disabled = false;
+        } else {
+            document.getElementById("submit").disabled = true;
+        }
+    }
+</script>
+</html>
+
+
