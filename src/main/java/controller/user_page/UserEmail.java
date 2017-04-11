@@ -23,6 +23,8 @@ public class UserEmail {
         UserEntity user =(UserEntity)session.getAttribute("superUser");
         Integer id = user.getId();
         List<EmailBox> emailBoxes = emailBoxDao.selectByInId(id);
+        Integer count = emailBoxDao.selectCountByInId(id);
+        model.addAttribute("count",count);
         model.addAttribute("list",emailBoxes);
         return "/WEB-INF/user_center/user_mail.jsp";
     }
