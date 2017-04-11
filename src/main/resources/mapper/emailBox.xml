@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="model.dao.EmailBoxDao" >
-
-
+    <resultMap id="emailBoxDao" type="model.entity.other.EmailBox">
+        <id property="id" column="id"/>
+        <result property="addresseeId" column="addressee_id"/>
+        <result property="recipientsId" column="recipinents_id"/>
+        <result property="content" column="content"/>
+        <result property="createDate" column="create_date"/>
+    </resultMap>
+    <select id="selectByInId" resultMap="emailBoxDao">
+        SELECT * FROM novel_emailbox WHERE recipinents_id=#{id}
+    </select>
 </mapper>
