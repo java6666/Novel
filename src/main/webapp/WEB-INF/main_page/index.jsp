@@ -48,9 +48,10 @@
 <body>
 <!--------------Header--------------->
 <header>
+    <div style="margin-left: 1200px"><span style="color: red">${message}</span></div>
     <c:if test="${sessionScope.superUser==null}">
         <div class="log-inBox">
-            <span style="color: red">${message}</span>
+
 			<span >
 		<a href="#" data-toggle="modal" data-target="#myModal">
 			登录&nbsp;
