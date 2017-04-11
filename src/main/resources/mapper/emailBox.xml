@@ -13,4 +13,7 @@
     <select id="selectByInId" resultMap="emailBoxDao">
         SELECT * FROM novel_emailbox WHERE recipinents_id=#{id}
     </select>
+    <select id="selectCountByInId" resultType="java.lang.Integer">
+        SELECT count(*) FROM  novel_emailbox WHERE recipinents_id=#{id}
+    </select>
 </mapper>

@@ -58,7 +58,7 @@
 <!--------------Header--------------->
 <header>
     <div class="wrap-header zerogrid">
-        <div id="logo"><a href="#"><img src="./images/indexLogo2.png"/></a></div>
+        <div id="logo"><a href="#"><img src="${pageContext.request.contextPath}/images/indexLogo2.png"/></a></div>
         <nav>
             <div class="wrap-nav">
                 <div class="menu">
@@ -105,7 +105,7 @@
                                 <li><a href="buy.html">已购书籍</a></li>
                                 <li><a href="个人页面_升级作者.html">升级作者</a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
-                                <li class="active"><a href="个人页面_消息.html">消息 <span class="badge">3</span></a></li>
+                                <li class="active"><a href="个人页面_消息.html">消息 <span class="badge">${count}</span></a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal2">联系我们</a></li>
                             </ul>
                         </div>
@@ -161,19 +161,6 @@
                 </ul>
             </div>
         </div>
-        <!--<div class="col-xs-3">
-            <div class="col-xs-offset-1 col-xs-9" style="height: 50px">
-            </div>
-            <div class="col-xs-3" style="height: 600px">
-
-                <div style=" margin-left: -15px;height: 600px;width: 350px">
-                    <a>
-                        <img src="images/feifei.jpg" style="height: 600px;width: 350px">
-                    </a>
-                </div>
-            </div>
-        </div>-->
-
     </div>
 </div>
 <!--------------Footer--------------->
