@@ -122,7 +122,7 @@
             </div>
             <form action="#">
                 <div class="form-group" style="width: 300px">
-                    <label>用户名</label>
+                    <label>真实姓名</label>
                     <span>：Eason</span>
                     <input type="text" class="form-control" style="display:none;">
                 </div>
