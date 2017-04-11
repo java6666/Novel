@@ -12,4 +12,6 @@ public interface EmailBoxDao {
     List<EmailBox> selectByInId(int id);
     //通过收件者id查询消息总条数
     Integer selectCountByInId(int id);
+    //添加一条消息
+    void addMail(EmailBox emailBox);
 }

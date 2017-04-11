@@ -10,6 +10,10 @@
         <association property="addressee" select="model.dao.UserEntityDao.selectUserById" column="addressee_id"/>
         <association property="recipients" select="model.dao.UserEntityDao.selectUserById" column="recipinents_id"/>
     </resultMap>
+    <insert id="addMail">
+        INSERT INTO novel_emailbox (addressee_id,recipinents_id,content,create_date) VALUES
+        (#{addresseeId},#{recipientsId},#{content},#{createDate})
+    </insert>
     <select id="selectByInId" resultMap="emailBoxDao">
         SELECT * FROM novel_emailbox WHERE recipinents_id=#{id}
     </select>

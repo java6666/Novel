@@ -92,7 +92,7 @@
         <div class="col-xs-2" style="height: 600px">
             <div style=" margin-left: -15px;height: 150px;width: 150px">
                 <a>
-                    <img src="images/touxiang.jpg" style="height: 150px;width: 150px">
+                    <img src="${pageContext.request.contextPath}/images/touxiang.jpg" style="height: 150px;width: 150px">
                 </a>
             </div>
             <div style="margin-left:-15px;margin-top: 50px">
@@ -137,7 +137,7 @@
                             <td>${email.addressee.userName}</td>
                             <td>${email.content}</td>
                             <td><fmt:formatDate value="${email.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
-                            <td><button type="button"  data-toggle="modal" data-target="#myModal4" class="btn btn-success" style="height: 30px;width: 50px">
+                            <td><button type="button" onclick="foo('${email.addressee.userName}',${email.addresseeId})" data-toggle="modal" data-target="#myModal4" class="btn btn-success" style="height: 30px;width: 50px">
                                 回复
                             </button></td>
                             <td><button type="button" class="btn btn-danger" style="height: 30px;width: 50px">
@@ -196,24 +196,24 @@
 <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="width: 500px;margin-top: 150px;margin-left: 80px">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color: #2a6496">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     &times;
                 </button>
-                <h5 class="modal-title" id="myModalLabel3">
-                    回复好友
+                <h5 class="modal-title">
+                    <span style="color: wheat">回复</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="color: greenyellow" id="myModalLabel3">好友</span>
                 </h5>
             </div>
-            <div class="modal-body">
-                <textarea rows="3" cols="20" style="border: 1px">
-
-                </textarea>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">发送
-                </button>
-            </div>
+            <form action="/user/sendMail" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="modalId">
+                    <div><label>内容：</label><input type="text" class="form-control" name="content"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#myModal5">发送</button>
+                </div>
+            </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
@@ -292,4 +292,28 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabe5">模态框（Modal）标题</h4>
+            </div>
+            <div class="modal-body">在这里添加一些文本</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<script>
+    function foo(name, id) {
+        var h = document.getElementById("myModalLabel3");
+        h.innerHTML=name;
+        var modalId = document.getElementById("modalId");
+        modalId.value=id;
+    }
+</script>
 </body></html>

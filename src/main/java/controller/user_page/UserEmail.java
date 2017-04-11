@@ -6,9 +6,11 @@ import model.entity.user.UserEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,5 +29,16 @@ public class UserEmail {
         model.addAttribute("count",count);
         model.addAttribute("list",emailBoxes);
         return "/WEB-INF/user_center/user_mail.jsp";
+    }
+    @RequestMapping(path = "user/sendMail",method = RequestMethod.POST)
+    public String sendMail(Integer id,String content,HttpSession session){
+        EmailBox emailBox = new EmailBox();
+        UserEntity superUser = (UserEntity) session.getAttribute("superUser");
+        emailBox.setAddresseeId(superUser.getId());
+        emailBox.setRecipientsId(id);
+        emailBox.setContent(content);
+        emailBox.setCreateDate(new Date());
+        emailBoxDao.addMail(emailBox);
+        return "redirect:/user/mail";
     }
 }
