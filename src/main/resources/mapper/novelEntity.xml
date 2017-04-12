@@ -2,5 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="model.dao.NovelEntityDao" >
 
+    <resultMap id="novelEntity" type="model.entity.novel.NovelEntity">
+        <id property="id" column="id"/>
+        <result property="novelName" column="novel_name"/>
+        <result property="novelSummary" column="novel_summary"/>
+        <result property="novelAuthor" column="novel_author"/>
+        <result property="novelFilePath" column="novel_file_path"/>
+        <result property="novelFileName" column="novel_filename"/>
+        <result property="novelPicPath" column="novel_pic_path"/>
+        <result property="novelPicName" column="novel_pic_name"/>
+        <result property="novelClickRate" column="novel_click_rate"/>
+        <result property="novelBuyCount" column="novel_buy_count"/>
+        <result property="novelTotal" column="novel_total"/>
+        <result property="novelIsFinish" column="novel_is_finish"/>
+        <result property="price" column="price"/>
+        <result property="createDate" column="create_date"/>
+        <result property="modifyDate" column="modify_date"/>
+        <result property="createBy" column="create_by"/>
+        <result property="modifyBy" column="modify_by"/>
 
+    </resultMap>
+
+    <select id="selectById" resultMap="novelEntity">
+        SELECT* from novel_detail WHERE id=#{id};
+    </select>
 </mapper>
