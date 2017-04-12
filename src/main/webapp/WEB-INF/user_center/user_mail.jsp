@@ -1,3 +1,13 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/4/11
+  Time: 16:22
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -18,12 +28,12 @@
 
     <!-- CSS
   ================================================== -->
-    <link rel="stylesheet" href="css/main/zerogrid.css">
-    <link rel="stylesheet" href="css/main/style.css">
-    <link rel="stylesheet" href="css/main/responsive.css">
-    <link rel="stylesheet" href="css/main/login.css">
+    <link rel="stylesheet" href="../../css/main/zerogrid.css">
+    <link rel="stylesheet" href="../../css/main/style.css">
+    <link rel="stylesheet" href="../../css/main/responsive.css">
+    <link rel="stylesheet" href="../../css/main/login.css">
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -48,7 +58,7 @@
 <!--------------Header--------------->
 <header>
     <div class="wrap-header zerogrid">
-        <div id="logo"><a href="#"><img src="./images/indexLogo2.png"/></a></div>
+        <div id="logo"><a href="#"><img src="${pageContext.request.contextPath}/images/indexLogo2.png"/></a></div>
         <nav>
             <div class="wrap-nav">
                 <div class="menu">
@@ -82,7 +92,7 @@
         <div class="col-xs-2" style="height: 600px">
             <div style=" margin-left: -15px;height: 150px;width: 150px">
                 <a>
-                    <img src="images/touxiang.jpg" style="height: 150px;width: 150px">
+                    <img src="${pageContext.request.contextPath}/images/touxiang.jpg" style="height: 150px;width: 150px">
                 </a>
             </div>
             <div style="margin-left:-15px;margin-top: 50px">
@@ -95,7 +105,7 @@
                                 <li><a href="buy.html">已购书籍</a></li>
                                 <li><a href="个人页面_升级作者.html">升级作者</a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
-                                <li class="active"><a href="个人页面_消息.html">消息 <span class="badge">3</span></a></li>
+                                <li class="active"><a href="个人页面_消息.html">消息 <span class="badge">${count}</span></a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal2">联系我们</a></li>
                             </ul>
                         </div>
@@ -107,56 +117,37 @@
             <div class="col-xs-offset-1 col-xs-9" style="height: 50px">
             </div>
             <div class="col-xs-offset-1 col-xs-9" style="height: 100px">
-                <h3>好友信息</h3>
+                <h3>信息</h3>
                 <hr/>
             </div>
             <div style="width: 600px">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>发件人</th>
-                    <th>内容</th>
-                    <th>发件时间</th>
-                    <th>回复</th>
-                    <th>删除</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>途途</td>
-                    <td>天气很好</td>
-                    <td>2017-02-12 12:30</td>
-                    <td><button type="button"  data-toggle="modal" data-target="#myModal4" class="btn btn-success" style="height: 30px;width: 50px">
-                        回复
-                    </button></td>
-                    <td><button type="button" class="btn btn-danger" style="height: 30px;width: 50px">
-                        删除
-                    </button></td>
-                </tr>
-                <tr>
-                    <td>猪</td>
-                    <td>饿了</td>
-                    <td>2017-03-03 02:30</td>
-                    <td><button type="button"  data-toggle="modal" data-target="#myModal4" class="btn btn-success" style="height: 30px;width: 50px">
-                        回复
-                    </button></td>
-                    <td><button type="button" class="btn btn-danger" style="height: 30px;width: 50px">
-                        删除
-                    </button></td>
-                </tr>
-                <tr>
-                    <td>牛</td>
-                    <td>耕地</td>
-                    <td>2017-03-12 13:00</td>
-                    <td><button type="button"  data-toggle="modal" data-target="#myModal4" class="btn btn-success" style="height: 30px;width: 50px">
-                        回复
-                    </button></td>
-                    <td><button type="button" class="btn btn-danger" style="height: 30px;width: 50px">
-                        删除
-                    </button></td>
-                </tr>
-                </tbody>
-            </table>
+                <table class="table table-hover">
+                    <thead>
+                    <tr class="text-center">
+                        <td><b>发件人</b></td>
+                        <td><b>内容</b></td>
+                        <td><b>发件时间</b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${list}" var="email">
+                        <tr class="text-center">
+                            <td>${email.addressee.userName}</td>
+                            <td>${email.content}</td>
+                            <td><fmt:formatDate value="${email.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
+                            <td><button type="button" onclick="foo('${email.addressee.userName}',${email.addresseeId})" data-toggle="modal" data-target="#myModal4" class="btn btn-success" style="height: 30px;width: 50px">
+                                回复
+                            </button></td>
+                            <td><button type="button" class="btn btn-danger" style="height: 30px;width: 50px">
+                                删除
+                            </button></td>
+                        </tr>
+                    </c:forEach>
+
+                    </tbody>
+                </table>
             </div>
             <div style="margin-left: 150px">
                 <ul class="pagination">
@@ -170,19 +161,6 @@
                 </ul>
             </div>
         </div>
-        <!--<div class="col-xs-3">
-            <div class="col-xs-offset-1 col-xs-9" style="height: 50px">
-            </div>
-            <div class="col-xs-3" style="height: 600px">
-
-                <div style=" margin-left: -15px;height: 600px;width: 350px">
-                    <a>
-                        <img src="images/feifei.jpg" style="height: 600px;width: 350px">
-                    </a>
-                </div>
-            </div>
-        </div>-->
-
     </div>
 </div>
 <!--------------Footer--------------->
@@ -222,18 +200,20 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     &times;
                 </button>
-                <h5 class="modal-title" id="myModalLabel3">
+                <h5 class="modal-title">
                     <span style="color: wheat">回复</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span style="color: greenyellow">好友</span>
+                    <span style="color: greenyellow" id="myModalLabel3">好友</span>
                 </h5>
             </div>
-            <div class="modal-body">
-                <div><label>内容：</label><input type="text" class="form-control"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">发送
-                </button>
-            </div>
+            <form action="/user/sendMail" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="modalId">
+                    <div><label>内容：</label><input type="text" class="form-control" name="content"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#myModal5">发送</button>
+                </div>
+            </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
@@ -312,4 +292,28 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabe5">模态框（Modal）标题</h4>
+            </div>
+            <div class="modal-body">在这里添加一些文本</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<script>
+    function foo(name, id) {
+        var h = document.getElementById("myModalLabel3");
+        h.innerHTML=name;
+        var modalId = document.getElementById("modalId");
+        modalId.value=id;
+    }
+</script>
 </body></html>

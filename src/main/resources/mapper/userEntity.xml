@@ -12,4 +12,8 @@
     <select id="selectUserByUser" resultMap="userDao">
         SELECT * FROM novel_user WHERE username=#{userName} and password=#{password}
     </select>
+
+    <select id="selectUserById" resultMap="userDao">
+        SELECT * FROM novel_user WHERE id=#{id}
+    </select>
 </mapper>

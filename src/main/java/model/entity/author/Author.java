@@ -1,4 +1,4 @@
-package model.entity.user;
+package model.entity.author;
 
 import java.util.Date;
 

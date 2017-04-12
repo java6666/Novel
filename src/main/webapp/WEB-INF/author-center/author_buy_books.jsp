@@ -1,8 +1,12 @@
-<!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<%--
+  Created by IntelliJ IDEA.
+  User: lenovo
+  Date: 2017/4/11
+  Time: 18:57
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
 
     <!-- Basic Page Needs
@@ -18,14 +22,12 @@
 
     <!-- CSS
   ================================================== -->
-    <link rel="stylesheet" href="css/main/zerogrid.css">
-    <link rel="stylesheet" href="css/main/style.css">
-    <link rel="stylesheet" href="css/main/responsive.css">
-    <link rel="stylesheet" href="css/main/login.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/zerogrid.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/responsive.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/login.css">
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css">
 
     <!--[if lt IE 8]>
     <div style=' clear: both; text-align:center; position: relative;'>
@@ -35,20 +37,21 @@
     </div>
     <![endif]-->
     <!--[if lt IE 9]>
-    <script src="js/html5.js"></script>
-    <script src="js/css3-mediaqueries.js"></script>
+    <script src="${pageContext.request.contextPath}/js/html5.js"></script>
+    <script src="${pageContext.request.contextPath}/js/css3-mediaqueries.js"></script>
     <![endif]-->
 
-    <link href='./images/favicon.ico' rel='icon' type='image/x-icon'/>
+    <link href='${pageContext.request.contextPath}/images/favicon.ico' rel='icon' type='image/x-icon'/>
     <style rel="stylesheet">
         .search{font-size: 14px;color: #CCC;font-weight:bold; }
     </style>
 </head>
+
 <body>
 <!--------------Header--------------->
 <header>
     <div class="wrap-header zerogrid">
-        <div id="logo"><a href="#"><img src="./images/indexLogo2.png"/></a></div>
+        <div id="logo"><a href="#"><img src="${pageContext.request.contextPath}/images/indexLogo2.png"/></a></div>
         <nav>
             <div class="wrap-nav">
                 <div class="menu">
@@ -82,7 +85,7 @@
         <div class="col-xs-2" style="height: 600px">
             <div style=" margin-left: -15px;height: 150px;width: 150px">
                 <a>
-                    <img src="images/touxiang.jpg" style="height: 150px;width: 150px">
+                    <img src="${pageContext.request.contextPath}/images/touxiang.jpg" style="height: 150px;width: 150px">
                 </a>
             </div>
             <div style="margin-left:-15px;margin-top: 50px">
@@ -90,12 +93,12 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="example-navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="个人页面_个人信息.html">个人信息</a></li>
-                                <li><a href="cellection.html">我的书架</a></li>
-                                <li><a href="buy.html">已购书籍</a></li>
-                                <li><a href="个人页面_升级作者.html">升级作者</a></li>
+                                <li class="active"><a href="#">个人信息</a></li>
+                                <li><a href="#">我的书架</a></li>
+                                <li><a href="#">已购书籍</a></li>
+                                <li><a href="#l">我的作品</a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
-                                <li class="active"><a href="个人页面_消息.html">消息 <span class="badge">3</span></a></li>
+                                <li><a href="#">消息 <span class="badge">3</span></a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal2">联系我们</a></li>
                             </ul>
                         </div>
@@ -104,85 +107,58 @@
             </div>
         </div>
         <div class="col-xs-offset-1 col-xs-9">
-            <div class="col-xs-offset-1 col-xs-9" style="height: 50px">
+            <h3>已购小说</h3>
+            <div style="margin-top: 50px">
+                <table class="table table-striped">
+                    <thead>
+                    <tr class="text-center">
+                        <td><b>书名</b></td>
+                        <td><b>作者</b></td>
+                        <td><b>购买日期</b></td>
+                        <td><b>阅读至</b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="text-center">
+                        <td>《无限恐怖》</td>
+                        <td>鱼鱼</td>
+                        <td>2017-05-29</td>
+                        <td>29章 生死之战</td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 100px">
+                            <span class="	glyphicon glyphicon-eye-open"></span> 继续阅读
+                        </button></td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 70px">
+                            <span class="glyphicon glyphicon-circle-arrow-down"></span> 下载
+                        </button></td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>《无限恐怖》</td>
+                        <td>鱼鱼</td>
+                        <td>2017-05-29</td>
+                        <td>29章 生死之战</td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 100px">
+                            <span class="	glyphicon glyphicon-eye-open"></span> 继续阅读
+                        </button></td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 70px">
+                            <span class="glyphicon glyphicon-circle-arrow-down"></span> 下载
+                        </button></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="col-xs-offset-1 col-xs-9" style="height: 100px">
-                <h3>好友信息</h3>
-                <hr/>
-            </div>
-            <div style="width: 600px">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>发件人</th>
-                    <th>内容</th>
-                    <th>发件时间</th>
-                    <th>回复</th>
-                    <th>删除</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>途途</td>
-                    <td>天气很好</td>
-                    <td>2017-02-12 12:30</td>
-                    <td><button type="button"  data-toggle="modal" data-target="#myModal4" class="btn btn-success" style="height: 30px;width: 50px">
-                        回复
-                    </button></td>
-                    <td><button type="button" class="btn btn-danger" style="height: 30px;width: 50px">
-                        删除
-                    </button></td>
-                </tr>
-                <tr>
-                    <td>猪</td>
-                    <td>饿了</td>
-                    <td>2017-03-03 02:30</td>
-                    <td><button type="button"  data-toggle="modal" data-target="#myModal4" class="btn btn-success" style="height: 30px;width: 50px">
-                        回复
-                    </button></td>
-                    <td><button type="button" class="btn btn-danger" style="height: 30px;width: 50px">
-                        删除
-                    </button></td>
-                </tr>
-                <tr>
-                    <td>牛</td>
-                    <td>耕地</td>
-                    <td>2017-03-12 13:00</td>
-                    <td><button type="button"  data-toggle="modal" data-target="#myModal4" class="btn btn-success" style="height: 30px;width: 50px">
-                        回复
-                    </button></td>
-                    <td><button type="button" class="btn btn-danger" style="height: 30px;width: 50px">
-                        删除
-                    </button></td>
-                </tr>
-                </tbody>
-            </table>
-            </div>
-            <div style="margin-left: 150px">
-                <ul class="pagination">
-                    <li><a href="#">«</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">»</a></li>
-                </ul>
-            </div>
+
+            <div style="margin-left: 200px"><ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul></div>
         </div>
-        <!--<div class="col-xs-3">
-            <div class="col-xs-offset-1 col-xs-9" style="height: 50px">
-            </div>
-            <div class="col-xs-3" style="height: 600px">
-
-                <div style=" margin-left: -15px;height: 600px;width: 350px">
-                    <a>
-                        <img src="images/feifei.jpg" style="height: 600px;width: 350px">
-                    </a>
-                </div>
-            </div>
-        </div>-->
-
     </div>
 </div>
 <!--------------Footer--------------->
@@ -215,28 +191,6 @@
         <p>Copyright © 2012 - <a href="http://www.cssmoban.com" target="_blank">Free Basic Html5 Templates</a> by Zerotheme.com</p>
     </div>
 </footer>
-<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width: 500px;margin-top: 150px;margin-left: 80px">
-            <div class="modal-header" style="background-color: #2a6496">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h5 class="modal-title" id="myModalLabel3">
-                    <span style="color: wheat">回复</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span style="color: greenyellow">好友</span>
-                </h5>
-            </div>
-            <div class="modal-body">
-                <div><label>内容：</label><input type="text" class="form-control"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">发送
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="container" style="margin-top: 130px">
@@ -261,6 +215,7 @@
         </section><!-- content -->
     </div><!-- container -->
 </div>
+<!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="width: 300px;text-align: center;margin-top: 150px;margin-left: 170px">
@@ -312,4 +267,5 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
-</body></html>
+</body>
+</html>

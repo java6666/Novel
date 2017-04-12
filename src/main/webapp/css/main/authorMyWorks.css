@@ -1,0 +1,20 @@
+#base ul{
+    list-style: none;
+    overflow: hidden;
+    width: 500px;
+    position: static;
+}
+#base ul li{
+    float: left;
+    height: 38px;
+    width: 80px;
+    line-height:20px;
+    text-align:center;
+    margin-left: 80px;
+}
+.block{
+    display: block;
+}
+.none{
+    display: none;
+}
