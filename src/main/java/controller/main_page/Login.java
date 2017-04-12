@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class Login {
     @Resource
-    UserEntityDao userEntityDao;
+    private UserEntityDao userEntityDao;
     @RequestMapping(path = "/main",method = RequestMethod.GET)
     public String main(){
         return "/WEB-INF/main_page/index.jsp";
