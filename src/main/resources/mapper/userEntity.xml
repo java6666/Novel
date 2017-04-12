@@ -22,4 +22,10 @@
     <select id="selectUserEntityAll" resultMap="userDao">
         SELECT *FROM novel_user
     </select>
+
+    <update id="updateUserEntityByUserId">
+        UPDATE novel_user SET user_type=#{userType}
+        WHERE id=#{id}
+    </update>
+
 </mapper>
