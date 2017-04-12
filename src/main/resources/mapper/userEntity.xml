@@ -8,6 +8,9 @@
     <result property="userType" column="user_type"/>
     <result property="accountType" column="account_type"/>
 </resultMap>
+    <update id="updateUserByUser">
+        UPDATE novel_user SET `password`=#{password} where `id`=#{id}
+    </update>
 
     <select id="selectUserByUser" resultMap="userDao">
         SELECT * FROM novel_user WHERE username=#{userName} and password=#{password}
