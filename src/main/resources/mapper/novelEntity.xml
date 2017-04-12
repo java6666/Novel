@@ -22,9 +22,6 @@
         <result property="modifyBy" column="modify_by"/>
 
     </resultMap>
-    <delete id="delById">
-        DELETE from novel_detail where id=#{id};
-    </delete>
 
     <select id="selectById" resultMap="novelEntity">
         SELECT* from novel_detail WHERE id=#{id};

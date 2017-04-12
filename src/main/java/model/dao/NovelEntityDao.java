@@ -8,5 +8,5 @@ import model.entity.novel.NovelEntity;
 public interface NovelEntityDao {
     NovelEntity selectById(Integer id); //查找收藏的书籍
 
-    void delById(Integer id); //取消收藏
+
 }

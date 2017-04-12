@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: LJ
@@ -115,7 +116,10 @@
         </div>
         <div class="col-xs-offset-1 col-xs-9">
             <h3>收藏小说</h3>
-            <div style="float: right"><a href="/user/collectionDel">编辑</a></div>
+            <c:if test="${fn:length(novelList)!=0}">
+                <div style="float: right"><a href="/user/collectionDel">编辑</a></div>
+            </c:if>
+
             <div style="margin-top: 50px">
                 <table class="table table-striped">
                     <thead>

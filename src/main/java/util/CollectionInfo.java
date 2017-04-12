@@ -12,6 +12,15 @@ public class CollectionInfo {
     private String novelAuthor;     //小说作者
     private String novelName;       //小说名
     private  Integer id;   //小说ID
+    private Integer userId;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public Integer getId() {
         return id;

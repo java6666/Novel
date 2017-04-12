@@ -70,6 +70,7 @@ public class UserCollection {
             collectionInfo.setCreateDate(novelUserCollections.get(i).getCreateDate());
             collectionInfo.setReadNow(novelUserCollections.get(i).getReadNow());
             collectionInfo.setId(novelUserCollections.get(i).getNovelId());
+            collectionInfo.setUserId(novelUserCollections.get(i).getUserId());
 
             collectionInfos.add(collectionInfo);
         }
@@ -79,8 +80,8 @@ public class UserCollection {
     }
 
     @RequestMapping(path = "/user/delCollection",method = RequestMethod.GET)
-    public String collectionDel(Integer id,HttpSession session, Model model){
-        novelEntityDao.delById(id);
+    public String collectionDel(Integer userId,Integer id,HttpSession session, Model model){
+        novelUserCollectionDao.delById(id,userId);
         return "redirect:/user/collectionDel";
     }
 }

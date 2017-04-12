@@ -136,7 +136,7 @@
                             <td><fmt:formatDate value="${novel.createDate}" pattern="yyyy-MM-dd"/> </td>
                             <td>${novel.readNow}</td>
                             <td><button type="button" class="btn btn-danger" style="height: 30px;width: 100px">
-                                <span class="glyphicon glyphicon-minus-sign"></span> <a href="/user/delCollection?id=${novel.id}">取消收藏</a>
+                                <span class="glyphicon glyphicon-minus-sign"></span> <a href="/user/delCollection?id=${novel.id}&userId=${novel.userId}">取消收藏</a>
                             </button></td>
                         </tr>
                     </c:forEach>
