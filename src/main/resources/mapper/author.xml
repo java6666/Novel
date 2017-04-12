@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="model.dao.AuthorDao" >
+    <resultMap id="author" type="model.entity.author.Author">
+        <result column="user_id" property="userId"/>
+        <result column="birth_date" property="birthDate"/>
+        <result column="pen_name" property="penName"/>
+        <result column="birth_address" property="birthAddress"/>
+        <result column="author_introduce" property="authorIntroduce"/>
+        <result column="create_date" property="createDate"/>
+    </resultMap>
+    <insert id="addAuthor">
+        INSERT INTO novel_user_author
+        (user_id,birth_date,pen_name,birth_address,author_introduce,create_date) VALUES
+        (#{userId},#{birthDate},#{penName},#{birthAddress},#{authorIntroduce},#{createDate})
+    </insert>
 
+    <select id="selectAuthorByUserId" resultMap="author">
+        SELECT *FROM novel_user_author
+        WHERE novel_user_author.user_id=#{id}
+    </select>
 
 </mapper>
