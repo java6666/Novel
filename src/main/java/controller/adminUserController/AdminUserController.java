@@ -34,6 +34,8 @@ public class AdminUserController {
     @RequestMapping(value = "/admin/showUserDetails",method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     public String showUserDetails(Model model,Integer id,Integer userType) {
         Author authorINfoDetails = null;
+        //判断前台传过来的userType调用相应的方法进行显示相应的内容
+        //1为管理员2为作者3为普通用户
         if (userType==1){
 
         }else if (userType == 2) {
