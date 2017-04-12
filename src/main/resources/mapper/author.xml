@@ -9,6 +9,11 @@
         <result column="author_introduce" property="authorIntroduce"/>
         <result column="create_date" property="createDate"/>
     </resultMap>
+    <insert id="addAuthor">
+        INSERT INTO novel_user_author
+        (user_id,birth_date,pen_name,birth_address,author_introduce,create_date) VALUES
+        (#{userId},#{birthDate},#{penName},#{birthAddress},#{authorIntroduce},#{createDate})
+    </insert>
 
     <select id="selectAuthorByUserId" resultMap="author">
         SELECT *FROM novel_user_author
