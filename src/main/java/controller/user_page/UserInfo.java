@@ -3,6 +3,7 @@ package controller.user_page;
 import model.dao.UserInfoEntityDao;
 import model.entity.user.UserEntity;
 import model.entity.user.UserInfoEntity;
+import model.service.updateUserInfo.UpdateUserInfo;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +24,7 @@ import java.io.IOException;
 public class UserInfo {
 
     @Resource
-    UserInfoEntityDao userInfoEntityDao;
+    private UserInfoEntityDao userInfoEntityDao;
 
     @RequestMapping(path = "/user/info",method = RequestMethod.GET)
     public String userInfo( Model model,HttpSession session){
@@ -35,19 +36,12 @@ public class UserInfo {
 
     @RequestMapping(path = "/user/updateInfo",method = RequestMethod.POST)
     public String userInfo(@RequestParam("alice")MultipartFile file, String name, Integer phone, Boolean sex, HttpSession session) throws IOException {
+
         UserEntity user = (UserEntity)session.getAttribute("superUser");
-        UserInfoEntity userInfo = new UserInfoEntity();
-        userInfo.setUserId(user.getId());
-        userInfo.setRealName(name);
-        userInfo.setGender(sex);
-        userInfo.setPhone(phone);
-        long millis = System.currentTimeMillis();
-        userInfo.setHeadSculpturePath("head\\"+millis+".jpg");
-        File targetFile = new File("E:\\gitworkspace\\novel\\target\\novel-1.0-SNAPSHOT\\head\\"+millis+".jpg");
-        FileUtils.copyInputStreamToFile(file.getInputStream(),targetFile);
-        File webFile = new File("E:\\gitworkspace\\novel\\src\\main\\webapp\\head\\" + millis + ".jpg");
-        FileUtils.copyInputStreamToFile(file.getInputStream(),webFile);
-        userInfoEntityDao.updateUserInfo(userInfo);
+
+        UpdateUserInfo updateUserInfo = new UpdateUserInfo();
+        updateUserInfo.updateUserInfo(file, userInfoEntityDao,name, phone, sex, user);
+
         return "redirect:/user/info";
     }
 }

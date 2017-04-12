@@ -7,5 +7,5 @@ import model.entity.user.UserInfoEntity;
  */
 public interface UserInfoEntityDao {
     UserInfoEntity selectUserInfoByUserId(Integer userId);//查找用户信息
-    void updateUserInfo(UserInfoEntity userInfoEntity);//更改用户信息
+    Boolean updateUserInfo(UserInfoEntity userInfoEntity);//更改用户信息
 }
