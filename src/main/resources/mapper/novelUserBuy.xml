@@ -2,5 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="model.dao.NovelUserBuyDao" >
 
+    <resultMap id="novelUserBuy" type="model.entity.novel.NovelUserBuy">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="novel_id" property="novelId"/>
+        <result column="create_date" property="createDate"/>
+    </resultMap>
 
+    <select id="selectByUserId" resultMap="novelUserBuy">
+        SELECT* from novel_user_buy WHERE user_id=#{id};
+    </select>
 </mapper>

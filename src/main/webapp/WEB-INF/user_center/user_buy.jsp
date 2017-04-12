@@ -1,11 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: LJ
   Date: 2017/4/12
-  Time: 13:13
+  Time: 20:09
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -33,7 +32,7 @@
     <link rel="stylesheet" href="${requestScope.request.comtextPath}/css/main/style.css">
     <link rel="stylesheet" href="${requestScope.request.comtextPath}/css/main/responsive.css">
     <link rel="stylesheet" href="${requestScope.request.comtextPath}/css/main/login.css">
-    <link rel="stylesheet" href="${requestScope.request.comtextPath}/http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="${requestScope.request.comtextPath}/bootstrap/css/bootstrap.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -102,8 +101,8 @@
                         <div class="collapse navbar-collapse" id="example-navbar-collapse">
                             <ul class="nav navbar-nav">
                                 <li><a href="/user/info">个人信息</a></li>
-                                <li class="active"><a href="/user/collection">我的书架</a></li>
-                                <li><a href="/user/buy">已购书籍</a></li>
+                                <li><a href="/user/collection">我的书架</a></li>
+                                <li class="active"><a href="/user/buy">已购书籍</a></li>
                                 <li><a href="个人页面_升级作者.html">升级作者</a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
                                 <li><a href="个人页面_消息.html">消息 <span class="badge">3</span></a></li>
@@ -115,30 +114,26 @@
             </div>
         </div>
         <div class="col-xs-offset-1 col-xs-9">
-            <h3>收藏小说</h3>
-            <c:if test="${fn:length(novelList)!=0}">
-                <div style="float: right"><a href="/user/collectionDel">编辑</a></div>
-            </c:if>
-
+            <h3>已购小说</h3>
             <div style="margin-top: 50px">
                 <table class="table table-striped">
                     <thead>
                     <tr class="text-center">
                         <td><b>书名</b></td>
                         <td><b>作者</b></td>
-                        <td><b>收藏日期</b></td>
+                        <td><b>购买日期</b></td>
                         <td><b>阅读至</b></td>
                         <td></td>
                         <td></td>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${requestScope.novelList}" var="novel">
+                    <c:forEach items="${requestScope.buyInfos}" var="buyInfo">
                         <tr class="text-center">
-                            <td>${novel.novelName}</td>
-                            <td>${novel.novelAuthor}</td>
-                            <td><fmt:formatDate value="${novel.createDate}" pattern="yyyy-MM-dd"/> </td>
-                            <td>${novel.readNow}</td>
+                            <td>${buyInfo.novelName}</td>
+                            <td>${buyInfo.novelAuthor}</td>
+                            <td><fmt:formatDate value="${buyInfo.createDate}" pattern="yyyy-MM-dd"/></td>
+                            <td>${buyInfo.readNow}</td>
                             <td><button type="button" class="btn btn-success" style="height: 30px;width: 100px">
                                 <span class="	glyphicon glyphicon-eye-open"></span> 继续阅读
                             </button></td>
@@ -218,12 +213,37 @@
         </section><!-- content -->
     </div><!-- container -->
 </div>
-<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 300px;text-align: center;margin-top: 150px;margin-left: 170px">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    联系方式
+                </h4>
+            </div>
+            <div class="modal-body">
+                <h3>
+                    021-88888888
+                </h3>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
     <div class="modal-dialog" style="width: 400px;margin-top: 100px">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #2e6da4;height: 70px">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel" style="color: white;text-align: center">密码修改</h4>
+                <h4 class="modal-title" id="myModalLabel2" style="color: white;text-align: center">密码修改</h4>
             </div>
             <div>
                 <form>
@@ -241,31 +261,6 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                 <button type="button" class="btn btn-primary">确认修改</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width: 300px;text-align: center;margin-top: 150px;margin-left: 170px">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel2">
-                    联系方式
-                </h4>
-            </div>
-            <div class="modal-body">
-                <h3>
-                    021-88888888
-                </h3>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                </button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
