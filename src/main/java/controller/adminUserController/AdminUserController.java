@@ -2,7 +2,7 @@ package controller.adminUserController;
 
 import model.dao.AuthorDao;
 import model.dao.UserEntityDao;
-import model.entity.user.Author;
+import model.entity.author.Author;
 import model.entity.user.UserEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +28,7 @@ public class AdminUserController {
     public String showUsers(Model model){
         List<UserEntity> userEntities = userEntityDao.selectUserEntityAll();
         model.addAttribute("userEntities",userEntities);
-        return "/WEB-INF/showUsers.jsp";
+        return "/WEB-INF/admin/showUsers.jsp";
     }
     //查看用户详细信息
     @RequestMapping(value = "/admin/showUserDetails",method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
@@ -44,6 +44,6 @@ public class AdminUserController {
         }
          model.addAttribute("authorINfoDetails",authorINfoDetails);
          model.addAttribute("userType",id);
-        return "/WEB-INF/showUsers.jsp";
+        return "/WEB-INF/admin/showUsers.jsp";
     }
 }

@@ -19,4 +19,7 @@
     <select id="selectUserById" resultMap="userDao">
         SELECT * FROM novel_user WHERE id=#{id}
     </select>
+    <select id="selectUserEntityAll" resultMap="userDao">
+        SELECT *FROM novel_user
+    </select>
 </mapper>
