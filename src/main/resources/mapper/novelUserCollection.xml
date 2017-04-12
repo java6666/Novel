@@ -14,4 +14,9 @@
     <select id="selectById" resultMap="noverUserCollection">
         SELECT* from novel_user_collection WHERE user_id=#{id};
     </select>
+
+    <delete id="delById">
+        DELETE from novel_user_collection where detail_id=#{novelId} and user_id=#{userId} ;
+    </delete>
+
 </mapper>

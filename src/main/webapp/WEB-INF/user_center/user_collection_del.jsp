@@ -2,9 +2,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2017/4/11
-  Time: 16:22
+  User: LJ
+  Date: 2017/4/12
+  Time: 18:23
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -28,12 +28,12 @@
 
     <!-- CSS
   ================================================== -->
-    <link rel="stylesheet" href="../../css/main/zerogrid.css">
-    <link rel="stylesheet" href="../../css/main/style.css">
-    <link rel="stylesheet" href="../../css/main/responsive.css">
-    <link rel="stylesheet" href="../../css/main/login.css">
+    <link rel="stylesheet" href="${requestScope.request.comtextPath}/css/main/zerogrid.css">
+    <link rel="stylesheet" href="${requestScope.request.comtextPath}/css/main/style.css">
+    <link rel="stylesheet" href="${requestScope.request.comtextPath}/css/main/responsive.css">
+    <link rel="stylesheet" href="${requestScope.request.comtextPath}/css/main/login.css">
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="${requestScope.request.comtextPath}/bootstrap/css/bootstrap.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -92,7 +92,7 @@
         <div class="col-xs-2" style="height: 600px">
             <div style=" margin-left: -15px;height: 150px;width: 150px">
                 <a>
-                    <img src="${pageContext.request.contextPath}/images/touxiang.jpg" style="height: 150px;width: 150px">
+                    <img src="${pageContext.request.contextPath}/${userInfo.headSculpturePath}" style="height: 150px;width: 150px">
                 </a>
             </div>
             <div style="margin-left:-15px;margin-top: 50px">
@@ -101,11 +101,11 @@
                         <div class="collapse navbar-collapse" id="example-navbar-collapse">
                             <ul class="nav navbar-nav">
                                 <li><a href="个人页面_个人信息.html">个人信息</a></li>
-                                <li><a href="cellection.html">我的书架</a></li>
+                                <li class="active"><a href="cellection.html">我的书架</a></li>
                                 <li><a href="buy.html">已购书籍</a></li>
                                 <li><a href="个人页面_升级作者.html">升级作者</a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
-                                <li class="active"><a href="个人页面_消息.html">消息 <span class="badge">${count}</span></a></li>
+                                <li><a href="个人页面_消息.html">消息 <span class="badge">3</span></a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal2">联系我们</a></li>
                             </ul>
                         </div>
@@ -114,52 +114,45 @@
             </div>
         </div>
         <div class="col-xs-offset-1 col-xs-9">
-            <div class="col-xs-offset-1 col-xs-9" style="height: 50px">
-            </div>
-            <div class="col-xs-offset-1 col-xs-9" style="height: 100px">
-                <h3>信息</h3>
-                <hr/>
-            </div>
-            <div style="width: 600px">
-                <table class="table table-hover">
+            <h3>收藏小说</h3>
+            <div style="float: right"><a href="/user/collection">取消</a></div>
+            <div style="margin-top: 50px">
+                <table class="table table-striped">
                     <thead>
                     <tr class="text-center">
-                        <td><b>发件人</b></td>
-                        <td><b>内容</b></td>
-                        <td><b>发件时间</b></td>
+                        <td><b>书名</b></td>
+                        <td><b>作者</b></td>
+                        <td><b>收藏日期</b></td>
+                        <td><b>阅读至</b></td>
                         <td></td>
                         <td></td>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${list}" var="email">
+                    <c:forEach items="${requestScope.novelList}" var="novel">
                         <tr class="text-center">
-                            <td>${email.addressee.userName}</td>
-                            <td>${email.content}</td>
-                            <td><fmt:formatDate value="${email.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
-                            <td><button type="button" onclick="foo('${email.addressee.userName}',${email.addresseeId})" data-toggle="modal" data-target="#myModal4" class="btn btn-success" style="height: 30px;width: 50px">
-                                回复
-                            </button></td>
-                            <td><button type="button" class="btn btn-danger" style="height: 30px;width: 50px">
-                                删除
+                            <td>${novel.novelName}</td>
+                            <td>${novel.novelAuthor}</td>
+                            <td><fmt:formatDate value="${novel.createDate}" pattern="yyyy-MM-dd"/> </td>
+                            <td>${novel.readNow}</td>
+                            <td><button type="button" class="btn btn-danger" style="height: 30px;width: 100px">
+                                <span class="glyphicon glyphicon-minus-sign"></span> <a href="/user/delCollection?id=${novel.id}&userId=${novel.userId}">取消收藏</a>
                             </button></td>
                         </tr>
                     </c:forEach>
-
                     </tbody>
                 </table>
             </div>
-            <div style="margin-left: 150px">
-                <ul class="pagination">
-                    <li><a href="#">«</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">»</a></li>
-                </ul>
-            </div>
+
+            <div style="margin-left: 200px"><ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li class="disabled"><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul></div>
         </div>
     </div>
 </div>
@@ -193,30 +186,6 @@
         <p>Copyright © 2012 - <a href="http://www.cssmoban.com" target="_blank">Free Basic Html5 Templates</a> by Zerotheme.com</p>
     </div>
 </footer>
-<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width: 500px;margin-top: 150px;margin-left: 80px">
-            <div class="modal-header" style="background-color: #2a6496">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h5 class="modal-title">
-                    <span style="color: wheat">回复</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span style="color: greenyellow" id="myModalLabel3">好友</span>
-                </h5>
-            </div>
-            <form action="/user/sendMail" method="post">
-                <div class="modal-body">
-                    <input type="hidden" name="id" id="modalId">
-                    <div><label>内容：</label><input type="text" class="form-control" name="content"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-default">发送</button>
-                </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="container" style="margin-top: 130px">
@@ -241,6 +210,7 @@
         </section><!-- content -->
     </div><!-- container -->
 </div>
+<!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="width: 300px;text-align: center;margin-top: 150px;margin-left: 170px">
@@ -272,57 +242,24 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel2" style="color: white;text-align: center">密码修改</h4>
             </div>
-            <form action="/user/updatePassword" method="post">
-                <div>
+            <div>
+                <form>
                     <div class="form-group"><label style="margin-left: 50px;margin-top: 28px">旧密码：</label>
-                        <input type="password" name="oldPassword" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
+                        <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
                     </div>
                     <div class="form-group"><label style="margin-left: 50px;margin-top: 28px">新密码：</label>
-                        <input type="password" name="newPassword" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
+                        <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
                     </div>
                     <div class="form-group"><label style="margin-left: 45px;margin-top: 28px">重复密码：</label>
                         <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
                     </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="submit" class="btn btn-primary">确认修改</button>
+                <button type="button" class="btn btn-primary">确认修改</button>
             </div>
-            </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-            <div class="modal-body" style="margin-top: 230px;margin-left: 200px">
-                <img src="${pageContext.request.contextPath}/images/finish.jpg">
-            </div>
-    </div><!-- /.modal -->
-</div>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-            <div class="modal-body" style="margin-top: 200px">
-                <img src="${pageContext.request.contextPath}/images/success.png" style="height: 180px;width: 880px">
-            </div>
-    </div><!-- /.modal -->
-</div>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-body" style="margin-top: 200px">
-            <img src="${pageContext.request.contextPath}/images/password_error.png" style="height: 180px;width: 880px">
-        </div>
-    </div><!-- /.modal -->
-</div>
-<script>
-    function foo(name, id) {
-        var h = document.getElementById("myModalLabel3");
-        h.innerHTML=name;
-        var modalId = document.getElementById("modalId");
-        modalId.value=id;
-    }
-</script>
-${modal}
 </body></html>

@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service;
  * Created by lenovo on 2017/4/12.
  */
 @Service
-public class AuthorMyWorksService {
+public class AuthorMyNovelService {
 }

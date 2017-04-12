@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: LJ
@@ -26,12 +29,12 @@
 
     <!-- CSS
   ================================================== -->
-    <link rel="stylesheet" href="css/main/zerogrid.css">
-    <link rel="stylesheet" href="css/main/style.css">
-    <link rel="stylesheet" href="css/main/responsive.css">
-    <link rel="stylesheet" href="css/main/login.css">
-    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="${requestScope.request.comtextPath}/css/main/zerogrid.css">
+    <link rel="stylesheet" href="${requestScope.request.comtextPath}/css/main/style.css">
+    <link rel="stylesheet" href="${requestScope.request.comtextPath}/css/main/responsive.css">
+    <link rel="stylesheet" href="${requestScope.request.comtextPath}/css/main/login.css">
+    <link rel="stylesheet" href="${requestScope.request.comtextPath}/http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${requestScope.request.comtextPath}/bootstrap/css/bootstrap.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -56,7 +59,7 @@
 <!--------------Header--------------->
 <header>
     <div class="wrap-header zerogrid">
-        <div id="logo"><a href="#"><img src="./images/indexLogo2.png"/></a></div>
+        <div id="logo"><a href="#"><img src="${pageContext.request.contextPath}/images/indexLogo2.png"/></a></div>
         <nav>
             <div class="wrap-nav">
                 <div class="menu">
@@ -90,7 +93,7 @@
         <div class="col-xs-2" style="height: 600px">
             <div style=" margin-left: -15px;height: 150px;width: 150px">
                 <a>
-                    <img src="images/touxiang.jpg" style="height: 150px;width: 150px">
+                    <img src="${pageContext.request.contextPath}/${userInfo.headSculpturePath}" style="height: 150px;width: 150px">
                 </a>
             </div>
             <div style="margin-left:-15px;margin-top: 50px">
@@ -98,8 +101,8 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="example-navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="个人页面_个人信息.html">个人信息</a></li>
-                                <li class="active"><a href="cellection.html">我的书架</a></li>
+                                <li><a href="/user/info">个人信息</a></li>
+                                <li class="active"><a href="/user/collection">我的书架</a></li>
                                 <li><a href="buy.html">已购书籍</a></li>
                                 <li><a href="个人页面_升级作者.html">升级作者</a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
@@ -113,7 +116,10 @@
         </div>
         <div class="col-xs-offset-1 col-xs-9">
             <h3>收藏小说</h3>
-            <div style="float: right"><a href="collection_del.html">编辑</a></div>
+            <c:if test="${fn:length(novelList)!=0}">
+                <div style="float: right"><a href="/user/collectionDel">编辑</a></div>
+            </c:if>
+
             <div style="margin-top: 50px">
                 <table class="table table-striped">
                     <thead>
@@ -127,30 +133,21 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="text-center">
-                        <td>《无限恐怖》</td>
-                        <td>鱼鱼</td>
-                        <td>2017-05-29</td>
-                        <td>29章 生死之战</td>
-                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 100px">
-                            <span class="	glyphicon glyphicon-eye-open"></span> 继续阅读
-                        </button></td>
-                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 70px">
-                            <span class="glyphicon glyphicon-circle-arrow-down"></span> 下载
-                        </button></td>
-                    </tr>
-                    <tr class="text-center">
-                        <td>《无限恐怖》</td>
-                        <td>鱼鱼</td>
-                        <td>2017-05-29</td>
-                        <td>29章 生死之战</td>
-                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 100px">
-                            <span class="	glyphicon glyphicon-eye-open"></span> 继续阅读
-                        </button></td>
-                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 70px">
-                            <span class="glyphicon glyphicon-circle-arrow-down"></span> 下载
-                        </button></td>
-                    </tr>
+                    <c:forEach items="${requestScope.novelList}" var="novel">
+                        <tr class="text-center">
+                            <td>${novel.novelName}</td>
+                            <td>${novel.novelAuthor}</td>
+                            <td><fmt:formatDate value="${novel.createDate}" pattern="yyyy-MM-dd"/> </td>
+                            <td>${novel.readNow}</td>
+                            <td><button type="button" class="btn btn-success" style="height: 30px;width: 100px">
+                                <span class="	glyphicon glyphicon-eye-open"></span> 继续阅读
+                            </button></td>
+                            <td><button type="button" class="btn btn-success" style="height: 30px;width: 70px">
+                                <span class="glyphicon glyphicon-circle-arrow-down"></span> 下载
+                            </button></td>
+                        </tr>
+                    </c:forEach>
+
                     </tbody>
                 </table>
             </div>

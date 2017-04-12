@@ -17,11 +17,11 @@
         <![endif]-->
     <title>管理员子页面之所有用户</title>
     <!-- BOOTSTRAP CORE STYLE CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME CSS -->
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" rel="stylesheet" />
     <!-- CUSTOM STYLE CSS -->
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet" />
     <!-- Google	Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Nova+Flat' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css' />
@@ -200,9 +200,9 @@
 
     </div>
     <!--  Jquery Core Script -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.js"></script>
     <!--  Core Bootstrap Script -->
-    <script src="assets/js/bootstrap.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
 
 </body>
 </html>

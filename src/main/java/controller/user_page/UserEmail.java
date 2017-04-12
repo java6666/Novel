@@ -19,18 +19,23 @@ import java.util.List;
 @Controller
 public class UserEmail {
     @Resource
-    EmailBoxDao emailBoxDao;
+    private EmailBoxDao emailBoxDao;
     @RequestMapping("/user/mail")
-    public String userMail(HttpSession session, Model model){
+    public String userMail(HttpSession session, Model model,String flag){
         UserEntity user =(UserEntity)session.getAttribute("superUser");
         Integer id = user.getId();
         List<EmailBox> emailBoxes = emailBoxDao.selectByInId(id);
         Integer count = emailBoxDao.selectCountByInId(id);
         model.addAttribute("count",count);
         model.addAttribute("list",emailBoxes);
+        if (flag!=null){
+            if (Integer.parseInt(flag)==1){
+                model.addAttribute("modal","<script>$('#myModal5').modal();</script>");
+            }
+        }
         return "/WEB-INF/user_center/user_mail.jsp";
     }
-    @RequestMapping(path = "user/sendMail",method = RequestMethod.POST)
+    @RequestMapping(path = "/user/sendMail",method = RequestMethod.POST)
     public String sendMail(Integer id,String content,HttpSession session){
         EmailBox emailBox = new EmailBox();
         UserEntity superUser = (UserEntity) session.getAttribute("superUser");
@@ -38,7 +43,7 @@ public class UserEmail {
         emailBox.setRecipientsId(id);
         emailBox.setContent(content);
         emailBox.setCreateDate(new Date());
-        emailBoxDao.addMail(emailBox);
-        return "redirect:/user/mail";
+        boolean b = emailBoxDao.addMail(emailBox);
+        return "redirect:/user/mail?flag=1";
     }
 }

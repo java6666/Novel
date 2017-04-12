@@ -1,56 +1,62 @@
-<!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<%--
+  Created by IntelliJ IDEA.
+  User: lenovo
+  Date: 2017/4/12
+  Time: 11:29
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
+    <head>
 
-    <!-- Basic Page Needs
-  ================================================== -->
-    <meta charset="utf-8">
-    <title>zBasicB001 Free Html5 Responsive Template</title>
-    <meta name="description" content="Free Html5 Templates and Free Responsive Themes Designed by Kimmy | zerotheme.com">
-    <meta name="author" content="www.zerotheme.com">
+        <!-- Basic Page Needs
+      ================================================== -->
+        <meta charset="utf-8">
+        <title>zBasicB001 我的小说</title>
+        <meta name="description" content="Free Html5 Templates and Free Responsive Themes Designed by Kimmy | zerotheme.com">
+        <meta name="author" content="www.zerotheme.com">
 
-    <!-- Mobile Specific Metas
-  ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!-- Mobile Specific Metas
+      ================================================== -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- CSS
-  ================================================== -->
-    <link rel="stylesheet" href="./css/main/zerogrid.css">
-    <link rel="stylesheet" href="./css/main/style.css">
-    <link rel="stylesheet" href="./css/main/responsive.css">
-    <link rel="stylesheet" href="./css/main/login.css">
-    <link rel="stylesheet" href="./css/main/authorMyWorks.css">
-    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
-    <script src="js/authorCenter/authorMyNovel.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- CSS
+      ================================================== -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/zerogrid.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/responsive.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/login.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/authorMyWorks.css">
+        <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css">
+        <script src="${pageContext.request.contextPath}/js/authorCenter/authorMyNovel.js"></script>
+        <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!--[if lt IE 8]>
-    <div style=' clear: both; text-align:center; position: relative;'>
-        <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
-        </a>
-    </div>
-    <![endif]-->
-    <!--[if lt IE 9]>
-    <script src="js/html5.js"></script>
-    <script src="js/css3-mediaqueries.js"></script>
-    <![endif]-->
+        <!--[if lt IE 8]>
+        <div style=' clear: both; text-align:center; position: relative;'>
+            <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+                <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+            </a>
+        </div>
+        <![endif]-->
+        <!--[if lt IE 9]>
+        <script src="${pageContext.request.contextPath}/js/html5.js"></script>
+        <script src="${pageContext.request.contextPath}/js/css3-mediaqueries.js"></script>
+        <![endif]-->
 
-    <link href='./images/favicon.ico' rel='icon' type='image/x-icon'/>
-    <style rel="stylesheet">
-        .search{font-size: 14px;color: #CCC;font-weight:bold; }
-    </style>
+        <link href='${pageContext.request.contextPath}/images/favicon.ico' rel='icon' type='image/x-icon'/>
+        <style rel="stylesheet">
+            .search{font-size: 14px;color: #CCC;font-weight:bold; }
+        </style>
+    </head>
 </head>
 <body>
 <!--------------Header--------------->
 <header>
     <div class="wrap-header zerogrid">
-        <div id="logo"><a href="#"><img src="./images/indexLogo2.png"/></a></div>
+        <div id="logo"><a href="#"><img src="${pageContext.request.contextPath}/images/indexLogo2.png"/></a></div>
         <nav>
             <div class="wrap-nav">
                 <div class="menu">
@@ -140,8 +146,8 @@
                                                 <input type="checkbox" value="游戏"/> 游戏&nbsp;
                                             </div>
                                             <br/>
-                                            <div id="novelTypeInfo">请选择以上种类，并点击下面“确认选择”按钮</div>
-                                            <button type="button" class="btn btn-info" onclick="checkNovelType(1)">确认选择</button>
+                                            <div id="novelTypeInfo" name="novelType">请选择以上种类，并点击下面“确认选择”按钮</div>
+                                            <button type="button" class="btn btn-info" name="novelType" onclick="checkNovelType(1)">确认选择</button>
                                         </div>
                                         <div class="form-group agileits w3layouts w3">
                                             <label class="control-label">内 容 简 介</label>
@@ -157,15 +163,15 @@
                                             <button onclick="checkAll()" type="submit" class="btn btn-lg" id="submit" disabled>Submit</button>
                                         </div>
                                     </form>
-                                    <script src="./js/jquery-1.10.2.min.js"></script>
-                                    <script src="./js/bootstrap.min.js"></script>
-                                    <script src="./js/validator.min.js"></script>
+                                    <script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js"></script>
+                                    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+                                    <script src="${pageContext.request.contextPath}/js/validator.min.js"></script>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="tab-1" class="none"><img src="./images/noWorks.jpg" alt="" width="340px" height="420px"></div>
-                    <div id="tab-2" class="none"><img src="./images/noComplete.jpg" alt="" width="340px" height="420px"></div>
+                    <div id="tab-1" class="none"><img src="${pageContext.request.contextPath}/images/noWorks.jpg" alt="" width="340px" height="420px"></div>
+                    <div id="tab-2" class="none"><img src="${pageContext.request.contextPath}/images/noComplete.jpg" alt="" width="340px" height="420px"></div>
                 </div>
             </div>
         </div>
