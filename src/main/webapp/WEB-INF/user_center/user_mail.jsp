@@ -67,7 +67,7 @@
                         <li><a href="#">注册</a></li>
                         <li><a href="#">作者中心</a></li>
                         <li><a href="#">充值</a></li>
-                        <li><a href="#">管理</a></li>
+                        <li><a href="/admin/showApplication">管理</a></li>
                     </ul>
                 </div>
                 <div>
