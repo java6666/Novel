@@ -6,6 +6,7 @@ import model.dao.UserEntityDao;
 import model.entity.author.Author;
 import model.entity.other.EmailBox;
 import model.entity.user.UserEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,26 +56,31 @@ public class AdminUserController {
         return "/WEB-INF/admin/showUsers.jsp";
     }
 
-    //查看申请
+    //查看作者申请
     @RequestMapping(value = "/admin/showApplication",method = RequestMethod.GET)
     public String showApplication(Model model){
-        List<EmailBox> emailBoxes = emailBoxDao.selectByInId(1);
-        Integer emailCount = emailBoxDao.selectCountByInId(1);
+        EmailBox emailBox = new EmailBox();
+        emailBox.setRecipientsId(1);
+        emailBox.setMailType(2);
+        List<EmailBox> emailBoxes = emailBoxDao.selectEmailTypeByEmailBox(emailBox);
+        Integer emailCount = emailBoxDao.selectEmailTypeCountByEmailBox(emailBox);
         model.addAttribute("emailBoxes",emailBoxes);
         model.addAttribute("emailCount",emailCount);
         return "/WEB-INF/admin/processingApplication.jsp";
     }
 
-    //接收到消息后根据id通过请求操作
+    //接收到消息后根据id通过请求操作并删除对应邮件
     @RequestMapping(value = "/admin/applicationApproved",method = RequestMethod.GET)
-    public String applicationApproved(Model model,Integer id){
-        userEntityDao.updateUserEntityByUserId(id);
+    public String applicationApproved(Model model,Integer addresseeId,Integer id){
+        userEntityDao.updateUserEntityByUserId(addresseeId);
+        emailBoxDao.delMailById(id);
         return "redirect:/admin/showApplication";
     }
     //接收到消息后根据id驳回请求操作并删除Author中相关信息
     @RequestMapping(value = "/admin/rejectTheRequest",method = RequestMethod.GET)
-    public String rejectTheRequest(Model model,Integer id){
-        authorDao.deleteAuthorInfoByUserId(id);
+    public String rejectTheRequest(Model model,Integer addresseeId,Integer id){
+        authorDao.deleteAuthorInfoByUserId(addresseeId);
+        emailBoxDao.delMailById(id);
         return "redirect:/admin/showApplication";
     }
 

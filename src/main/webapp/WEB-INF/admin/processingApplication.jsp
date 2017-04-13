@@ -80,8 +80,8 @@
                                             <td>${item.content}</td>
                                             <td><span class="label label-info">${item.createDate}</span></td>
                                             <td>暂无</td>
-                                            <td><a href="/admin/applicationApproved?id=${item.addresseeId}" class="label label-info">通过 </a></td>
-                                            <td><a href="/admin/rejectTheRequest?id=${item.addresseeId}" class="label label-danger">驳回 </a></td>
+                                            <td><a href="/admin/applicationApproved?addresseeId=${item.addresseeId}&id=${item.id}" class="label label-info">通过 </a></td>
+                                            <td><a href="/admin/rejectTheRequest?addresseeId=${item.addresseeId}&id=${item.id}" class="label label-danger">驳回 </a></td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -106,7 +106,11 @@
                     <div class="list-group">
                         <a href="管理员界面.html" class="list-group-item">管理主页</a>
                         <a href="管理员子页面_图书管理.html" class="list-group-item ">图书管理</a>
-                        <a href="/admin/showApplication" class="list-group-item active">处理申请</a>
+
+                        <a href="管理员子页面_处理申请.html" class="list-group-item ">普通消息</a>
+                        <a href="/admin/showApplication" class="list-group-item active ">作者申请</a>
+                        <a href="管理员子页面_处理申请.html" class="list-group-item ">评论举报</a>
+
                         <a href="/admin/showUsers" class="list-group-item">所有用户</a>
                         <a href="管理员子页面_修改密码.html" class="list-group-item ">修改密码</a>
                         <a href="管理员子页面_通知管理.html" class="list-group-item">公告管理</a>
