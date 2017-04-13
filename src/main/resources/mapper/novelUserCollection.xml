@@ -12,7 +12,7 @@
     </resultMap>
 
     <select id="selectById" resultMap="noverUserCollection">
-        SELECT* from novel_user_collection WHERE user_id=#{id};
+        SELECT* from novel_user_collection WHERE user_id=#{id} order by create_date desc;
     </select>
 
     <delete id="delById">
