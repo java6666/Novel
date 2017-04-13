@@ -52,7 +52,7 @@ public class UserInfo {
         UserEntity user = (UserEntity)session.getAttribute("superUser");
 
         UpdateUserInfo updateUserInfo = new UpdateUserInfo();
-        updateUserInfo.updateUserInfo(file, userInfoEntityDao,name, phone, sex, user);
+        updateUserInfo.updateUserInfo(file, userInfoEntityDao,name, phone, sex, user,session);
 
         return "redirect:/user/info";
     }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajaxFile</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+<form  id="test" enctype="multipart/form-data" >
+    <input name="name">
+    <input type="file" name="file">
+
+</form>
+<button onclick="foo()">上传</button>
+<script>
+    function foo() {
+        var $test = $("#test")[0];
+        var formData = new FormData($test);
+        $.ajax({
+            url: "/fileUp",
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false
+        })
+    }
+</script>
+</body>
+</html>
