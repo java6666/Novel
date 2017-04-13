@@ -29,13 +29,20 @@ public class AuthorInfo {
     @Resource
     private UserInfoEntityDao userInfoEntityDao;
     @RequestMapping(value = "/author/info",method = RequestMethod.GET)
-    public String authorMessage(Model model, HttpSession session) {
+    public String authorMessage(Model model, HttpSession session,String flag) {
+        if (flag!=null){
+            if (Integer.parseInt(flag)==0){
+                model.addAttribute("modal","<script>$('#myModal7').modal();</script>");
+            }else if (Integer.parseInt(flag)==1){
+                model.addAttribute("modal","<script>$('#myModal6').modal();</script>");
+            }
+        }
         UserEntity user = (UserEntity)session.getAttribute("superUser");
         Author author = authorDao.selectAuthorByUserId(user.getId());
         UserInfoEntity userInfo = userInfoEntityDao.selectUserInfoByUserId(user.getId());
         model.addAttribute("userInfo",userInfo);
         model.addAttribute("author",author);
-        return "/WEB-INF/author-center/authorInfo.jsp";
+        return "/WEB-INF/author_center/author_info.jsp";
     }
 
 

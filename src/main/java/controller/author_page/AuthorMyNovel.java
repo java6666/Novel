@@ -36,7 +36,7 @@ public class AuthorMyNovel {
         session.setAttribute("superUser",userEntity);
         /*测试结束*/
         model.addAttribute("typeName",typeName);
-        return "/WEB-INF/author-center/author_my_novel.jsp";
+        return "/WEB-INF/author_center/author_my_novel.jsp";
     }
 
     /*创建新书的方法*/
