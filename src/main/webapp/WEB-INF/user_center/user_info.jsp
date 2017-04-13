@@ -103,7 +103,7 @@
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="/user/info">个人信息</a></li>
                                 <li><a href="/user/collection">我的书架</a></li>
-                                <li><a href="buy.html">已购书籍</a></li>
+                                <li><a href="/user/buy">已购书籍</a></li>
                                 <li><a href="个人页面_升级作者.html">升级作者</a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
                                 <li><a href="个人页面_消息.html">消息 <span class="badge">3</span></a></li>
