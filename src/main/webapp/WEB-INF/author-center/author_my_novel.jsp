@@ -32,6 +32,7 @@
         <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css">
         <script src="${pageContext.request.contextPath}/js/authorCenter/authorMyNovel.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
         <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -129,7 +130,7 @@
                         <div class="wrap-content zerogrid">
                             <div class="row block">
                                 <div id="main-content" class="col-2-5">
-                                    <form onsubmit="return checkForm()" action="/insertNewNovel" method="post" data-toggle="validator" role="form" enctype="multipart/form-data">
+                                    <form id="insertNewNovel" data-toggle="validator" role="form" enctype="multipart/form-data">
                                         <div class="form-group w3layouts w3 w3l">
                                             <label class="control-label">书名</label>
                                             <input name="novelName" type="text" class="form-control" id="novelName" placeholder="书 名" value="" onfocus="checkNovelName(1)" onblur="checkNovelName(2)"/>
@@ -168,9 +169,27 @@
                                         </div>
                                         <div class="form-group">
                                             <input id="check_id" type="checkbox" onclick="foo()"> 同意小说网协议<br/><br/>
-                                            <button onclick="checkAll()" type="submit" class="btn btn-lg" id="submit" disabled>Submit</button>
                                         </div>
                                     </form>
+                                    <button onclick="sunmitInsertNewNovel()" type="submit" class="btn btn-lg" id="submit" disabled>Submit</button>
+                                    <script>
+                                        function sunmitInsertNewNovel() {
+                                            var flag = checkForm();
+                                            if(flag){
+                                                var $insertNewNovel = $("#insertNewNovel")[0];
+                                                var formData = new FormData($insertNewNovel);
+                                                $.ajax({
+                                                    type:"post",
+                                                    url:"/insertNewNovel",
+                                                    data:formData,
+                                                    async: false,
+                                                    cache: false,
+                                                    contentType: false,
+                                                    processData: false
+                                                })
+                                            }
+                                        }
+                                    </script>
                                     <script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js"></script>
                                     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
                                     <script src="${pageContext.request.contextPath}/js/validator.min.js"></script>

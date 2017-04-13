@@ -29,8 +29,8 @@ public class AuthorMyNovel {
     @RequestMapping(path = "/insertNewNovel",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     public String insertNewNovel(String novelName, String novelTypeValue, Integer novelPrice, String novelSummary,
                                  @RequestParam("novelPhoto")MultipartFile novelPhoto){
-        System.out.println(novelName+"\t"+novelTypeValue+"\t"+novelPrice+"\t'"+novelSummary);
+        System.out.println(novelName+"\t"+novelTypeValue+"\t"+novelPrice+"\t'"+novelSummary+"\t"+novelPhoto.getSize());
 
-        return "/WEB-INF/author-center/author_my_novel.jsp";
+        return "redirect:/newNovel";
     }
 }

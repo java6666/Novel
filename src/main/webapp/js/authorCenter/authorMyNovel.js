@@ -20,6 +20,7 @@ function checkForm() {
     if(checkNovelName(2)&&checkNovelType(2)&&checkBookSummary(2)&&ckeckNovelPrice(2)){
         return true
     }else {
+        checkAll();
         return false;
     }
 }
