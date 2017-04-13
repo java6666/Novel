@@ -28,12 +28,12 @@
 
     <!-- CSS
   ================================================== -->
-    <link rel="stylesheet" href="${requestScope.request.comtextPath}/css/main/zerogrid.css">
-    <link rel="stylesheet" href="${requestScope.request.comtextPath}/css/main/style.css">
-    <link rel="stylesheet" href="${requestScope.request.comtextPath}/css/main/responsive.css">
-    <link rel="stylesheet" href="${requestScope.request.comtextPath}/css/main/login.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/zerogrid.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/responsive.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/login.css">
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${requestScope.request.comtextPath}/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 

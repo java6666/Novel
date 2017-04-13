@@ -16,6 +16,7 @@ public class EmailBox {
     private Integer recipientsId;   //收件人id
     private String content;        //邮件内容
     private Date createDate;       //发件日期
+    private Integer mailType;      //消息类型1.普通消息2.申请作者3.举报
     private UserEntity addressee;  //发件人
     private UserEntity recipients; //收件人
 
@@ -73,5 +74,13 @@ public class EmailBox {
 
     public void setRecipientsId(Integer recipientsId) {
         this.recipientsId = recipientsId;
+    }
+
+    public Integer getMailType() {
+        return mailType;
+    }
+
+    public void setMailType(Integer mailType) {
+        this.mailType = mailType;
     }
 }

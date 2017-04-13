@@ -1,8 +1,10 @@
 package controller.adminUserController;
 
 import model.dao.AuthorDao;
+import model.dao.EmailBoxDao;
 import model.dao.UserEntityDao;
 import model.entity.author.Author;
+import model.entity.other.EmailBox;
 import model.entity.user.UserEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +25,9 @@ public class AdminUserController {
     //作者详细信息dao
     @Resource
     private AuthorDao authorDao;
-
+    //邮件dao
+    @Resource
+    private EmailBoxDao emailBoxDao;
     //查看所有用户
     @RequestMapping(value = "/admin/showUsers",method = RequestMethod.GET)
     public String showUsers(Model model){
@@ -53,7 +57,11 @@ public class AdminUserController {
 
     //查看申请
     @RequestMapping(value = "/admin/showApplication",method = RequestMethod.GET)
-    public String showApplication(){
+    public String showApplication(Model model){
+        List<EmailBox> emailBoxes = emailBoxDao.selectByInId(1);
+        Integer emailCount = emailBoxDao.selectCountByInId(1);
+        model.addAttribute("emailBoxes",emailBoxes);
+        model.addAttribute("emailCount",emailCount);
         return "/WEB-INF/admin/processingApplication.jsp";
     }
 
@@ -61,13 +69,13 @@ public class AdminUserController {
     @RequestMapping(value = "/admin/applicationApproved",method = RequestMethod.GET)
     public String applicationApproved(Model model,Integer id){
         userEntityDao.updateUserEntityByUserId(id);
-        return null;
+        return "redirect:/admin/showApplication";
     }
     //接收到消息后根据id驳回请求操作并删除Author中相关信息
     @RequestMapping(value = "/admin/rejectTheRequest",method = RequestMethod.GET)
     public String rejectTheRequest(Model model,Integer id){
         authorDao.deleteAuthorInfoByUserId(id);
-        return null;
+        return "redirect:/admin/showApplication";
     }
 
 }

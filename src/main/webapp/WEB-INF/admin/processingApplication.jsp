@@ -1,4 +1,5 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -56,52 +57,33 @@
             <div class="row">
                 <div class="col-lg-9 col-md-9 col-sm-9 ">
 
-                     <h3>所有用户<span class="label label-danger"> New : 5</span></h3>
+                     <h3>所有申请<span class="label label-danger"> New : ${requestScope.emailCount}</span></h3>
                       <div class="hr-div"> <hr /></div>
                                                   <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th>用户编号</th>
-                                             <th>类型</th>
-                                            <th>用户名</th>
-                                            <th>邮箱</th>
-                                            <th>申请日期</th>
-                                            <th>书名</th>
-                                             <th>操作</th>
-                                             <th>操作</th>
-
+                                            <th>申请编号</th>
+                                             <th>申请人</th>
+                                            <th>申请内容</th>
+                                            <th>申请时间</th>
+                                            <th>操作</th>
+                                            <th>操作</th>
+                                            <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <c:forEach items="${requestScope.emailBoxes}" var="item">
                                         <tr>
-                                            <td>#109</td>
-                                             <td> <i class="fa fa-user" ></i> <span class="label label-danger">普通用户</span></td>
-                                            <td>二狗</td>
-                                            <td><span class="label label-info">demo@gmail.com</span></td>
-                                            <td>2nd July 2014</td>
+                                            <td>#${item.id}</td>
+                                             <td> <i class="fa fa-user" ></i> <span class="label label-danger">${item.addressee.userName}</span></td>
+                                            <td>${item.content}</td>
+                                            <td><span class="label label-info">${item.createDate}</span></td>
                                             <td>暂无</td>
-                                            <td><a href="#" class="label label-info">通过 </a></td>
-                                            <td><a href="#" class="label label-danger">驳回 </a></td>
+                                            <td><a href="/admin/applicationApproved?id=${item.addresseeId}" class="label label-info">通过 </a></td>
+                                            <td><a href="/admin/rejectTheRequest?id=${item.addresseeId}" class="label label-danger">驳回 </a></td>
                                         </tr>
-                                       <tr>
-                                            <td>#110</td>
-                                               <td> <i class="fa fa-user" ></i> <span class="label label-danger">普通用户</span></td>
-                                            <td>烽火戏诸侯</td>
-                                            <td><span class="label label-success">demo@gmail.com</span></td>
-                                            <td>30th June 2014</td>
-                                            <td>陈二狗的妖孽人生</td>
-                                             <td><a href="#" class="label label-info">通过 </a></td>
-                                             <td><a href="#" class="label label-danger">驳回 </a></td>
-                                        </tr>
-
-
-                                        <tr>
-                                            <td>biaojie</td>
-                                            <td><a href="/admin/applicationApproved?id=3" class="label label-info">通过 </a></td>
-                                            <td><a href="/admin/rejectTheRequest?id=3" class="label label-danger">驳回 </a></td>
-                                        </tr>
-
+                                    </c:forEach>
                                     </tbody>
                                 </table>
 
