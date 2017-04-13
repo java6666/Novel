@@ -8,7 +8,7 @@ import java.util.Date;
 public class BuyInfo {
     private Date createDate;  //购买日期
     private String readNow;              //当前阅读章数
-    private String novelAuthor;     //小说作者
+    private Integer novelAuthor;     //小说作者
     private String novelName;       //小说名
     private  Integer id;   //小说ID
 
@@ -28,11 +28,11 @@ public class BuyInfo {
         this.readNow = readNow;
     }
 
-    public String getNovelAuthor() {
+    public Integer getNovelAuthor() {
         return novelAuthor;
     }
 
-    public void setNovelAuthor(String novelAuthor) {
+    public void setNovelAuthor(Integer novelAuthor) {
         this.novelAuthor = novelAuthor;
     }
 

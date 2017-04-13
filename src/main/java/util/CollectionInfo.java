@@ -9,7 +9,7 @@ import java.util.Date;
 public class CollectionInfo {
     private Date createDate;  //收藏日期
     private String readNow;              //当前阅读章数
-    private String novelAuthor;     //小说作者
+    private Integer novelAuthor;     //小说作者
     private String novelName;       //小说名
     private  Integer id;   //小说ID
     private Integer userId;
@@ -46,11 +46,11 @@ public class CollectionInfo {
         this.readNow = readNow;
     }
 
-    public String getNovelAuthor() {
+    public Integer getNovelAuthor() {
         return novelAuthor;
     }
 
-    public void setNovelAuthor(String novelAuthor) {
+    public void setNovelAuthor(Integer novelAuthor) {
         this.novelAuthor = novelAuthor;
     }
 

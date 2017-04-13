@@ -172,6 +172,7 @@
                                         </div>
                                     </form>
                                     <button onclick="sunmitInsertNewNovel()" type="submit" class="btn btn-lg" id="submit" disabled>Submit</button>
+                                    <%--通过ajax将将表单信息提交--%>
                                     <script>
                                         function sunmitInsertNewNovel() {
                                             var flag = checkForm();
