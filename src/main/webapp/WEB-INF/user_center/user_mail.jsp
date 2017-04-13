@@ -92,7 +92,7 @@
         <div class="col-xs-2" style="height: 600px">
             <div style=" margin-left: -15px;height: 150px;width: 150px">
                 <a>
-                    <img src="${pageContext.request.contextPath}/images/touxiang.jpg" style="height: 150px;width: 150px">
+                    <img src="${pageContext.request.contextPath}/${userInfo.headSculpturePath}" style="height: 150px;width: 150px">
                 </a>
             </div>
             <div style="margin-left:-15px;margin-top: 50px">
@@ -100,12 +100,12 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="example-navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="个人页面_个人信息.html">个人信息</a></li>
-                                <li><a href="cellection.html">我的书架</a></li>
+                                <li><a href="/user/info">个人信息</a></li>
+                                <li><a href="/user/collection">我的书架</a></li>
                                 <li><a href="buy.html">已购书籍</a></li>
-                                <li><a href="个人页面_升级作者.html">升级作者</a></li>
+                                <li><a href="/user/showUpAuthor">升级作者</a></li>
+                                <li class="active"><a href="/user/mail">消息 <span class="badge">${sessionScope.mailCount}</span></a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
-                                <li class="active"><a href="个人页面_消息.html">消息 <span class="badge">${count}</span></a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal2">联系我们</a></li>
                             </ul>
                         </div>
@@ -140,9 +140,9 @@
                             <td><button type="button" onclick="foo('${email.addressee.userName}',${email.addresseeId})" data-toggle="modal" data-target="#myModal4" class="btn btn-success" style="height: 30px;width: 50px">
                                 回复
                             </button></td>
-                            <td><button type="button" class="btn btn-danger" style="height: 30px;width: 50px">
+                            <td><a href="/user/delMail?mailId=${email.id}"><button type="button" class="btn btn-danger" style="height: 30px;width: 50px">
                                 删除
-                            </button></td>
+                            </button></a></td>
                         </tr>
                     </c:forEach>
 
@@ -298,22 +298,6 @@
             <div class="modal-body" style="margin-top: 230px;margin-left: 200px">
                 <img src="${pageContext.request.contextPath}/images/finish.jpg">
             </div>
-    </div><!-- /.modal -->
-</div>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-            <div class="modal-body" style="margin-top: 200px">
-                <img src="${pageContext.request.contextPath}/images/success.png" style="height: 180px;width: 880px">
-            </div>
-    </div><!-- /.modal -->
-</div>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-body" style="margin-top: 200px">
-            <img src="${pageContext.request.contextPath}/images/password_error.png" style="height: 180px;width: 880px">
-        </div>
     </div><!-- /.modal -->
 </div>
 <script>
