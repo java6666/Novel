@@ -10,4 +10,6 @@ public interface AuthorDao {
     Author selectAuthorByUserId(Integer id);
     //添加作者
     void addAuthor(Author author);
+    //根据id删除对应的作者信息yz
+    void deleteAuthorInfoByUserId(Integer id);
 }

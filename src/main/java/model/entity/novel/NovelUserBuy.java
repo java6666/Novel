@@ -13,6 +13,15 @@ public class NovelUserBuy {
     private Integer userId;             //用户id
     private Integer novelId;             //小说id
     private Date createDate;            //购买小说日期
+    private String readNow;     //当前阅读章数
+
+    public String getReadNow() {
+        return readNow;
+    }
+
+    public void setReadNow(String readNow) {
+        this.readNow = readNow;
+    }
 
     public Integer getId() {
         return id;

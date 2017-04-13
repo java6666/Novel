@@ -20,4 +20,9 @@
         WHERE novel_user_author.user_id=#{id}
     </select>
 
+    <delete id="deleteAuthorInfoByUserId">
+        DELETE FROM novel_user_author
+        WHERE user_id=#{id}
+    </delete>
+
 </mapper>
