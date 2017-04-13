@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--开启对象注解-->
-    <context:component-scan base-package="controller"/>
+    <context:component-scan base-package="model"/>
 
     <context:property-placeholder location="classpath*:jdbc.properties"/>
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">

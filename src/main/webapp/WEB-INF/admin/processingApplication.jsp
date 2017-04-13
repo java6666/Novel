@@ -1,5 +1,4 @@
-﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -15,13 +14,13 @@
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>管理员子页面之所有用户</title>
+    <title>管理员子页面之申请处理</title>
     <!-- BOOTSTRAP CORE STYLE CSS -->
-    <link href="${pageContext.request.contextPath}/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME CSS -->
-    <link href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../assets/css/font-awesome.min.css" rel="stylesheet" />
     <!-- CUSTOM STYLE CSS -->
-    <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet" />
+    <link href="../../assets/css/style.css" rel="stylesheet" />
     <!-- Google	Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Nova+Flat' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css' />
@@ -30,8 +29,6 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-
-
 </head>
 <body>
     <div id="head">
@@ -40,11 +37,11 @@
 
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <a href="index.html">
-                    <img src="assets/img/logo.png"  />
+                    <img src="../../assets/img/logo.png"  />
                         </a>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 text-center" >
-                     <img src="assets/img/top-mouse.png "  class="header-mid" />
+                     <img src="../../assets/img/top-mouse.png " class="header-mid" />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <h4><span>Call:</span> +01-4589-987-567</h4>
@@ -62,70 +59,55 @@
                      <h3>所有用户<span class="label label-danger"> New : 5</span></h3>
                       <div class="hr-div"> <hr /></div>
                                                   <div class="table-responsive">
-                               <c:if test="${requestScope.userEntities!=null}">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>用户编号</th>
+                                             <th>类型</th>
                                             <th>用户名</th>
-                                            <th>类型</th>
-                                            <th>用户状态</th>
+                                            <th>邮箱</th>
+                                            <th>申请日期</th>
+                                            <th>书名</th>
                                              <th>操作</th>
-                                             <th>详细</th>
+                                             <th>操作</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                    <c:forEach items="${requestScope.userEntities}" var="item">
                                         <tr>
-                                            <td>#${item.id}</td>
-                                            <td>${item.userName}</td>
-                                            <c:if test="${item.userType==1}">
-                                                <td><i class="fa fa-user" ></i> <span class="label label-danger">管理员</span></td>
-                                            </c:if>
-                                            <c:if test="${item.userType==2}">
-                                                <td><i class="fa fa-user" ></i> <span class="label label-success">作者</span></td>
-                                            </c:if>
-                                            <c:if test="${item.userType==3}">
-                                                <td><i class="fa fa-user" ></i> <span class="label label-primary">普通用户</span></td>
-                                            </c:if>
-                                            <c:if test="${item.accountType==1}">
-                                            <td><span class="label label-success">正常</span></td>
-                                            </c:if>
-                                            <c:if test="${item.accountType==2}">
-                                                <td><span class="label label-danger">封停</span></td>
-                                            </c:if>
-                                            <c:if test="${item.accountType==3}">
-                                                <td><span class="label label-default">删除</span></td>
-                                            </c:if>
-                                            <td><a href="#" class="label label-danger">删除 </a></td>
-                                            <td><a id="showDetailsInfo" href="/admin/showUserDetails?id=${item.id}&userType=${item.userType}" class="label label-danger">点击查看用户详情 </a></td>
+                                            <td>#109</td>
+                                             <td> <i class="fa fa-user" ></i> <span class="label label-danger">普通用户</span></td>
+                                            <td>二狗</td>
+                                            <td><span class="label label-info">demo@gmail.com</span></td>
+                                            <td>2nd July 2014</td>
+                                            <td>暂无</td>
+                                            <td><a href="#" class="label label-info">通过 </a></td>
+                                            <td><a href="#" class="label label-danger">驳回 </a></td>
+                                        </tr>
+                                       <tr>
+                                            <td>#110</td>
+                                               <td> <i class="fa fa-user" ></i> <span class="label label-danger">普通用户</span></td>
+                                            <td>烽火戏诸侯</td>
+                                            <td><span class="label label-success">demo@gmail.com</span></td>
+                                            <td>30th June 2014</td>
+                                            <td>陈二狗的妖孽人生</td>
+                                             <td><a href="#" class="label label-info">通过 </a></td>
+                                             <td><a href="#" class="label label-danger">驳回 </a></td>
+                                        </tr>
 
-                                    </c:forEach>
+
+                                        <tr>
+                                            <td>biaojie</td>
+                                            <td><a href="/admin/applicationApproved?id=3" class="label label-info">通过 </a></td>
+                                            <td><a href="/admin/rejectTheRequest?id=3" class="label label-danger">驳回 </a></td>
+                                        </tr>
+
                                     </tbody>
                                 </table>
-                               </c:if>
-                                <table class="table table-striped table-bordered table-hover">
-                                    <c:if test="${requestScope.userType==2}">
-                                    <tr>
-                                        <td>作者编号</td>
-                                        <td>出生日期</td>
-                                        <td>笔名</td>
-                                        <td>籍贯</td>
-                                        <td>作者简介</td>
-                                        <td>申请为作者日期</td>
-                                    </tr>
-                                    <tr>
-                                        <td>${requestScope.authorINfoDetails.userId}</td>
-                                        <td>${requestScope.authorINfoDetails.birthDate}</td>
-                                        <td>${requestScope.authorINfoDetails.penName}</td>
-                                        <td>${requestScope.authorINfoDetails.birthAddress}</td>
-                                        <td>${requestScope.authorINfoDetails.authorIntroduce}</td>
-                                        <td>${requestScope.authorINfoDetails.createDate}</td>
-                                    </tr>
-                                    </c:if>
-                                </table>
+
+
+
+
                             </div>
                     <ul class="pagination">
   <li class="disabled"><a href="#">&laquo;</a></li>
@@ -142,8 +124,8 @@
                     <div class="list-group">
                         <a href="管理员界面.html" class="list-group-item">管理主页</a>
                         <a href="管理员子页面_图书管理.html" class="list-group-item ">图书管理</a>
-                        <a href="/admin/showApplication" class="list-group-item">处理申请</a>
-                        <a href="/admin/showUsers" class="list-group-item active">所有用户</a>
+                        <a href="/admin/showApplication" class="list-group-item active">处理申请</a>
+                        <a href="/admin/showUsers" class="list-group-item">所有用户</a>
                         <a href="管理员子页面_修改密码.html" class="list-group-item ">修改密码</a>
                         <a href="管理员子页面_通知管理.html" class="list-group-item">公告管理</a>
 
@@ -194,15 +176,19 @@
                         </div>
                     </form>
                 </div>
+
+
+
+
             </div>
 
         </div>
 
     </div>
     <!--  Jquery Core Script -->
-    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.js"></script>
+    <script src="../../assets/js/jquery-1.10.2.js"></script>
     <!--  Core Bootstrap Script -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+    <script src="../../assets/js/bootstrap.js"></script>
 
 </body>
 </html>

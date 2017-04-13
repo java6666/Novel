@@ -100,12 +100,12 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="example-navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="个人页面_个人信息.html">个人信息</a></li>
-                                <li class="active"><a href="cellection.html">我的书架</a></li>
-                                <li><a href="buy.html">已购书籍</a></li>
-                                <li><a href="个人页面_升级作者.html">升级作者</a></li>
+                                <li><a href="/user/info">个人信息</a></li>
+                                <li class="active"><a href="/user/collection">我的书架</a></li>
+                                <li><a href="/user/buy">已购书籍</a></li>
+                                <li><a href="/user/showUpAuthor">升级作者</a></li>
+                                <li><a href="/user/mail">消息 <span class="badge">${sessionScope.mailCount}</span></a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
-                                <li><a href="个人页面_消息.html">消息 <span class="badge">3</span></a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal2">联系我们</a></li>
                             </ul>
                         </div>
@@ -240,25 +240,25 @@
         <div class="modal-content">
             <div class="modal-header" style="background-color: #2e6da4;height: 70px">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel2" style="color: white;text-align: center">密码修改</h4>
+                <h4 class="modal-title" id="myModalLabel3" style="color: white;text-align: center">密码修改</h4>
             </div>
-            <div>
-                <form>
+            <form action="/user/updatePassword" method="post">
+                <div>
                     <div class="form-group"><label style="margin-left: 50px;margin-top: 28px">旧密码：</label>
-                        <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
+                        <input type="password" name="oldPassword" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
                     </div>
                     <div class="form-group"><label style="margin-left: 50px;margin-top: 28px">新密码：</label>
-                        <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
+                        <input type="password" name="newPassword" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
                     </div>
                     <div class="form-group"><label style="margin-left: 45px;margin-top: 28px">重复密码：</label>
                         <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">确认修改</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">确认修改</button>
+                </div>
+            </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
