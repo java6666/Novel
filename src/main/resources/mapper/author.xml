@@ -25,4 +25,9 @@
         WHERE user_id=#{id}
     </delete>
 
+    <update id="updateAuthorInfo">
+        UPDATE novel_user_author set birth_date=#{birthDate},birth_address=#{birthAddress},
+        author_introduce=#{authorIntroduce} where user_id=#{userId};
+    </update>
+
 </mapper>
