@@ -17,7 +17,7 @@ window.onload = function () {
 }
 
 function checkForm() {
-    if(checkNovelName(2)&&checkNovelType(2)&&checkBookSummary(2)){
+    if(checkNovelName(2)&&checkNovelType(2)&&checkBookSummary(2)&&ckeckNovelPrice(2)){
         return true
     }else {
         return false;
@@ -28,6 +28,7 @@ function checkAll() {
     checkBookSummary(2);
     checkNovelType(2);
     checkNovelName(2);
+    ckeckNovelPrice(2)
 }
 
 function foo() {
@@ -103,6 +104,31 @@ function checkNovelType(sel) {
     }
 }
 
+/*检查小说售价*/
+function ckeckNovelPrice(sel) {
+    var mark = document.getElementById("novelPrice");
+    var info = document.getElementById("novelPriceINfo");
+    if(sel==1){
+        mark.style.borderColor="";
+        info.innerHTML="";
+        info.style.color=""
+        info.style.display="none";
+    }else {
+        if(/^[0-9]{1,4}$/.test(mark.value)){
+            mark.style.borderColor="#28ab4b";
+            info.innerHTML="小说名输入正确";
+            info.style.color="#28ab4b"
+            info.style.display="";
+            return true;
+        }else {
+            mark.style.borderColor="#AB2328";
+            info.innerHTML="小说售价输入不合格";
+            info.style.color="#AB2328"
+            info.style.display="";
+            return false;
+        }
+    }
+}
 /*检查小说摘要*/
 function checkBookSummary(select) {
     var info=document.getElementById("bookSummaryInfo");
