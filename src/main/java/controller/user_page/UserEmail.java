@@ -50,6 +50,7 @@ public class UserEmail {
         emailBox.setRecipientsId(id);
         emailBox.setContent(content);
         emailBox.setCreateDate(new Date());
+        emailBox.setMailType(1);
         boolean b = emailBoxDao.addMail(emailBox);
         return "redirect:/user/mail?flag=1";
     }

@@ -7,12 +7,13 @@
         <result property="recipientsId" column="recipinents_id"/>
         <result property="content" column="content"/>
         <result property="createDate" column="create_date"/>
+        <result property="mailType" column="mail_type"/>
         <association property="addressee" select="model.dao.UserEntityDao.selectUserById" column="addressee_id"/>
         <association property="recipients" select="model.dao.UserEntityDao.selectUserById" column="recipinents_id"/>
     </resultMap>
     <insert id="addMail">
-        INSERT INTO novel_emailbox (addressee_id,recipinents_id,content,create_date) VALUES
-        (#{addresseeId},#{recipientsId},#{content},#{createDate})
+        INSERT INTO novel_emailbox (addressee_id,recipinents_id,content,create_date,mail_type) VALUES
+        (#{addresseeId},#{recipientsId},#{content},#{createDate},#{mailType})
     </insert>
     <delete id="delMailById">
         DELETE FROM novel_emailbox WHERE id=#{id}
