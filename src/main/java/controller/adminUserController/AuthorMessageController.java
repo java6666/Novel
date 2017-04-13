@@ -30,24 +30,32 @@ public class AuthorMessageController {
     //查看作者申请
     @RequestMapping(value = "/admin/showApplication",method = RequestMethod.GET)
     public String showApplication(Model model){
+        Integer recipientsId=1;
+        Integer mailType=2;
         EmailBox emailBox = new EmailBox();
-        emailBox.setRecipientsId(1);
-        emailBox.setMailType(2);
+        emailBox.setRecipientsId(recipientsId);
+        emailBox.setMailType(mailType);
         List<EmailBox> emailBoxes = emailBoxDao.selectEmailTypeByEmailBox(emailBox);
         Integer emailCount = emailBoxDao.selectEmailTypeCountByEmailBox(emailBox);
         model.addAttribute("emailBoxes",emailBoxes);
         model.addAttribute("emailCount",emailCount);
+        model.addAttribute("mailType",mailType);
         return "/WEB-INF/admin/processingApplication.jsp";
     }
 
-    //接收到消息后根据id通过请求操作并删除对应邮件
+    //1接收到消息后通过请求操作并根据addresseeId改变用户类型
+    //2根据邮件id删除此条邮件
+    //3根据发件人addresseeId回复一封邮件
     @RequestMapping(value = "/admin/applicationApproved",method = RequestMethod.GET)
     public String applicationApproved(Model model,Integer addresseeId,Integer id){
         userEntityDao.updateUserEntityByUserId(addresseeId);
         emailBoxDao.delMailById(id);
         return "redirect:/admin/showApplication";
     }
-    //接收到消息后根据id驳回请求操作并删除Author中相关信息
+
+    //1接收到消息后驳回请求操作并根据发件人addresseeId删除Author表中相关信息
+    //2根据邮件id删除此条邮件
+    //3根据发件人addresseeId回复一封邮件
     @RequestMapping(value = "/admin/rejectTheRequest",method = RequestMethod.GET)
     public String rejectTheRequest(Model model,Integer addresseeId,Integer id){
         authorDao.deleteAuthorInfoByUserId(addresseeId);
