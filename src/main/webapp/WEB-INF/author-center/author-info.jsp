@@ -1,12 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lenovo
-  Date: 2017/4/11
-  Time: 15:52
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<!--[if lt IE 7 ]>
+<html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en"> <!--<![endif]-->
 <head>
 
     <!-- Basic Page Needs
@@ -23,6 +25,13 @@
 
     <!-- CSS
   ================================================== -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/datepicker.css" type="text/css"/>
+   <%-- <link rel="stylesheet" media="screen" type="text/css" href="${pageContext.request.contextPath}/css/layout.css"/>--%>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/datepicker.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/eye.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/utils.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/layout.js?ver=1.0.2"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/zerogrid.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/responsive.css">
@@ -51,6 +60,9 @@
             color: #CCC;
             font-weight: bold;
         }
+        textarea{
+            resize: none;
+        }
     </style>
 </head>
 <body>
@@ -62,17 +74,17 @@
             <div class="wrap-nav">
                 <div class="menu">
                     <ul>
-                        <li><a href="#" data-toggle="modal" data-target="#myModal">登录</a></li>
-                        <li><a href="#">注册</a></li>
                         <li><a href="#">作者中心</a></li>
                         <li><a href="#">充值</a></li>
-                        <li><a href="#">管理</a></li>
+                        <li><a href="#">管理</a></li>&nbsp;&nbsp;
+                        <li><a href="#"><span class="glyphicon glyphicon-off" style="color: red"></span>&nbsp;退出</a></li>
                     </ul>
                 </div>
                 <div>
                     <form>
                         <label class="search" style="float: left">搜索</label>
-                        <div class="col-sm-10">
+                        <div class="col-xs-10">
+
                             <input type="text" class="form-control" id="firstname" style="height: 25px;width: 200px"
                                    placeholder="请输入关键字">
                         </div>
@@ -92,7 +104,7 @@
         <div class="col-xs-2" style="height: 600px">
             <div style=" margin-left: -15px;height: 150px;width: 150px">
                 <a>
-                    <img src="${pageContext.request.contextPath}/images/touxiang.jpg" style="height: 150px;width: 150px">
+                    <img src="${pageContext.request.contextPath}/${userInfo.headSculpturePath}" style="height: 150px;width: 150px">
                 </a>
             </div>
             <div style="margin-left:-15px;margin-top: 50px">
@@ -100,12 +112,12 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="example-navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="#">个人信息</a></li>
-                                <li><a href="#">我的书架</a></li>
-                                <li><a href="#">已购书籍</a></li>
-                                <li><a href="#l">我的作品</a></li>
+                                <li class="active"><a href="${pageContext.request.contextPath}/author/info">个人信息</a></li>
+                                <li><a href="${pageContext.request.contextPath}/cellection.html">我的书架</a></li>
+                                <li><a href="${pageContext.request.contextPath}/buy.html">已购书籍</a></li>
+                                <li><a href="${pageContext.request.contextPath}/个人页面_升级作者.html">我的作品</a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
-                                <li><a href="#">消息 <span class="badge">3</span></a></li>
+                                <li><a href="${pageContext.request.contextPath}/个人页面_消息.html">消息 <span class="badge">3</span></a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal2">联系我们</a></li>
                             </ul>
                         </div>
@@ -113,41 +125,60 @@
                 </nav>
             </div>
         </div>
-        <div class="col-xs-offset-1 col-xs-6">
-            <div class="col-xs-offset-1 col-xs-9" style="height: 50px">
-            </div>
-            <div class="col-xs-offset-1 col-xs-9" style="height: 100px">
-                <h3>个人信息</h3>
-                <hr/>
-            </div>
-            <form action="#">
+        <div id="message" class="col-xs-offset-1 col-xs-6" style="margin-top: -15px">
+            <h3>个人信息</h3>
+            <hr/>
+            <form action="/author/update" method="post" enctype="multipart/form-data">
                 <div class="form-group" style="width: 300px">
-                    <label>真实姓名</label>
-                    <span>：Eason</span>
-                    <input type="text" class="form-control" style="display:none;">
+                    <label>真实姓名：</label>
+                    <i>${requestScope.userInfo.realName}</i>
+                    <input type="text" name="realName" class="form-control" style="display:none;" value="${requestScope.userInfo.realName}">
                 </div>
                 <div class="form-group" style="width: 300px">
-                    <label>电话</label>
-                    <span>：150-0000-0000</span>
-                    <input type="text" class="form-control" style="display:none;">
-                </div>
-                <div class="form-group" style="width: 300px">
-                    <label>余额（金币）</label>
-                    <span>：5</span>
-                    <input readonly="true" type="text" value="5" class="form-control" style="display:none;">
+                    <label>笔名：</label>
+                    <i>${requestScope.author.penName}</i>
+                    <input type="text" name="penName" class="form-control" style="display:none;" value="${requestScope.author.penName}" disabled="disabled">
                 </div>
                 <div class="form-group">
-                    <label>性别</label>
-                    <span>：男</span>
-                    <select class="form-control" style="width: 300px;display:none">
-                        <option value="女">女</option>
-                        <option value="男">男</option>
-                    </select>
+                    <label>性别：</label>
+                    <i>${requestScope.userInfo.gender}</i>
+                    <div id="gender" style="display: none">
+                    <input name="sex" type="radio" value="true" checked="checked">&nbsp;男&nbsp;&nbsp;
+                    <input name="sex" type="radio" value="false">女
+                    </div>
                 </div>
+                <div class="form-group" style="width: 300px">
+                    <label>电话：</label>
+                    <i>${requestScope.userInfo.phone}</i>
+                    <input type="text" name="phone" class="form-control" style="display:none;" value="${requestScope.userInfo.phone}"/>
+                </div>
+                <div class="form-group" style="width: 300px">
+                    <label>出生日期:</label>
+                    <i><f:formatDate value="${requestScope.author.birthDate}" pattern="yyyy-MM-dd"/> </i><br/>
+                    <input class="inputDate" name="birthday" id="inputDate"  value="1993-12-01" style="display: none"/>
+                </div>
+                <div class="form-group" style="width: 300px">
+                    <label>出生地址：</label>
+                    <i>${requestScope.author.birthAddress}</i>
+                    <input type="text" name="birthplace" class="form-control" style="display: none" value="${requestScope.author.birthAddress}">
+                </div>
+                <div class="form-group" style="width: 300px">
+                    <label>作者简介：</label>
+                    <i>只创良心作品</i>
+                    <textarea  id="t1" type="text" name="introduction" class="form-control" style="height: 50px;display: none"></textarea>
+                </div>
+                <script>
+                    document.getElementById("t1").value="${requestScope.author.authorIntroduce}"
+                </script>
                 <div id="photo" class="form-group" style="display:none;">
-                    <label>头像</label>
-                    <input type="file">
-                    <p class="help-block">上传头像</p>
+                    <label>头像：</label>
+                    <input type="file" name="alice" id="attachment" style="display: none" onchange="jQuery('#path').val(jQuery('#attachment').val())">
+                    <input type="button" class="btn btn-default" value="上传头像" onclick="jQuery('#attachment').click()">
+                </div>
+                <div class="form-group" style="width: 300px">
+                    <label>余额（金币）：</label>
+                    <i>${requestScope.userInfo.money}</i>
+                    <input readonly="true" name="balance" type="text" value="${requestScope.userInfo.money}" class="form-control" style="display:none">
                 </div>
                 <button type="button" class="btn btn-info" onclick="change(this)">修改信息</button>
                 <button type="submit" id="right" class="btn btn-primary" style="display: none">确认修改</button>
@@ -273,4 +304,5 @@
     </div><!-- /.modal -->
 </div>
 </body>
+
 </html>

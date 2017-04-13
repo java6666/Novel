@@ -14,4 +14,6 @@ public interface AuthorDao {
     void addAuthor(Author author);
     //根据id删除对应的作者信息yz
     void deleteAuthorInfoByUserId(Integer id);
+
+    Boolean updateAuthorInfo(Author author);//更改作者信息hkb
 }
