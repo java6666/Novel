@@ -102,7 +102,7 @@
                             <ul class="nav navbar-nav">
                                 <li><a href="/user/info">个人信息</a></li>
                                 <li><a href="/user/collection">我的书架</a></li>
-                                <li><a href="buy.html">已购书籍</a></li>
+                                <li><a href="/user/buy">已购书籍</a></li>
                                 <li><a href="/user/showUpAuthor">升级作者</a></li>
                                 <li class="active"><a href="/user/mail">消息 <span class="badge">${sessionScope.mailCount}</span></a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
