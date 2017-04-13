@@ -61,6 +61,7 @@ public class UserUp {
         emailBox.setRecipientsId(1);
         emailBox.setContent("普通用户申请升级为作者,请管理员处理");
         emailBox.setCreateDate(new Date());
+        emailBox.setMailType(2);
         emailBoxDao.addMail(emailBox);
         return "redirect:/user/showUpAuthor?flag=1";
     }

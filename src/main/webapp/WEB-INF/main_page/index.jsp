@@ -107,7 +107,7 @@
             <li><a href="#">完结</a></li>
             <li><a href="#">免费</a></li>
             <c:if test="${sessionScope.superUser.userType==1}">
-                <li><a href="#">管理</a></li>
+                <li><a href="/admin/showApplication">管理</a></li>
             </c:if>
             <c:if test="${sessionScope.superUser.userType==2}">
                 <li><a href="#">作者中心</a></li>
