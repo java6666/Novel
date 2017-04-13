@@ -35,26 +35,32 @@ public class AdminUserController {
     //查看用户详细信息
     @RequestMapping(value = "/admin/showUserDetails",method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     public String showUserDetails(Model model,Integer id,Integer userType) {
-        Author authorINfoDetails = null;
+        Author authorInfoDetails = null;
         //判断前台传过来的userType调用相应的方法进行显示相应的内容
         //1为管理员2为作者3为普通用户
         if (userType==1){
 
         }else if (userType == 2) {
-            authorINfoDetails = authorDao.selectAuthorByUserId(id);
+            authorInfoDetails = authorDao.selectAuthorByUserId(id);
 
         }else if (userType==3){
 
         }
-         model.addAttribute("authorINfoDetails",authorINfoDetails);
+         model.addAttribute("authorINfoDetails",authorInfoDetails);
          model.addAttribute("userType",id);
         return "/WEB-INF/admin/showUsers.jsp";
+    }
+
+    //查看申请
+    @RequestMapping(value = "/admin/showApplication",method = RequestMethod.GET)
+    public String showApplication(){
+        return "/WEB-INF/admin/processingApplication.jsp";
     }
 
     //接收到消息后根据id通过请求操作
     @RequestMapping(value = "/admin/applicationApproved",method = RequestMethod.GET)
     public String applicationApproved(Model model,Integer id){
-        userEntityDao.updateUserEntityByUserId(id,2);
+        userEntityDao.updateUserEntityByUserId(id);
         return null;
     }
     //接收到消息后根据id驳回请求操作并删除Author中相关信息
