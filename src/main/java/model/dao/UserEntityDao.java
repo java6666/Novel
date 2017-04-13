@@ -16,5 +16,5 @@ public interface UserEntityDao {
     List<UserEntity> selectUserEntityAll();
 
     //根据id修改用户类型(userType为修改成的用户类型)
-    void updateUserEntityByUserId(Integer id,Integer userType);
+    void updateUserEntityByUserId(Integer id);
 }

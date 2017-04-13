@@ -3,4 +3,7 @@
 <mapper namespace="model.dao.NovelCategoryDao" >
 
 
+    <select id="seletAllNovelCategoryName" resultType="java.lang.String">
+        SELECT `name` FROM `novel_category`;
+    </select>
 </mapper>

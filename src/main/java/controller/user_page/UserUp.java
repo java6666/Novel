@@ -2,10 +2,13 @@ package controller.user_page;
 
 import model.dao.AuthorDao;
 import model.dao.EmailBoxDao;
+import model.dao.UserInfoEntityDao;
 import model.entity.author.Author;
 import model.entity.other.EmailBox;
 import model.entity.user.UserEntity;
+import model.entity.user.UserInfoEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -24,8 +27,18 @@ public class UserUp {
     private AuthorDao authorDao;
     @Resource
     private EmailBoxDao emailBoxDao;
+    @Resource
+    private UserInfoEntityDao userInfoEntityDao;
     @RequestMapping(path = "/user/showUpAuthor")
-    public String showUpAuthor(){
+    public String showUpAuthor(HttpSession session, Model model,String flag){
+        if (flag!=null){
+            if (Integer.parseInt(flag)==1){
+                model.addAttribute("modal","<script>$('#myModal4').modal();</script>");
+            }
+        }
+        UserEntity user =(UserEntity) session.getAttribute("superUser");
+        UserInfoEntity userInfo = userInfoEntityDao.selectUserInfoByUserId(user.getId());
+        model.addAttribute("userInfo",userInfo);
         return "/WEB-INF/user_center/user_up_author.jsp";
     }
     @RequestMapping(path = "/user/upAuthor",method = RequestMethod.POST)
@@ -49,6 +62,6 @@ public class UserUp {
         emailBox.setContent("普通用户申请升级为作者,请管理员处理");
         emailBox.setCreateDate(new Date());
         emailBoxDao.addMail(emailBox);
-        return "redirect:/user/mail";
+        return "redirect:/user/showUpAuthor?flag=1";
     }
 }

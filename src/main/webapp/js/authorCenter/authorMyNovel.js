@@ -72,6 +72,7 @@ function checkNovelType(sel) {
     var rightType=Array();
     var count=0;
     var str="";
+    var typeInfo="";
     for(var i=0;i<selectTuype.length;i++){
         if(selectTuype[i].checked){
             count++;
@@ -81,14 +82,15 @@ function checkNovelType(sel) {
     if(count!=0){
         for(var i=0;i<rightType.length;i++){
             if(i==rightType.length-1){
-                str+=rightType[i].defaultValue;
+                typeInfo+=rightType[i].defaultValue;
             }else {
-                str+=rightType[i].defaultValue+"/";
+                typeInfo+=rightType[i].defaultValue+"/";
             }
         }
-        str="您选择了"+count+"个类型<br>"+str;
+        str="您选择了"+count+"个类型<br>"+typeInfo;
         if(sel==1){
             info.innerHTML = str;
+            document.getElementsByName("novelTypeValue")[0].value=typeInfo;
             info.style.color = "#28ab4b"
         }
     }

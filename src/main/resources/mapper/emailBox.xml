@@ -14,8 +14,11 @@
         INSERT INTO novel_emailbox (addressee_id,recipinents_id,content,create_date) VALUES
         (#{addresseeId},#{recipientsId},#{content},#{createDate})
     </insert>
+    <delete id="delMailById">
+        DELETE FROM novel_emailbox WHERE id=#{id}
+    </delete>
     <select id="selectByInId" resultMap="emailBoxDao">
-        SELECT * FROM novel_emailbox WHERE recipinents_id=#{id}
+        SELECT * FROM novel_emailbox WHERE recipinents_id=#{id} order by create_date desc
     </select>
     <select id="selectCountByInId" resultType="java.lang.Integer">
         SELECT count(*) FROM  novel_emailbox WHERE recipinents_id=#{id}

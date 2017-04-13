@@ -24,7 +24,7 @@
     </select>
 
     <update id="updateUserEntityByUserId">
-        UPDATE novel_user SET user_type=#{userType}
+        UPDATE novel_user SET user_type=2
         WHERE id=#{id}
     </update>
 

@@ -31,6 +31,6 @@ public class ChangePassword {
         }else {
             flag=0;
         }
-        return "redirect:/user/mail?flag="+flag;
+        return "redirect:/user/info?flag="+flag;
     }
 }

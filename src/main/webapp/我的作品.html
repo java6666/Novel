@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<!--[if lt IE 7 ]>
+<html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en"> <!--<![endif]-->
 <head>
 
     <!-- Basic Page Needs
   ================================================== -->
     <meta charset="utf-8">
     <title>zBasicB001 Free Html5 Responsive Template</title>
-    <meta name="description" content="Free Html5 Templates and Free Responsive Themes Designed by Kimmy | zerotheme.com">
+    <meta name="description"
+          content="Free Html5 Templates and Free Responsive Themes Designed by Kimmy | zerotheme.com">
     <meta name="author" content="www.zerotheme.com">
 
     <!-- Mobile Specific Metas
@@ -32,7 +37,9 @@
     <!--[if lt IE 8]>
     <div style=' clear: both; text-align:center; position: relative;'>
         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0"
+                 height="42" width="820"
+                 alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."/>
         </a>
     </div>
     <![endif]-->
@@ -43,7 +50,11 @@
 
     <link href='./images/favicon.ico' rel='icon' type='image/x-icon'/>
     <style rel="stylesheet">
-        .search{font-size: 14px;color: #CCC;font-weight:bold; }
+        .search {
+            font-size: 14px;
+            color: #CCC;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -69,14 +80,15 @@
                             <input type="text" class="form-control" id="firstname" style="height: 25px;width: 200px"
                                    placeholder="请输入关键字">
                         </div>
-                        <button class="btn btn-default btn-sm" style="float: right;margin-top: -25px;height: 25px">GO</button>
+                        <button class="btn btn-default btn-sm" style="float: right;margin-top: -25px;height: 25px">GO
+                        </button>
                     </form>
                 </div>
             </div>
         </nav>
     </div>
 </header>
-<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >Website Template</a></div>
+<div class="copyrights">Collect from <a href="http://www.cssmoban.com/">Website Template</a></div>
 
 <!--------------Content--------------->
 <div class="wrap-content zerogrid">
@@ -110,20 +122,30 @@
             </div>
             <div id="base">
                 <ul>
-                    <li class="color"><button type="button" name="sel" class="btn btn-info">创建新书</button></li>
-                    <li><button type="button" name="sel" class="btn btn-default">未完结</button></li>
-                    <li><button type="button" name="sel" class="btn btn-default">已完结</button></li>
+                    <li class="color">
+                        <button type="button" name="sel" class="btn btn-info">未完结</button>
+                    </li>
+                    <li>
+                        <button type="button" name="sel" class="btn btn-default">已完结</button>
+                    </li>
+                    <li>
+                        <button type="button" name="sel" class="btn btn-default">创建新书</button>
+                    </li>
                 </ul>
                 <hr/>
                 <div id="boss-box">
-                    <div id="tab-0">
+                    <div id="tab-0"><img src="./images/noWorks.jpg" alt="" width="340px" height="420px"></div>
+                    <div id="tab-1" class="none"><img src="./images/noComplete.jpg" alt="" width="340px" height="420px"></div>
+                    <div id="tab-2" class="none">
                         <div class="wrap-content zerogrid">
                             <div class="row block">
                                 <div id="main-content" class="col-2-5">
-                                    <form onsubmit="return checkForm()" action="#" method="post" data-toggle="validator" role="form">
+                                    <form onsubmit="return checkForm()" action="#" method="post" data-toggle="validator"
+                                          role="form">
                                         <div class="form-group w3layouts w3 w3l">
                                             <label class="control-label">书名</label>
-                                            <input type="text" class="form-control" id="novelName" placeholder="书 名" value="" onfocus="checkNovelName(1)" onblur="checkNovelName(2)"/>
+                                            <input type="text" class="form-control" id="novelName" placeholder="书 名"
+                                                   value="" onfocus="checkNovelName(1)" onblur="checkNovelName(2)"/>
                                             <div id="novelNameInfo" style="display: none;"></div>
                                         </div>
                                         <div class="form-group agileits w3layouts w3">
@@ -141,11 +163,21 @@
                                             </div>
                                             <br/>
                                             <div id="novelTypeInfo">请选择以上种类，并点击下面“确认选择”按钮</div>
-                                            <button type="button" class="btn btn-info" onclick="checkNovelType(1)">确认选择</button>
+                                            <input type="text" class="form-control" name="novelTypeValue" value="">
+                                            <button type="button" class="btn btn-info" onclick="checkNovelType(1)">
+                                                确认选择
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <label class="control-label">售价(元)</label>
+                                            <input type="text" class="form-control" value="0"
+                                                   onfocus="checkNovelName(1)" onblur="checkNovelName(2)"/>
                                         </div>
                                         <div class="form-group agileits w3layouts w3">
                                             <label class="control-label">内 容 简 介</label>
-                                            <textarea class="form-control" id="novelSummary" placeholder="内容简介" onfocus="checkBookSummary(1)" onblur="checkBookSummary(2)" style="width: 400px;height: 160px"></textarea>
+                                            <textarea class="form-control" id="novelSummary" placeholder="内容简介"
+                                                      onfocus="checkBookSummary(1)" onblur="checkBookSummary(2)"
+                                                      style="width: 400px;height: 160px"></textarea>
                                             <div id="bookSummaryInfo" style="display: none;"></div>
                                         </div>
                                         <div class="form-group agileits w3layouts w3">
@@ -154,7 +186,9 @@
                                         </div>
                                         <div class="form-group">
                                             <input id="check_id" type="checkbox" onclick="foo()"> 同意小说网协议<br/><br/>
-                                            <button onclick="checkAll()" type="submit" class="btn btn-lg" id="submit" disabled>Submit</button>
+                                            <button onclick="checkAll()" type="submit" class="btn btn-lg" id="submit"
+                                                    disabled>Submit
+                                            </button>
                                         </div>
                                     </form>
                                     <script src="./js/jquery-1.10.2.min.js"></script>
@@ -164,8 +198,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="tab-1" class="none"><img src="./images/noWorks.jpg" alt="" width="340px" height="420px"></div>
-                    <div id="tab-2" class="none"><img src="./images/noComplete.jpg" alt="" width="340px" height="420px"></div>
+
                 </div>
             </div>
         </div>
@@ -180,7 +213,8 @@
                     <div class="box">
                         <div class="heading"><h2>小说网重要声明</h2></div>
                         <div class="content">
-                            <p>本网站为网友写作提供上传空间储存平台，请上传有合法版权的作品，如发现本站有侵犯权利人版权内容的，请向本站投诉，投诉邮箱：tousu@hongxiu.com 一经核实，本站将立即删除相关作品并对上传人作封号处理。</p>
+                            <p>本网站为网友写作提供上传空间储存平台，请上传有合法版权的作品，如发现本站有侵犯权利人版权内容的，请向本站投诉，投诉邮箱：tousu@hongxiu.com
+                                一经核实，本站将立即删除相关作品并对上传人作封号处理。</p>
                         </div>
                     </div>
                 </div>
@@ -190,7 +224,11 @@
                     <div class="box">
                         <div class="heading"><h2>Novel network important declaration</h2></div>
                         <div class="content">
-                            <p>This website to provide online writing upload space storage platform, please upload have legitimate copyright works, if any infringement of the right holder of copyright content found on this site, please complain to the site, the complaint email: tousu@hongxiu.com upon verification, the site will be deleted immediately descendants on the related works and titles processing.</p>
+                            <p>This website to provide online writing upload space storage platform, please upload have
+                                legitimate copyright works, if any infringement of the right holder of copyright content
+                                found on this site, please complain to the site, the complaint email: tousu@hongxiu.com
+                                upon verification, the site will be deleted immediately descendants on the related works
+                                and titles processing.</p>
                         </div>
                     </div>
                 </div>
@@ -198,7 +236,8 @@
         </div>
     </div>
     <div class="copyright">
-        <p>Copyright © 2012 - <a href="http://www.cssmoban.com" target="_blank">Free Basic Html5 Templates</a> by Zerotheme.com</p>
+        <p>Copyright © 2012 - <a href="http://www.cssmoban.com" target="_blank">Free Basic Html5 Templates</a> by
+            Zerotheme.com</p>
     </div>
 </footer>
 <!-- 模态框（Modal） -->
@@ -208,13 +247,13 @@
             <form action="">
                 <h1>登录</h1>
                 <div>
-                    <input type="text" placeholder="用户名" required="" id="username" />
+                    <input type="text" placeholder="用户名" required="" id="username"/>
                 </div>
                 <div>
-                    <input type="password" placeholder="密码" required="" id="password" />
+                    <input type="password" placeholder="密码" required="" id="password"/>
                 </div>
                 <div>
-                    <input type="submit" value="Log in" />
+                    <input type="submit" value="Log in"/>
                     <a href="#">Lost your password?</a>
                     <a href="#">Register</a>
                 </div>
@@ -260,13 +299,16 @@
             <div>
                 <form>
                     <div class="form-group"><label style="margin-left: 50px;margin-top: 28px">旧密码：</label>
-                        <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
+                        <input type="password" class="form-control"
+                               style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
                     </div>
                     <div class="form-group"><label style="margin-left: 50px;margin-top: 28px">新密码：</label>
-                        <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
+                        <input type="password" class="form-control"
+                               style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
                     </div>
                     <div class="form-group"><label style="margin-left: 45px;margin-top: 28px">重复密码：</label>
-                        <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
+                        <input type="password" class="form-control"
+                               style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
                     </div>
                 </form>
             </div>

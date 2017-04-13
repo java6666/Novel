@@ -12,6 +12,7 @@ public class NovelEntity {
     private Integer id;                                 //小说id
     private String novelName;                         //小说名字
     private String novelSummary;                    //小说摘要
+    private String novelType;                           //小说种类
     private String novelAuthor;                      //小说作者
     private String novelFilePath;                     //小说文件路径
     private String novelFileName;                    //小说文件名
@@ -161,5 +162,13 @@ public class NovelEntity {
 
     public void setModifyBy(Integer modifyBy) {
         this.modifyBy = modifyBy;
+    }
+
+    public String getNovelType() {
+        return novelType;
+    }
+
+    public void setNovelType(String novelType) {
+        this.novelType = novelType;
     }
 }
