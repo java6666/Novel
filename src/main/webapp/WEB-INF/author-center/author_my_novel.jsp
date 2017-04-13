@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: lenovo
@@ -116,38 +117,53 @@
             </div>
             <div id="base">
                 <ul>
-                    <li class="color"><button type="button" name="sel" class="btn btn-info">创建新书</button></li>
-                    <li><button type="button" name="sel" class="btn btn-default">未完结</button></li>
+                    <li class="color"><button type="button" name="sel" class="btn btn-info">未完结</button></li>
                     <li><button type="button" name="sel" class="btn btn-default">已完结</button></li>
+                    <li><button type="button" name="sel" class="btn btn-default">创建新书</button></li>
                 </ul>
                 <hr/>
                 <div id="boss-box">
-                    <div id="tab-0">
+                    <div id="tab-0" ><img src="${pageContext.request.contextPath}/images/noWorks.jpg" alt="" width="340px" height="420px"></div>
+                    <div id="tab-1" class="none"><img src="${pageContext.request.contextPath}/images/noComplete.jpg" alt="" width="340px" height="420px"></div>
+                    <div id="tab-2" class="none">
                         <div class="wrap-content zerogrid">
                             <div class="row block">
                                 <div id="main-content" class="col-2-5">
                                     <form onsubmit="return checkForm()" action="#" method="post" data-toggle="validator" role="form">
                                         <div class="form-group w3layouts w3 w3l">
                                             <label class="control-label">书名</label>
-                                            <input type="text" class="form-control" id="novelName" placeholder="书 名" value="" onfocus="checkNovelName(1)" onblur="checkNovelName(2)"/>
+                                            <input name="novelName" type="text" class="form-control" id="novelName" placeholder="书 名" value="" onfocus="checkNovelName(1)" onblur="checkNovelName(2)"/>
                                             <div id="novelNameInfo" style="display: none;"></div>
                                         </div>
                                         <div class="form-group agileits w3layouts w3">
                                             <label class="control-label">类 型</label>
                                             <div id="novelType">
-                                                <input type="checkbox" value="玄幻"/> 玄幻&nbsp;
-                                                <input type="checkbox" value="言情"/> 言情&nbsp;
+                                                <c:forEach items="${requestScope.typeName}" var="i" varStatus="index">
+                                                    <c:if test="${index.count%7==0}">
+                                                        <input type="checkbox" value="${i}"/> ${i}<br><br>
+                                                    </c:if>
+                                                    <c:if test="${index.count%7!=0}">
+                                                        <input type="checkbox" value="${i}"/> ${i}&nbsp;
+                                                    </c:if>
+                                                </c:forEach>
+
+<%--                                                <input type="checkbox" value="言情"/> 言情&nbsp;
                                                 <input type="checkbox" value="军事"/> 军事&nbsp;
                                                 <input type="checkbox" value="武侠"/> 武侠&nbsp;
                                                 <input type="checkbox" value="穿越"/> 穿越&nbsp;
                                                 <input type="checkbox" value="推理"/> 推理&nbsp;
                                                 <input type="checkbox" value="修真"/> 修真<br/><br/>
                                                 <input type="checkbox" value="都市"/> 都市&nbsp;
-                                                <input type="checkbox" value="游戏"/> 游戏&nbsp;
+                                                <input type="checkbox" value="游戏"/> 游戏&nbsp;--%>
                                             </div>
                                             <br/>
-                                            <div id="novelTypeInfo" name="novelType">请选择以上种类，并点击下面“确认选择”按钮</div>
+                                            <div id="novelTypeInfo">请选择以上种类，并点击下面“确认选择”按钮</div>
+                                            <input type="hidden" class="form-control" name="novelTypeValue" value="">
                                             <button type="button" class="btn btn-info" name="novelType" onclick="checkNovelType(1)">确认选择</button>
+                                        </div>
+                                        <div>
+                                            <label class="control-label">售价(元)</label>
+                                            <input type="text" class="form-control" value="0" onfocus="checkNovelName(1)" onblur="checkNovelName(2)"/>
                                         </div>
                                         <div class="form-group agileits w3layouts w3">
                                             <label class="control-label">内 容 简 介</label>
@@ -170,8 +186,6 @@
                             </div>
                         </div>
                     </div>
-                    <div id="tab-1" class="none"><img src="${pageContext.request.contextPath}/images/noWorks.jpg" alt="" width="340px" height="420px"></div>
-                    <div id="tab-2" class="none"><img src="${pageContext.request.contextPath}/images/noComplete.jpg" alt="" width="340px" height="420px"></div>
                 </div>
             </div>
         </div>
