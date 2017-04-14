@@ -27,7 +27,7 @@ CREATE TABLE `novel_advert` (
   `modify_date` datetime DEFAULT NULL COMMENT '修改日期',
   `modify_by` int(11) DEFAULT NULL COMMENT '修改者',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_advert` */
 
@@ -43,11 +43,11 @@ CREATE TABLE `novel_category` (
   `modify_date` datetime DEFAULT NULL COMMENT '修改日期',
   `modifu_by` int(11) DEFAULT NULL COMMENT '修改者',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_category` */
 
-insert  into `novel_category`(`id`,`name`,`create_date`,`create_by`,`modify_date`,`modifu_by`) values (1,'玄幻','2017-04-09 16:28:03',1,'2017-04-09 16:28:08',1),(2,'言情','2017-04-09 16:28:57',1,'2017-04-09 16:31:23',1),(3,'军事','2017-04-09 16:29:07',1,'2017-04-09 16:31:25',1),(9,'武侠','2017-04-11 13:23:12',1,'2017-04-11 13:23:15',1),(4,'穿越','2017-04-09 16:37:54',1,'2017-04-09 16:37:57',1),(5,'推理','2017-04-09 16:38:05',1,'2017-04-09 16:38:08',1),(6,'修真','2017-04-09 16:38:34',1,'2017-04-09 16:38:37',1),(7,'都市','2017-04-09 16:38:48',1,'2017-04-09 16:38:50',1),(8,'游戏','2017-04-09 16:39:01',1,'2017-04-09 16:39:03',1);
+insert  into `novel_category`(`id`,`name`,`create_date`,`create_by`,`modify_date`,`modifu_by`) values (1,'玄幻','2017-04-09 16:28:03',1,'2017-04-09 16:28:08',1),(2,'言情','2017-04-09 16:28:57',1,'2017-04-09 16:31:23',1),(3,'军事','2017-04-09 16:29:07',1,'2017-04-09 16:31:25',1),(4,'穿越','2017-04-09 16:37:54',1,'2017-04-09 16:37:57',1),(5,'推理','2017-04-09 16:38:05',1,'2017-04-09 16:38:08',1),(6,'修真','2017-04-09 16:38:34',1,'2017-04-09 16:38:37',1),(7,'都市','2017-04-09 16:38:48',1,'2017-04-09 16:38:50',1),(8,'游戏','2017-04-09 16:39:01',1,'2017-04-09 16:39:03',1),(9,'武侠','2017-04-11 13:23:12',1,'2017-04-11 13:23:15',1);
 
 /*Table structure for table `novel_comment` */
 
@@ -60,7 +60,7 @@ CREATE TABLE `novel_comment` (
   `create_date` datetime DEFAULT NULL COMMENT '评论日期',
   `create_by` int(11) DEFAULT NULL COMMENT '评论者',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_comment` */
 
@@ -90,7 +90,7 @@ CREATE TABLE `novel_detail` (
   `modify_by` int(11) DEFAULT NULL COMMENT '小说更新者',
   `novel_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '小说类型',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_detail` */
 
@@ -108,11 +108,11 @@ CREATE TABLE `novel_emailbox` (
   `create_date` datetime DEFAULT NULL COMMENT '发件时间',
   `mail_type` int(11) DEFAULT NULL COMMENT '消息类型1.普通消息2.申请作者3.举报信息',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_emailbox` */
 
-insert  into `novel_emailbox`(`id`,`addressee_id`,`recipinents_id`,`content`,`create_date`,`mail_type`) values (25,3,1,'普通用户申请升级为作者,请管理员处理','2017-04-12 22:07:31',2),(2,3,2,'嗨!','2017-04-11 13:30:27',1),(27,3,1,'普通用户申请升级为作者,请管理员处理','2017-04-12 22:32:39',2),(34,2,3,'safsafds','2017-04-13 15:53:26',1),(33,1,3,'asfa','2017-04-13 15:53:11',1);
+insert  into `novel_emailbox`(`id`,`addressee_id`,`recipinents_id`,`content`,`create_date`,`mail_type`) values (2,3,2,'嗨!','2017-04-11 13:30:27',1),(25,3,1,'普通用户申请升级为作者,请管理员处理','2017-04-12 22:07:31',2),(27,3,1,'普通用户申请升级为作者,请管理员处理','2017-04-12 22:32:39',2),(33,1,3,'asfa','2017-04-13 15:53:11',1),(34,2,3,'safsafds','2017-04-13 15:53:26',1),(35,3,2,'很久以前。。。','2017-04-13 18:16:30',1);
 
 /*Table structure for table `novel_user` */
 
@@ -125,7 +125,7 @@ CREATE TABLE `novel_user` (
   `user_type` int(11) DEFAULT NULL COMMENT '用户类型1.管理员2.作者3.普通用户',
   `account_type` int(11) DEFAULT NULL COMMENT '账号状态1.正常2.封停3.删除',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_user` */
 
@@ -142,7 +142,7 @@ CREATE TABLE `novel_user_author` (
   `birth_address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '作者出生地',
   `author_introduce` varchar(510) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '作者介绍',
   `create_date` datetime DEFAULT NULL COMMENT '升级为作者时间'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_user_author` */
 
@@ -159,7 +159,7 @@ CREATE TABLE `novel_user_buy` (
   `create_date` datetime DEFAULT NULL COMMENT '购买日期',
   `read_now` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '阅读至',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_user_buy` */
 
@@ -176,7 +176,7 @@ CREATE TABLE `novel_user_collection` (
   `create_date` datetime DEFAULT NULL COMMENT '收藏日期',
   `read_now` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '阅读至',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_user_collection` */
 
@@ -194,11 +194,11 @@ CREATE TABLE `novel_user_info` (
   `gender` tinyint(4) DEFAULT NULL COMMENT '0.女1.男',
   `head_sculpture_path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '头像路径',
   `create_date` datetime DEFAULT NULL COMMENT '用户注册日期'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_user_info` */
 
-insert  into `novel_user_info`(`user_id`,`real_name`,`phone`,`money`,`gender`,`head_sculpture_path`,`create_date`) values (1,'张三',2147483647,0,1,NULL,'2017-04-11 12:46:17'),(2,'小明',2147483647,0,1,NULL,'2017-04-11 12:46:51'),(3,'李杰',2147483647,NULL,0,'head\\1492054332886.jpg',NULL);
+insert  into `novel_user_info`(`user_id`,`real_name`,`phone`,`money`,`gender`,`head_sculpture_path`,`create_date`) values (1,'张三',2147483647,0,1,NULL,'2017-04-11 12:46:17'),(2,'小明',2147483647,0,1,NULL,'2017-04-11 12:46:51'),(3,'李杰',2147483647,NULL,0,'head\\1492095775394.jpg',NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
