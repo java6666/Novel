@@ -13,7 +13,7 @@ public class NovelEntity {
     private String novelName;                         //小说名字
     private String novelSummary;                    //小说摘要
     private String novelType;                           //小说种类
-    private String novelAuthor;                      //小说作者
+    private Integer novelAuthor;                      //小说作者
     private String novelFilePath;                     //小说文件路径
     private String novelFileName;                    //小说文件名
     private String novelPicPath;                     //小说图片路径
@@ -52,11 +52,11 @@ public class NovelEntity {
         this.novelSummary = novelSummary;
     }
 
-    public String getNovelAuthor() {
+    public Integer getNovelAuthor() {
         return novelAuthor;
     }
 
-    public void setNovelAuthor(String novelAuthor) {
+    public void setNovelAuthor(Integer novelAuthor) {
         this.novelAuthor = novelAuthor;
     }
 

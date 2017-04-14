@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+<div id="test"></div>
+<script>
+    $.ajax({
+        type:"get",
+        url:"/list",
+        success:function (html) {
+            $("#test").html(html);
+        }
+    })
+</script>
+</body>
+</html>

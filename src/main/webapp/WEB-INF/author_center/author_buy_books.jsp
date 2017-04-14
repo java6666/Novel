@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: lenovo
   Date: 2017/4/11
-  Time: 15:52
+  Time: 18:57
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -13,8 +13,7 @@
   ================================================== -->
     <meta charset="utf-8">
     <title>zBasicB001 Free Html5 Responsive Template</title>
-    <meta name="description"
-          content="Free Html5 Templates and Free Responsive Themes Designed by Kimmy | zerotheme.com">
+    <meta name="description" content="Free Html5 Templates and Free Responsive Themes Designed by Kimmy | zerotheme.com">
     <meta name="author" content="www.zerotheme.com">
 
     <!-- Mobile Specific Metas
@@ -27,15 +26,17 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/responsive.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/login.css">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css">
-    <script src="${pageContext.request.contextPath}/js/authorCenter/authorInfo.js"></script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!--[if lt IE 8]>
     <div style=' clear: both; text-align:center; position: relative;'>
         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0"
-                 height="42" width="820"
-                 alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."/>
+            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
         </a>
     </div>
     <![endif]-->
@@ -46,13 +47,10 @@
 
     <link href='${pageContext.request.contextPath}/images/favicon.ico' rel='icon' type='image/x-icon'/>
     <style rel="stylesheet">
-        .search {
-            font-size: 14px;
-            color: #CCC;
-            font-weight: bold;
-        }
+        .search{font-size: 14px;color: #CCC;font-weight:bold; }
     </style>
 </head>
+
 <body>
 <!--------------Header--------------->
 <header>
@@ -76,15 +74,14 @@
                             <input type="text" class="form-control" id="firstname" style="height: 25px;width: 200px"
                                    placeholder="请输入关键字">
                         </div>
-                        <button class="btn btn-default btn-sm" style="float: right;margin-top: -25px;height: 25px">GO
-                        </button>
+                        <button class="btn btn-default btn-sm" style="float: right;margin-top: -25px;height: 25px">GO</button>
                     </form>
                 </div>
             </div>
         </nav>
     </div>
 </header>
-<div class="copyrights">Collect from <a href="http://www.cssmoban.com/">Website Template</a></div>
+<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >Website Template</a></div>
 
 <!--------------Content--------------->
 <div class="wrap-content zerogrid">
@@ -92,7 +89,7 @@
         <div class="col-xs-2" style="height: 600px">
             <div style=" margin-left: -15px;height: 150px;width: 150px">
                 <a>
-                    <img src="${pageContext.request.contextPath}/images/touxiang.jpg" style="height: 150px;width: 150px">
+                    <img src="${pageContext.request.contextPath}/${userInfo.headSculpturePath}" style="height: 150px;width: 150px">
                 </a>
             </div>
             <div style="margin-left:-15px;margin-top: 50px">
@@ -100,12 +97,12 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="example-navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="#">个人信息</a></li>
-                                <li><a href="#">我的书架</a></li>
-                                <li><a href="#">已购书籍</a></li>
-                                <li><a href="#l">我的作品</a></li>
+                                <li><a href="${pageContext.request.contextPath}/author/info">个人信息</a></li>
+                                <li><a href="${pageContext.request.contextPath}/author/collection">我的书架</a></li>
+                                <li class="active"><a href="${pageContext.request.contextPath}/author/buy">已购书籍</a></li>
+                                <li><a href="${pageContext.request.contextPath}/newNovel">我的作品</a></li>
+                                <li><a href="${pageContext.request.contextPath}/author/mail">消息 <span class="badge">${sessionScope.mailCount}</span></a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
-                                <li><a href="#">消息 <span class="badge">3</span></a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal2">联系我们</a></li>
                             </ul>
                         </div>
@@ -113,48 +110,58 @@
                 </nav>
             </div>
         </div>
-        <div class="col-xs-offset-1 col-xs-6">
-            <div class="col-xs-offset-1 col-xs-9" style="height: 50px">
+        <div class="col-xs-offset-1 col-xs-9">
+            <h3>已购小说</h3>
+            <div style="margin-top: 50px">
+                <table class="table table-striped">
+                    <thead>
+                    <tr class="text-center">
+                        <td><b>书名</b></td>
+                        <td><b>作者</b></td>
+                        <td><b>购买日期</b></td>
+                        <td><b>阅读至</b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="text-center">
+                        <td>《无限恐怖》</td>
+                        <td>鱼鱼</td>
+                        <td>2017-05-29</td>
+                        <td>29章 生死之战</td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 100px">
+                            <span class="	glyphicon glyphicon-eye-open"></span> 继续阅读
+                        </button></td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 70px">
+                            <span class="glyphicon glyphicon-circle-arrow-down"></span> 下载
+                        </button></td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>《无限恐怖》</td>
+                        <td>鱼鱼</td>
+                        <td>2017-05-29</td>
+                        <td>29章 生死之战</td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 100px">
+                            <span class="	glyphicon glyphicon-eye-open"></span> 继续阅读
+                        </button></td>
+                        <td><button type="button" class="btn btn-success" style="height: 30px;width: 70px">
+                            <span class="glyphicon glyphicon-circle-arrow-down"></span> 下载
+                        </button></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="col-xs-offset-1 col-xs-9" style="height: 100px">
-                <h3>个人信息</h3>
-                <hr/>
-            </div>
-            <form action="#">
-                <div class="form-group" style="width: 300px">
-                    <label>真实姓名</label>
-                    <span>：Eason</span>
-                    <input type="text" class="form-control" style="display:none;">
-                </div>
-                <div class="form-group" style="width: 300px">
-                    <label>电话</label>
-                    <span>：150-0000-0000</span>
-                    <input type="text" class="form-control" style="display:none;">
-                </div>
-                <div class="form-group" style="width: 300px">
-                    <label>余额（金币）</label>
-                    <span>：5</span>
-                    <input readonly="true" type="text" value="5" class="form-control" style="display:none;">
-                </div>
-                <div class="form-group">
-                    <label>性别</label>
-                    <span>：男</span>
-                    <select class="form-control" style="width: 300px;display:none">
-                        <option value="女">女</option>
-                        <option value="男">男</option>
-                    </select>
-                </div>
-                <div id="photo" class="form-group" style="display:none;">
-                    <label>头像</label>
-                    <input type="file">
-                    <p class="help-block">上传头像</p>
-                </div>
-                <button type="button" class="btn btn-info" onclick="change(this)">修改信息</button>
-                <button type="submit" id="right" class="btn btn-primary" style="display: none">确认修改</button>
-                <a href="#">
-                    <button type="button" class="btn btn-danger" style="display: none" id="drop">取消修改</button>
-                </a>
-            </form>
+
+            <div style="margin-left: 200px"><ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul></div>
         </div>
     </div>
 </div>
@@ -167,8 +174,7 @@
                     <div class="box">
                         <div class="heading"><h2>小说网重要声明</h2></div>
                         <div class="content">
-                            <p>本网站为网友写作提供上传空间储存平台，请上传有合法版权的作品，如发现本站有侵犯权利人版权内容的，请向本站投诉，投诉邮箱：tousu@hongxiu.com
-                                一经核实，本站将立即删除相关作品并对上传人作封号处理。</p>
+                            <p>本网站为网友写作提供上传空间储存平台，请上传有合法版权的作品，如发现本站有侵犯权利人版权内容的，请向本站投诉，投诉邮箱：tousu@hongxiu.com 一经核实，本站将立即删除相关作品并对上传人作封号处理。</p>
                         </div>
                     </div>
                 </div>
@@ -178,11 +184,7 @@
                     <div class="box">
                         <div class="heading"><h2>Novel network important declaration</h2></div>
                         <div class="content">
-                            <p>This website to provide online writing upload space storage platform, please upload have
-                                legitimate copyright works, if any infringement of the right holder of copyright content
-                                found on this site, please complain to the site, the complaint email: tousu@hongxiu.com
-                                upon verification, the site will be deleted immediately descendants on the related works
-                                and titles processing.</p>
+                            <p>This website to provide online writing upload space storage platform, please upload have legitimate copyright works, if any infringement of the right holder of copyright content found on this site, please complain to the site, the complaint email: tousu@hongxiu.com upon verification, the site will be deleted immediately descendants on the related works and titles processing.</p>
                         </div>
                     </div>
                 </div>
@@ -190,8 +192,7 @@
         </div>
     </div>
     <div class="copyright">
-        <p>Copyright © 2012 - <a href="http://www.cssmoban.com" target="_blank">Free Basic Html5 Templates</a> by
-            Zerotheme.com</p>
+        <p>Copyright © 2012 - <a href="http://www.cssmoban.com" target="_blank">Free Basic Html5 Templates</a> by Zerotheme.com</p>
     </div>
 </footer>
 <!-- 模态框（Modal） -->
@@ -201,13 +202,13 @@
             <form action="">
                 <h1>登录</h1>
                 <div>
-                    <input type="text" placeholder="用户名" required="" id="username"/>
+                    <input type="text" placeholder="用户名" required="" id="username" />
                 </div>
                 <div>
-                    <input type="password" placeholder="密码" required="" id="password"/>
+                    <input type="password" placeholder="密码" required="" id="password" />
                 </div>
                 <div>
-                    <input type="submit" value="Log in"/>
+                    <input type="submit" value="Log in" />
                     <a href="#">Lost your password?</a>
                     <a href="#">Register</a>
                 </div>
@@ -218,6 +219,7 @@
         </section><!-- content -->
     </div><!-- container -->
 </div>
+<!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="width: 300px;text-align: center;margin-top: 150px;margin-left: 170px">
@@ -252,16 +254,13 @@
             <div>
                 <form>
                     <div class="form-group"><label style="margin-left: 50px;margin-top: 28px">旧密码：</label>
-                        <input type="password" class="form-control"
-                               style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
+                        <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
                     </div>
                     <div class="form-group"><label style="margin-left: 50px;margin-top: 28px">新密码：</label>
-                        <input type="password" class="form-control"
-                               style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
+                        <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
                     </div>
                     <div class="form-group"><label style="margin-left: 45px;margin-top: 28px">重复密码：</label>
-                        <input type="password" class="form-control"
-                               style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
+                        <input type="password" class="form-control" style="width: 200px;float: right;margin-top: 20px;margin-right: 80px">
                     </div>
                 </form>
             </div>

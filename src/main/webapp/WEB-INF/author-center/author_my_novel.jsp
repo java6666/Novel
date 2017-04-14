@@ -32,6 +32,7 @@
         <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css">
         <script src="${pageContext.request.contextPath}/js/authorCenter/authorMyNovel.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
         <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -129,7 +130,7 @@
                         <div class="wrap-content zerogrid">
                             <div class="row block">
                                 <div id="main-content" class="col-2-5">
-                                    <form onsubmit="return checkForm()" action="#" method="post" data-toggle="validator" role="form">
+                                    <form id="insertNewNovel" data-toggle="validator" role="form" enctype="multipart/form-data">
                                         <div class="form-group w3layouts w3 w3l">
                                             <label class="control-label">书名</label>
                                             <input name="novelName" type="text" class="form-control" id="novelName" placeholder="书 名" value="" onfocus="checkNovelName(1)" onblur="checkNovelName(2)"/>
@@ -146,15 +147,6 @@
                                                         <input type="checkbox" value="${i}"/> ${i}&nbsp;
                                                     </c:if>
                                                 </c:forEach>
-
-<%--                                                <input type="checkbox" value="言情"/> 言情&nbsp;
-                                                <input type="checkbox" value="军事"/> 军事&nbsp;
-                                                <input type="checkbox" value="武侠"/> 武侠&nbsp;
-                                                <input type="checkbox" value="穿越"/> 穿越&nbsp;
-                                                <input type="checkbox" value="推理"/> 推理&nbsp;
-                                                <input type="checkbox" value="修真"/> 修真<br/><br/>
-                                                <input type="checkbox" value="都市"/> 都市&nbsp;
-                                                <input type="checkbox" value="游戏"/> 游戏&nbsp;--%>
                                             </div>
                                             <br/>
                                             <div id="novelTypeInfo">请选择以上种类，并点击下面“确认选择”按钮</div>
@@ -162,23 +154,43 @@
                                             <button type="button" class="btn btn-info" name="novelType" onclick="checkNovelType(1)">确认选择</button>
                                         </div>
                                         <div>
-                                            <label class="control-label">售价(元)</label>
-                                            <input type="text" class="form-control" value="0" onfocus="checkNovelName(1)" onblur="checkNovelName(2)"/>
+                                            <label class="control-label">售价(元)，售价为正整数呦(●'◡'●)</label>
+                                            <input type="text" class="form-control" id="novelPrice" name="novelPrice" value="0" onfocus="ckeckNovelPrice(1)" onblur="ckeckNovelPrice(2)"/>
+                                            <div id="novelPriceINfo" style="display: none;"></div>
                                         </div>
                                         <div class="form-group agileits w3layouts w3">
                                             <label class="control-label">内 容 简 介</label>
-                                            <textarea class="form-control" id="novelSummary" placeholder="内容简介" onfocus="checkBookSummary(1)" onblur="checkBookSummary(2)" style="width: 400px;height: 160px"></textarea>
+                                            <textarea class="form-control" id="novelSummary" name="novelSummary" placeholder="内容简介" onfocus="checkBookSummary(1)" onblur="checkBookSummary(2)" style="width: 400px;height: 160px"></textarea>
                                             <div id="bookSummaryInfo" style="display: none;"></div>
                                         </div>
                                         <div class="form-group agileits w3layouts w3">
                                             <label class="control-label">上 传 封 面</label><br/>
-                                            <input type="file" name="upload" id="attachment">
+                                            <input type="file" name="novelPhoto" id="attachment">
                                         </div>
                                         <div class="form-group">
                                             <input id="check_id" type="checkbox" onclick="foo()"> 同意小说网协议<br/><br/>
-                                            <button onclick="checkAll()" type="submit" class="btn btn-lg" id="submit" disabled>Submit</button>
                                         </div>
                                     </form>
+                                    <button onclick="sunmitInsertNewNovel()" type="submit" class="btn btn-lg" id="submit" disabled>Submit</button>
+                                    <%--通过ajax将将表单信息提交--%>
+                                    <script>
+                                        function sunmitInsertNewNovel() {
+                                            var flag = checkForm();
+                                            if(flag){
+                                                var $insertNewNovel = $("#insertNewNovel")[0];
+                                                var formData = new FormData($insertNewNovel);
+                                                $.ajax({
+                                                    type:"post",
+                                                    url:"/insertNewNovel",
+                                                    data:formData,
+                                                    async: false,
+                                                    cache: false,
+                                                    contentType: false,
+                                                    processData: false
+                                                })
+                                            }
+                                        }
+                                    </script>
                                     <script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js"></script>
                                     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
                                     <script src="${pageContext.request.contextPath}/js/validator.min.js"></script>

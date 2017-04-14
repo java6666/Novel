@@ -39,5 +39,12 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+
+
+
+
+<input type="file"  name="attachment" id="attachment" style="display:none;width:268px; *height:22px;" onchange="jQuery('#path').val(jQuery('#attachment').val())" />
+<input type="hidden" name="path" id="path" onfocus="jQuery('#attachment').click()" />
+<input type="button" value="提交" onclick="jQuery('#attachment').click()" />
 </body>
 </html>

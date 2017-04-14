@@ -16,4 +16,9 @@ public interface EmailBoxDao {
     boolean addMail(EmailBox emailBox);
     //通过id删除一条消息
     boolean delMailById(int id);
+    //根据emailBox对象查询各个类型的消息yz
+    List<EmailBox> selectEmailTypeByEmailBox(EmailBox emailBox);
+    //根据emailBox对象查询各个类型的消息的总条数yz
+    Integer selectEmailTypeCountByEmailBox(EmailBox emailBox);
+
 }

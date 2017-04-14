@@ -22,6 +22,7 @@ input, textarea, select {margin:0; padding:0px;}
 html, body {width:100%; padding:0; margin:0;}
 body {background: #999999;color: #474747;font: 12px/25px Arial, Helvetica, sans-serif;}
 
+/*#message{line-height: 14px}*/
 a{color: #474747;text-decoration: none;}
 a:hover {color: #DA251D; text-decoration: none;}
 

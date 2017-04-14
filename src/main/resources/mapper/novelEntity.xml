@@ -9,6 +9,7 @@
         <result property="novelAuthor" column="novel_author"/>
         <result property="novelFilePath" column="novel_file_path"/>
         <result property="novelFileName" column="novel_filename"/>
+        <result property="novelType" column="novel_type"/>
         <result property="novelPicPath" column="novel_pic_path"/>
         <result property="novelPicName" column="novel_pic_name"/>
         <result property="novelClickRate" column="novel_click_rate"/>
@@ -22,6 +23,11 @@
         <result property="modifyBy" column="modify_by"/>
 
     </resultMap>
+
+    <insert id="insertNewNovel">
+        INSERT INTO `novel_detail` (`novel_name`,`novel_summary`,`novel_author`,`novel_type`,`novel_file_path`,`novel_filename`, `novel_pic_path`,`novel_pic_name`,`novel_total`,`novel_is_finish`,`price`,`create_date`,`create_by`)
+        VALUES (#{novelName},#{novelSummary},#{novelAuthor},#{novelType},#{novelFilePath},#{novelFileName},#{novelPicPath},#{novelPicName},#{novelTotal},#{novelIsFinish},#{price},#{createDate},#{createBy});
+    </insert>
 
     <select id="selectById" resultMap="novelEntity">
         SELECT* from novel_detail WHERE id=#{id};
