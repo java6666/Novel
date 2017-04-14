@@ -110,7 +110,7 @@
                 <li><a href="/admin/showApplication">管理</a></li>
             </c:if>
             <c:if test="${sessionScope.superUser.userType==2}">
-                <li><a href="#">作者中心</a></li>
+                <li><a href="${pageContext.request.contextPath}/author/info">作者中心</a></li>
             </c:if>
             <c:if test="${sessionScope.superUser.userType==3}">
                 <li><a href="/user/info">个人中心</a></li>
