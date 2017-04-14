@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by LJ on 2017/4/11.
  */
-@Repository
+
 public interface UserEntityDao {
     UserEntity selectUserByUser(UserEntity userEntity);
     UserEntity selectUserById(int id);

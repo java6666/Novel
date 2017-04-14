@@ -5,7 +5,6 @@ import model.dao.UserInfoEntityDao;
 import model.entity.user.UserEntity;
 import model.entity.user.UserInfoEntity;
 import model.service.updateUserInfo.UpdateUserInfo;
-import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.io.IOException;
 
 /**

@@ -1,12 +1,14 @@
 package model.dao;
 
 import model.entity.other.EmailBox;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by LJ on 2017/4/11.
  */
+
 public interface EmailBoxDao {
     //通过收件者id查询消息ydp
     List<EmailBox> selectByInId(int id);

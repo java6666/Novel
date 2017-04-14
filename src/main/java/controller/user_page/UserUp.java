@@ -7,7 +7,9 @@ import model.entity.author.Author;
 import model.entity.other.EmailBox;
 import model.entity.user.UserEntity;
 import model.entity.user.UserInfoEntity;
+import model.service.user_center.UserUpMethod;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +31,8 @@ public class UserUp {
     private EmailBoxDao emailBoxDao;
     @Resource
     private UserInfoEntityDao userInfoEntityDao;
+    @Resource
+    private UserUpMethod userUpMethod;
     @RequestMapping(path = "/user/showUpAuthor")
     public String showUpAuthor(HttpSession session, Model model,String flag){
         if (flag!=null){
@@ -55,14 +59,13 @@ public class UserUp {
         author.setAuthorIntroduce(introduce);
         UserEntity user = (UserEntity) session.getAttribute("superUser");
         author.setUserId(user.getId());
-        authorDao.addAuthor(author);
         EmailBox emailBox = new EmailBox();
         emailBox.setAddresseeId(user.getId());
         emailBox.setRecipientsId(1);
         emailBox.setContent("普通用户申请升级为作者,请管理员处理");
         emailBox.setCreateDate(new Date());
         emailBox.setMailType(2);
-        emailBoxDao.addMail(emailBox);
+        userUpMethod.upAuthorSer(author,emailBox);
         return "redirect:/user/showUpAuthor?flag=1";
     }
 }

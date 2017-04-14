@@ -3,15 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-    <!--1、创建model层的对象,这个监听器是给model层的，名字必须是contextConfigLocation-->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
     <context-param>
         <!-- 给model层相应的xml文件 -->
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:spring.xml</param-value>
     </context-param>
+    <!--1、创建model层的对象,这个监听器是给model层的，名字必须是contextConfigLocation-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
 
     <!--2、创建controller层对象,将网站与mvc.xml联系在一起就是通过servlet标签-->
     <servlet>
