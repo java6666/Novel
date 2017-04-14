@@ -63,11 +63,13 @@
             <div class="wrap-nav">
                 <div class="menu">
                     <ul>
-                        <li><a href="#" data-toggle="modal" data-target="#myModal">登录</a></li>
-                        <li><a href="#">注册</a></li>
-                        <li><a href="#">作者中心</a></li>
-                        <li><a href="#">充值</a></li>
-                        <li><a href="/admin/showApplication">管理</a></li>
+                        <ul>
+                            <li><a href="/main">首页</a></li>
+                            <li><a href="/ranking">排行</a></li>
+                            <li><a href="/user/pay">充值</a></li>
+                            <li><a href="/user/info">个人中心</a></li>
+                            <li><a href="/logout"><span class="glyphicon glyphicon-off" style="color: red"></span>退出</a></li>
+                        </ul>
                     </ul>
                 </div>
                 <div>
@@ -104,7 +106,7 @@
                                 <li><a href="/user/collection">我的书架</a></li>
                                 <li><a href="/user/buy">已购书籍</a></li>
                                 <li><a href="/user/showUpAuthor">升级作者</a></li>
-                                <li class="active"><a href="/user/mail">消息 <span class="badge">${sessionScope.mailCount}</span></a></li>
+                                <li class="active"><a href="/user/mail">消息 <span class="badge" style="background-color: #23527c">${sessionScope.mailCount}</span></a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal3">更改密码</a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal2">联系我们</a></li>
                             </ul>
