@@ -116,15 +116,18 @@
         <div class="col-xs-offset-1 col-xs-8">
             <div style="height: 30px">
             </div>
+            <button onclick="noFinishNovel()">测试</button>
             <div id="base">
                 <ul>
-                    <li class="color"><button type="button" name="sel" class="btn btn-info">未完结</button></li>
+                    <li class="color"><button type="button" name="sel" class="btn btn-info" onclick="noFinishNovel()">未完结</button></li>
                     <li><button type="button" name="sel" class="btn btn-default">已完结</button></li>
                     <li><button type="button" name="sel" class="btn btn-default">创建新书</button></li>
                 </ul>
                 <hr/>
                 <div id="boss-box">
-                    <div id="tab-0" ><img src="${pageContext.request.contextPath}/images/noWorks.jpg" alt="" width="340px" height="420px"></div>
+                    <div id="tab-0" >
+                        <img src="${pageContext.request.contextPath}/images/noWorks.jpg" alt="" width="340px" height="420px">
+                    </div>
                     <div id="tab-1" class="none"><img src="${pageContext.request.contextPath}/images/noComplete.jpg" alt="" width="340px" height="420px"></div>
                     <div id="tab-2" class="none">
                         <div class="wrap-content zerogrid">
@@ -172,25 +175,6 @@
                                         </div>
                                     </form>
                                     <button onclick="submitInsertNewNovel()" type="submit" class="btn btn-lg" id="submit" disabled>Submit</button>
-                                    <%--通过ajax将将表单信息提交--%>
-                                    <script>
-                                        function submitInsertNewNovel() {
-                                            var flag = checkForm();
-                                            if(flag){
-                                                var $insertNewNovel = $("#insertNewNovel")[0];
-                                                var formData = new FormData($insertNewNovel);
-                                                $.ajax({
-                                                    type:"post",
-                                                    url:"/insertNewNovel",
-                                                    data:formData,
-                                                    async: false,
-                                                    cache: false,
-                                                    contentType: false,
-                                                    processData: false
-                                                })
-                                            }
-                                        }
-                                    </script>
                                     <script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js"></script>
                                     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
                                     <script src="${pageContext.request.contextPath}/js/validator.min.js"></script>

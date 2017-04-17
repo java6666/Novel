@@ -1,7 +1,7 @@
 /**
  * Created by lenovo on 2017/4/11.
  */
-window.onload = function () {
+/*window.onload = function () {
     var olis = document.getElementsByName("sel");
     for (var i = 0; i < olis.length; i++) {
         olis[i].index = i;
@@ -14,8 +14,7 @@ window.onload = function () {
             olis[this.index].className = "btn btn-info";
         }
     }
-}
-
+}*/
 function checkForm() {
     if(checkNovelName(2)&&checkNovelType(2)&&checkBookSummary(2)&&ckeckNovelPrice(2)){
         return true
@@ -154,4 +153,36 @@ function checkBookSummary(select) {
             return true;
         }
     }
+}
+/*点击创建新书的js操作
+* 通过ajax将将表单信息提交*/
+function submitInsertNewNovel() {
+    var flag = checkForm();
+    if(flag){
+        var $insertNewNovel = $("#insertNewNovel")[0];
+        var formData = new FormData($insertNewNovel);
+        $.ajax({
+            type:"post",
+            url:"/insertNewNovel",
+            data:formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false
+        })
+    }
+}
+/*点击未完结的js操作*/
+function noFinishNovel() {
+    alert("aaaaa");
+    $.ajax({
+        type:"post",
+        url:"/selectNoFinishNovel",
+        dataType:"json",
+        success:function (novelEntity) {
+            // for(var i=0;i<novelEntity.length;i++){
+            //     alert(novelEntity[i].novelName);
+            // }
+        }
+    })
 }
