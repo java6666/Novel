@@ -8,7 +8,7 @@ window.onload=function () {
 }
 
 function checkForm() {
-    if(checkNovelName(2)&&checkNovelType(2)&&checkBookSummary(2)&&ckeckNovelPrice(2)){
+    if(checkNovelName(2)&&checkNovelType(2)&&checkBookSummary(2)&&checkNovelPrice(2)){
         return true
     }else {
         checkAll();
@@ -20,7 +20,7 @@ function checkAll() {
     checkBookSummary(2);
     checkNovelType(2);
     checkNovelName(2);
-    ckeckNovelPrice(2)
+    checkNovelPrice(2)
 }
 
 function foo() {
@@ -97,7 +97,7 @@ function checkNovelType(sel) {
 }
 
 /*检查小说售价*/
-function ckeckNovelPrice(sel) {
+function checkNovelPrice(sel) {
     var mark = document.getElementById("novelPrice");
     var info = document.getElementById("novelPriceINfo");
     if(sel==1){
@@ -210,12 +210,14 @@ function noFinishNovelInfo(mark) {
     var p = mark.previousSibling;
     var novelId = p.innerHTML;
     $.ajax({
-        type:"get",
+        type:"post",
         url:"/selectNoFinishNovelInfoByNovelId",
         data:{"novelId":novelId},
         dataType:"json",
         success:function (novelEntity) {
             $("#novelModalLabel").html(novelEntity.novelName);
+            var novelPic=novelEntity.novelPicPath+novelEntity.novelPicName;
+            $("#pic").attr('src',novelPic);
         }
     })
 }

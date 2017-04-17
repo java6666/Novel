@@ -36,6 +36,10 @@
         <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<%--        <script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/validator.min.js"></script>--%>
+
         <!--[if lt IE 8]>
         <div style=' clear: both; text-align:center; position: relative;'>
             <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -129,7 +133,7 @@
                         <table id="noNovelInfoList" style="display: none" class="table">
                         </table>
                         <!-- 续载的模态框（Modal） -->
-                        <div class="modal fade" id="novelModal" tabindex="-1" role="dialog" aria-labelledby="novelModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="novelModal" tabindex="-1" role="dialog" aria-labelledby="#novelModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -137,11 +141,12 @@
                                             &times;
                                         </button>
                                         <h4 class="modal-title" id="novelModalLabel">
-
                                         </h4>
                                     </div>
-                                    <div class="modal-body" id="noNovelInfo">
-                                        在这里添加一些文本
+                                    <div class="modal-body" id="NovelInfo">
+                                        <div id="novelPic">
+                                            <img src="" alt="小说封面" id="pic" width="300px" height="460px"/>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭
@@ -184,7 +189,7 @@
                                         </div>
                                         <div>
                                             <label class="control-label">售价(元)，售价为正整数呦(●'◡'●)</label>
-                                            <input type="text" class="form-control" id="novelPrice" name="novelPrice" value="0" onfocus="ckeckNovelPrice(1)" onblur="ckeckNovelPrice(2)"/>
+                                            <input type="text" class="form-control" id="novelPrice" name="novelPrice" value="0" onfocus="checkNovelPrice(1)" onblur="checkNovelPrice(2)"/>
                                             <div id="novelPriceINfo" style="display: none;"></div>
                                         </div>
                                         <div class="form-group agileits w3layouts w3">
@@ -210,9 +215,6 @@
                                         </div>
                                     </form>
                                     <button onclick="submitInsertNewNovel()" type="submit" class="btn btn-lg" id="submit" disabled>Submit</button>
-                                    <script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js"></script>
-                                    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-                                    <script src="${pageContext.request.contextPath}/js/validator.min.js"></script>
                                 </div>
                             </div>
                         </div>

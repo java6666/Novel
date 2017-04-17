@@ -64,7 +64,7 @@ public class AuthorMyNovelService {
         String photoName = novelPhoto.getOriginalFilename();
         String photoType = photoName.substring(photoName.lastIndexOf(".")).toLowerCase();
 //        储存图片的名称：上面已创建好的文件下+毫秒数+格式
-        String savePhotoName=millis + "." + photoType;
+        String savePhotoName=millis + photoType;
         File savePhtotPath = new File(novelFile + savePhotoName);
         /*继续添加作者小说信息*/
         novelEntity.setNovelType(novelTypeValue);       //设置接收的小说种类
