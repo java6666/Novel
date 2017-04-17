@@ -51,12 +51,21 @@ public class AuthorMyNovel {
         return "redirect:/newNovel";
     }
 
-    /*获取作者所有未完成的书籍*/
-    @RequestMapping(path = "/selectNoFinishNovel",produces = "application/json;charset=utf-8")
+    /*获取作者所有未完成的书籍集合*/
+    @RequestMapping(path = "/selectNoFinishNovelList",produces = "application/json;charset=utf-8")
     @ResponseBody
-    public List<NovelEntity> selectNoFinishNovel(HttpSession session){
+    public List<NovelEntity> selectNoFinishNovelList(HttpSession session){
         Object superUser = session.getAttribute("superUser");
-        List<NovelEntity> novelEntities = authorMyNovelService.selectNoFinishNovel(superUser);
+        List<NovelEntity> novelEntities = authorMyNovelService.selectNoFinishNovelList(superUser);
         return novelEntities;
+    }
+
+    /*点击续载后，根据小说id查看小说详细信息*/
+    @RequestMapping(path = "/selectNoFinishNovelInfoByNovelId",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public NovelEntity selectNoFinishNovelInfoByNovelId(Integer novelId){
+        NovelEntity novelEntity = authorMyNovelService.selectNoFinishNovelInfoByNovelId(novelId);
+        System.out.println(novelEntity);
+        return novelEntity;
     }
 }

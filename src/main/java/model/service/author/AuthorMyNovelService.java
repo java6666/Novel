@@ -97,14 +97,21 @@ public class AuthorMyNovelService {
         return false;
     }
 
-    /**获取作者未完成的作品
+    /**获取作者未完成的作品集合
      * @param obj   获取该作者*/
-    public List<NovelEntity> selectNoFinishNovel(Object obj){
+    public List<NovelEntity> selectNoFinishNovelList(Object obj){
         UserEntity novelEntity= (UserEntity) obj;         //将obj转为作者
         Integer id = novelEntity.getId();                   //获取作者id
         UserEntity userEntity = new UserEntity();
         userEntity.setId(id);
-        List<NovelEntity> novelEntities = novelEntityDao.selectNoFinishNovelBynovelAuthor(userEntity);
+        List<NovelEntity> novelEntities = novelEntityDao.selectNoFinishNovelByNovelAuthor(userEntity);
         return novelEntities;
+    }
+
+    /**点击续载后，根据小说id查询小说的集合
+     * @param novelId  小说的id*/
+    public NovelEntity selectNoFinishNovelInfoByNovelId(Integer novelId){
+        NovelEntity novelEntity = novelEntityDao.selectById(novelId);
+        return novelEntity;
     }
 }

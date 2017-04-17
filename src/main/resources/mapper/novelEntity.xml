@@ -30,10 +30,10 @@
     </insert>
 
     <select id="selectById" resultMap="novelEntity">
-        SELECT* from novel_detail WHERE id=#{id};
+        SELECT * from novel_detail WHERE `id`=#{id};
     </select>
-    <select id="selectNoFinishNovelBynovelAuthor" resultMap="novelEntity">
-        SELECT  `novel_name`,`novel_summary`,`novel_author`,`novel_type`,`novel_click_rate`,`novel_buy_count`,`novel_total`,`novel_is_finish`,`price`,`create_date`,`create_by`
-        FROM `novel_detail` WHERE `novel_author`=#{id}
+    <select id="selectNoFinishNovelByNovelAuthor" resultMap="novelEntity">
+        SELECT  `id`,`novel_name`,`novel_type` FROM `novel_detail` WHERE `novel_author`=#{id}
     </select>
+
 </mapper>

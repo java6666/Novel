@@ -54,7 +54,7 @@
         </style>
     </head>
 </head>
-<body>
+<body style="padding-right: 0!important;">
 <!--------------Header--------------->
 <header>
     <div class="wrap-header zerogrid">
@@ -116,17 +116,43 @@
         <div class="col-xs-offset-1 col-xs-8">
             <div style="height: 30px">
             </div>
-            <button onclick="noFinishNovel()">测试</button>
             <div id="base">
                 <ul>
-                    <li class="color"><button type="button" name="sel" class="btn btn-info" onclick="noFinishNovel()">未完结</button></li>
-                    <li><button type="button" name="sel" class="btn btn-default">已完结</button></li>
-                    <li><button type="button" name="sel" class="btn btn-default">创建新书</button></li>
+                    <li class="color"><button type="button" name="sel" class="btn btn-info" onclick="noFinishNovelList(this)">未完结</button></li>
+                    <li><button type="button" name="sel" class="btn btn-default" onclick="switchView(this)">已完结</button></li>
+                    <li><button type="button" name="sel" class="btn btn-default" onclick="switchView(this)">创建新书</button></li>
                 </ul>
                 <hr/>
                 <div id="boss-box">
                     <div id="tab-0" >
-                        <img src="${pageContext.request.contextPath}/images/noWorks.jpg" alt="" width="340px" height="420px">
+                        <img id="noNovel" style="display: none" src="${pageContext.request.contextPath}/images/noWorks.jpg" alt="" width="340px" height="420px">
+                        <table id="noNovelInfoList" style="display: none" class="table">
+                        </table>
+                        <!-- 续载的模态框（Modal） -->
+                        <div class="modal fade" id="novelModal" tabindex="-1" role="dialog" aria-labelledby="novelModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <h4 class="modal-title" id="novelModalLabel">
+
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body" id="noNovelInfo">
+                                        在这里添加一些文本
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                        </button>
+                                        <button type="button" class="btn btn-primary">
+                                            提交更改
+                                        </button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal -->
+                        </div>
                     </div>
                     <div id="tab-1" class="none"><img src="${pageContext.request.contextPath}/images/noComplete.jpg" alt="" width="340px" height="420px"></div>
                     <div id="tab-2" class="none">
@@ -168,7 +194,16 @@
                                         </div>
                                         <div class="form-group agileits w3layouts w3">
                                             <label class="control-label">上 传 封 面</label><br/>
-                                            <input type="file" name="novelPhoto" id="attachment">
+                                            <input type="file" name="novelPhoto" id="attachment" style="display:none">
+                                            <div class="input-append">、
+                                                <a class="btn btn-default" onclick="$('input[id=attachment]').click();">文件封面</a>
+                                                <input id="photoCover" class="input-large" type="text" style="height:30px;">
+                                            </div>
+                                            <script type="text/javascript">
+                                                $('input[id=attachment]').change(function() {
+                                                    $('#photoCover').val($(this).val());
+                                                });
+                                            </script>
                                         </div>
                                         <div class="form-group">
                                             <input id="check_id" type="checkbox" onclick="foo()"> 同意小说网协议<br/><br/>

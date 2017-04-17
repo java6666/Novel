@@ -1,20 +1,12 @@
 /**
  * Created by lenovo on 2017/4/11.
  */
-/*window.onload = function () {
-    var olis = document.getElementsByName("sel");
-    for (var i = 0; i < olis.length; i++) {
-        olis[i].index = i;
-        olis[i].onclick = function () {
-            for (var j = 0; j < olis.length; j++) {
-                document.getElementById("tab-" + j).className = "none";
-                olis[j].className = "btn btn-default";
-            }
-            document.getElementById("tab-" + this.index).className = "block";
-            olis[this.index].className = "btn btn-info";
-        }
-    }
-}*/
+/*每次加载页面时，就显示未完成的小说信息*/
+window.onload=function () {
+    var sel = document.getElementsByName("sel")[0];
+    noFinishNovelList(sel);
+}
+
 function checkForm() {
     if(checkNovelName(2)&&checkNovelType(2)&&checkBookSummary(2)&&ckeckNovelPrice(2)){
         return true
@@ -173,16 +165,57 @@ function submitInsertNewNovel() {
     }
 }
 /*点击未完结的js操作*/
-function noFinishNovel() {
-    alert("aaaaa");
+function noFinishNovelList(mark) {
+    switchView(mark);
     $.ajax({
-        type:"post",
-        url:"/selectNoFinishNovel",
+        type:"get",
+        url:"/selectNoFinishNovelList",
         dataType:"json",
         success:function (novelEntity) {
-            // for(var i=0;i<novelEntity.length;i++){
-            //     alert(novelEntity[i].novelName);
-            // }
+            if(novelEntity.length>0){
+                $("#noNovelInfoList").css("display","");
+                var str="<tr>+<th>"+"小说名称"+"</th>+<th>"+"小说类型"+"</th>"+"<th>"+"功能"+"</th>"+"</tr>";
+                for(var i=0;i<novelEntity.length;i++){
+                    var novelId=novelEntity[i].id;
+                    str+="<tr>"+
+                        "<td>"+novelEntity[i].novelName +"</td>"+
+                        "<td>"+novelEntity[i].novelType +"</td>"+
+                        "<td>"+"<p style='display: none'>"+novelId+"</p>"+
+                        "<button class='btn btn-info' onclick='noFinishNovelInfo(this)' data-toggle='modal' data-target='#novelModal'>"+"续载"+"</button>"+
+                        "</td>"+
+                        "</tr>";
+                }
+                $("#noNovelInfoList").html(str);
+            }else {
+                $("#noNovel").css("display","");
+            }
+        }
+    })
+}
+
+function switchView(mark) {
+    var olis = document.getElementsByName("sel");
+    for(var i=0;i<olis.length;i++){
+        if(olis[i]==mark){
+            document.getElementById("tab-" + i).className = "block";
+            olis[i].className="btn btn-info";
+        }else {
+            document.getElementById("tab-" + i).className = "none";
+            olis[i].className="btn btn-default";
+        }
+    }
+}
+/*点击续载后获取书本详细信息*/
+function noFinishNovelInfo(mark) {
+    var p = mark.previousSibling;
+    var novelId = p.innerHTML;
+    $.ajax({
+        type:"get",
+        url:"/selectNoFinishNovelInfoByNovelId",
+        data:{"novelId":novelId},
+        dataType:"json",
+        success:function (novelEntity) {
+            $("#novelModalLabel").html(novelEntity.novelName);
         }
     })
 }
