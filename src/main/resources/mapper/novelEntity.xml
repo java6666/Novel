@@ -25,11 +25,15 @@
     </resultMap>
 
     <insert id="insertNewNovel">
-        INSERT INTO `novel_detail` (`novel_name`,`novel_summary`,`novel_author`,`novel_type`,`novel_file_path`,`novel_filename`, `novel_pic_path`,`novel_pic_name`,`novel_total`,`novel_is_finish`,`price`,`create_date`,`create_by`)
-        VALUES (#{novelName},#{novelSummary},#{novelAuthor},#{novelType},#{novelFilePath},#{novelFileName},#{novelPicPath},#{novelPicName},#{novelTotal},#{novelIsFinish},#{price},#{createDate},#{createBy});
+        INSERT INTO `novel_detail` (`novel_name`,`novel_summary`,`novel_author`,`novel_type`,`novel_file_path`,`novel_filename`, `novel_pic_path`,`novel_pic_name`,`novel_click_rate`,`novel_buy_count`,`novel_total`,`novel_is_finish`,`price`,`create_date`,`create_by`)
+        VALUES (#{novelName},#{novelSummary},#{novelAuthor},#{novelType},#{novelFilePath},#{novelFileName},#{novelPicPath},#{novelPicName},#{novelClickRate},#{novelBuyCount},#{novelTotal},#{novelIsFinish},#{price},#{createDate},#{createBy});
     </insert>
 
     <select id="selectById" resultMap="novelEntity">
-        SELECT* from novel_detail WHERE id=#{id};
+        SELECT * from novel_detail WHERE `id`=#{id};
     </select>
+    <select id="selectNoFinishNovelByNovelAuthor" resultMap="novelEntity">
+        SELECT  `id`,`novel_name`,`novel_type` FROM `novel_detail` WHERE `novel_author`=#{id}
+    </select>
+
 </mapper>

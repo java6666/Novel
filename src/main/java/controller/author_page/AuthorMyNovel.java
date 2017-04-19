@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -22,15 +23,15 @@ import java.util.List;
  */
 @Controller
 public class AuthorMyNovel {
+    /*测试开始*/
     @Resource
     private UserEntityDao userEntityDao;
-    @Resource
-    private NovelCategoryDao novelCategoryDao;
+    /*测试结束*/
     @Resource
     private AuthorMyNovelService authorMyNovelService;
     @RequestMapping(path = "/newNovel")
     public String myWorks(Model model,HttpSession session){
-        List<String> typeName = novelCategoryDao.seletAllNovelCategoryName();
+        List typeName = authorMyNovelService.myWorks();
         /*测试开始*/
         UserEntity userEntity = userEntityDao.selectUserById(2);
         session.setAttribute("superUser",userEntity);
@@ -41,17 +42,30 @@ public class AuthorMyNovel {
 
     /*创建新书的方法*/
     @RequestMapping(path = "/insertNewNovel",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @ResponseBody
     public String insertNewNovel(HttpSession session,String novelName, String novelTypeValue, Integer novelPrice, String novelSummary,
                                  @RequestParam("novelPhoto")MultipartFile novelPhoto){
-        NovelEntity novelEntity = new NovelEntity();
-        novelEntity.setNovelName(novelName);        //设置接收的小说名
-        novelEntity.setNovelType(novelTypeValue);       //设置接收的小说种类
-        novelEntity.setPrice(novelPrice);                   //设置接收的小说售价
-        novelEntity.setNovelSummary(novelSummary);      //设置接收的小说简介
-
         Object superUser = session.getAttribute("superUser");//获取session的user对象
-        Boolean aBoolean = authorMyNovelService.insertNewNovel(novelEntity, superUser, novelPhoto, session);
+        Boolean aBoolean = authorMyNovelService.insertNewNovel(novelName,novelTypeValue,novelPrice,novelSummary, superUser, novelPhoto, session);
         System.out.println(aBoolean);
         return "redirect:/newNovel";
+    }
+
+    /*获取作者所有未完成的书籍集合*/
+    @RequestMapping(path = "/selectNoFinishNovelList",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public List<NovelEntity> selectNoFinishNovelList(HttpSession session){
+        Object superUser = session.getAttribute("superUser");
+        List<NovelEntity> novelEntities = authorMyNovelService.selectNoFinishNovelList(superUser);
+        return novelEntities;
+    }
+
+    /*点击续载后，根据小说id查看小说详细信息*/
+    @RequestMapping(path = "/selectNoFinishNovelInfoByNovelId",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public NovelEntity selectNoFinishNovelInfoByNovelId(Integer novelId){
+        NovelEntity novelEntity = authorMyNovelService.selectNoFinishNovelInfoByNovelId(novelId);
+        System.out.println(novelEntity);
+        return novelEntity;
     }
 }
