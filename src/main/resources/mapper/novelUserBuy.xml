@@ -10,6 +10,6 @@
     </resultMap>
 
     <select id="selectByUserId" resultMap="novelUserBuy">
-        SELECT* from novel_user_buy WHERE user_id=#{id} order by create_date desc;
+        SELECT* from novel_user_buy WHERE user_id=#{id} order by create_date desc
     </select>
 </mapper>
