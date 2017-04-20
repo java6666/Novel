@@ -16,5 +16,7 @@ public interface NovelEntityDao {
 
     List<NovelEntity> selectNoFinishNovelByNovelAuthor(UserEntity userEntity);//查看作者所有未完成书籍集合
 
-    List<NovelEntity> selectNovelByPage();
+    List<NovelEntity> selectNovelByPage();//查找所有小说ydp
+
+    List<NovelEntity> selectNovelByClick();//查找点击量高的书籍ydp
 }
