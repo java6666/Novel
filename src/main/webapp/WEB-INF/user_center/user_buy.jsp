@@ -36,7 +36,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script src="${pageContext.request.contextPath}/js/angular.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/paging/paging.js"></script>
     <!--[if lt IE 8]>
     <div style=' clear: both; text-align:center; position: relative;'>
         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -54,7 +55,7 @@
         .search{font-size: 14px;color: #CCC;font-weight:bold; }
     </style>
 </head>
-<body>
+<body ng-app="page_mail" ng-controller="paging" ng-init="service='/user/buy'">
 <!--------------Header--------------->
 <header>
     <div class="wrap-header zerogrid">
@@ -128,12 +129,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${requestScope.buyInfos}" var="buyInfo">
-                        <tr class="text-center">
-                            <td>${buyInfo.novelName}</td>
-                            <td>${buyInfo.novelAuthor}</td>
-                            <td><fmt:formatDate value="${buyInfo.createDate}" pattern="yyyy-MM-dd"/></td>
-                            <td>${buyInfo.readNow}</td>
+                        <tr class="text-center" ng-repeat="buy in list">
+                            <td>{{buy.novelName}}</td>
+                            <td>{{buy.novelAuthor}}</td>
+                            <td>{{buy.createDate}}</td>
+                            <td>{{buy.readNow}}</td>
                             <td><button type="button" class="btn btn-success" style="height: 30px;width: 100px">
                                 <span class="	glyphicon glyphicon-eye-open"></span> 继续阅读
                             </button></td>
@@ -141,21 +141,21 @@
                                 <span class="glyphicon glyphicon-circle-arrow-down"></span> 下载
                             </button></td>
                         </tr>
-                    </c:forEach>
-
                     </tbody>
                 </table>
             </div>
 
-            <div style="margin-left: 200px"><ul class="pagination">
-                <li><a href="#">&laquo;</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
-            </ul></div>
+            <div style="margin-left: 200px">
+                <ul class="pagination">
+                <li style="{{pre}}"><a href="#" ng-click="paging(currentPage-1)">«</a></li>
+                <li style="{{one}}" class="{{oneClass}}"><a href="#" ng-click="paging(-1)">{{oneLi}}</a></li>
+                <li style="{{two}}" class="{{twoClass}}"><a ng-click="paging(-2)" href="#">{{twoLi}}</a></li>
+                <li style="{{three}}" class="{{threeClass}}"><a ng-click="paging(-3)" href="#">{{threeLi}}</a></li>
+                <li style="{{four}}" class="{{fourClass}}"><a ng-click="paging(-4)" href="#">{{fourLi}}</a></li>
+                <li style="{{five}}" class="{{fiveClass}}"><a ng-click="paging(-5)" href="#">{{fiveLi}}</a></li>
+                <li style="{{next}}"><a href="#" ng-click="paging(currentPage-0+1)">»</a></li>
+            </ul>
+            </div>
         </div>
     </div>
 </div>

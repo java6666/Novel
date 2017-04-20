@@ -1,5 +1,7 @@
 package controller.user_page;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import model.dao.EmailBoxDao;
 import model.dao.UserInfoEntityDao;
 import model.entity.other.EmailBox;
@@ -9,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +28,7 @@ public class UserEmail {
     private UserInfoEntityDao userInfoEntityDao;
     @Resource
     private EmailBoxDao emailBoxDao;
-    @RequestMapping("/user/mail")
+    @RequestMapping(path = "/user/mail",method = RequestMethod.GET)
     public String userMail(HttpSession session, Model model,String flag){
         UserEntity user1 =(UserEntity) session.getAttribute("superUser");
         UserInfoEntity userInfo = userInfoEntityDao.selectUserInfoByUserId(user1.getId());
@@ -41,6 +45,21 @@ public class UserEmail {
             }
         }
         return "/WEB-INF/user_center/user_mail.jsp";
+    }
+    @RequestMapping(path = "/user/mail",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public List<Object> userMail(String currentPage){
+        if (currentPage==null){
+            PageHelper.startPage(1,7);
+        }else {
+            PageHelper.startPage(Integer.parseInt(currentPage),7);
+        }
+        List<EmailBox> emailBoxes = emailBoxDao.selectByInId(3);
+        PageInfo pageInfo = new PageInfo<>(emailBoxes);
+        ArrayList<Object> objects = new ArrayList<>();
+        objects.add(emailBoxes);
+        objects.add(pageInfo);
+        return objects;
     }
     @RequestMapping(path = "/user/sendMail",method = RequestMethod.POST)
     public String sendMail(Integer id,String content,HttpSession session){
