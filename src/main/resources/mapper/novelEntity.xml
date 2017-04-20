@@ -21,7 +21,7 @@
         <result property="modifyDate" column="modify_date"/>
         <result property="createBy" column="create_by"/>
         <result property="modifyBy" column="modify_by"/>
-
+        <association property="author" select="model.dao.AuthorDao.selectAuthorByUserId" column="novel_author"/>
     </resultMap>
 
     <insert id="insertNewNovel">
