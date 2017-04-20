@@ -14,5 +14,7 @@ public interface NovelEntityDao {
 
     Integer insertNewNovel(NovelEntity novelEntity);            //创建新书
 
-    List<NovelEntity> selectNoFinishNovelByNovelAuthor(UserEntity userEntity);          //查看作者所有未完成书籍集合
+    List<NovelEntity> selectNoFinishNovelByNovelAuthor(UserEntity userEntity);//查看作者所有未完成书籍集合
+
+    List<NovelEntity> selectNovelByPage();
 }

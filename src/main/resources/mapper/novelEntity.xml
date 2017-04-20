@@ -35,5 +35,8 @@
     <select id="selectNoFinishNovelByNovelAuthor" resultMap="novelEntity">
         SELECT  `id`,`novel_name`,`novel_type` FROM `novel_detail` WHERE `novel_author`=#{id}
     </select>
+    <select id="selectNovelByPage" resultType="model.entity.novel.NovelEntity">
+        SELECT * FROM novel_detail ORDER BY create_date DESC
+    </select>
 
 </mapper>
