@@ -143,8 +143,9 @@
                             回复
                         </button></td>
                         <td><button type="button" class="btn btn-danger" style="height: 30px;width: 50px">
+                            <a href="/user/delMail?mailId={{mail.id}}">
                             删除
-                        </button></td>
+                            </a></button></td>
                     </tr>
                     </tbody>
                 </table>
