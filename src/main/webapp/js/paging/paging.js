@@ -1,10 +1,11 @@
 var app=angular.module("page_mail",[]);
-app.controller("paging",function ($scope,$http) {
+app.controller("paging",function ($scope,$http,$rootScope) {
     $scope.oneLi="1";
     $scope.twoLi="2";
     $scope.threeLi="3";
     $scope.fourLi="4";
     $scope.fiveLi="5";
+    $rootScope.includeMod="/html_main/search.html";
     $scope.foo=function (name,id) {
         $scope.username=name;
         $scope.id=id;
