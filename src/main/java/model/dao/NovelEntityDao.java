@@ -15,4 +15,10 @@ public interface NovelEntityDao {
     Integer insertNewNovel(NovelEntity novelEntity);            //创建新书
 
     List<NovelEntity> selectNoFinishNovelByNovelAuthor(UserEntity userEntity);          //查看作者所有未完成书籍集合
+
+    List<NovelEntity> selectFinishNovelByNovelAuthor(UserEntity userEntity);          //查看作者所有已完成书籍集合
+
+    Integer readFinishNovel(NovelEntity novelEntity);               //点击未完成的小说的完结按钮，进行完成
+
+    NovelEntity novelLatestChapterById(Integer id);                     //根据小说id获取最新章节
 }
