@@ -5,16 +5,20 @@ app.controller("paging",function ($scope,$http,$rootScope) {
     $scope.threeLi="3";
     $scope.fourLi="4";
     $scope.fiveLi="5";
-    $rootScope.includeMod="/html_main/search.html";
+    $scope.words="";
     $scope.foo=function (name,id) {
         $scope.username=name;
         $scope.id=id;
     };
     $scope.$watch('$viewContentLoaded', function() {
         $scope.oneClass="active";
-        $scope.paging(-1);
+        $scope.paging(-1,"/html_main/main.html");
     });
-    $scope.paging=function(num) {
+    $scope.paging=function(num,include,serUrl) {
+        if(serUrl!=undefined){
+            $scope.service=serUrl;
+        }
+        $rootScope.includeMod=include;
         $scope.currentPage="";
         switch (parseInt(num)){
             case -1:$scope.currentPage=$scope.oneLi;
@@ -30,7 +34,7 @@ app.controller("paging",function ($scope,$http,$rootScope) {
             default:$scope.currentPage=num;
                 break;
         }
-        var url=$scope.service+"?currentPage="+$scope.currentPage;
+        var url=$scope.service+"?currentPage="+$scope.currentPage+"&words="+$scope.words;
         $http.post(url).then(function (data) {
             if ($scope.currentPage==1&&$scope.currentPage==data.data[1].lastPage){
                 $scope.one="display:none";

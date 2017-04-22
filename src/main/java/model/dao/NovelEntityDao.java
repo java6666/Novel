@@ -2,6 +2,7 @@ package model.dao;
 
 import model.entity.novel.NovelEntity;
 import model.entity.user.UserEntity;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -25,4 +26,6 @@ public interface NovelEntityDao {
     List<NovelEntity> selectNovelByPage();//查找所有小说ydp
 
     List<NovelEntity> selectNovelByClick();//查找点击量高的书籍ydp
+
+    List<NovelEntity> selectNovelByWords(@Param("words")String words);//通过关键字搜索小说ydp
 }

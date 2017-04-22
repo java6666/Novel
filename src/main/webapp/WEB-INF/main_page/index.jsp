@@ -46,7 +46,7 @@
         .search{font-size: 14px;color: #CCC;font-weight:bold; }
     </style>
 </head>
-<body ng-app="page_mail" ng-controller="paging" ng-init="service='/main'" onload="loadFoo()">
+<body ng-app="page_mail" ng-controller="paging" ng-init="service='/main'" >
 <!--------------Header--------------->
 <header>
     <div style="margin-left: 1200px"><span style="color: red">${sessionScope.message}</span></div>
@@ -89,9 +89,9 @@
                 <div>
                     <form class="bs-example bs-example-form" role="form" style="width: 300px">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="请输入关键字">
+                            <input ng-model="words" type="text" class="form-control" placeholder="请输入关键字">
                             <span class="input-group-addon">
-								<button ng-click="includeMod='/html_main/search.html'" class="glyphicon glyphicon-search" style="width: 100%;height: 100%"></button>
+								<button ng-click="paging(-1,'/html_main/search.html','/searchNovel')" class="glyphicon glyphicon-search" style="width: 100%;height: 100%"></button>
 							</span>
                         </div>
                     </form>
