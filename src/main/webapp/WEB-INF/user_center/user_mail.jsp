@@ -36,7 +36,8 @@
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script src="${pageContext.request.contextPath}/js/angular.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/paging/paging.js"></script>
     <!--[if lt IE 8]>
     <div style=' clear: both; text-align:center; position: relative;'>
         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -54,7 +55,7 @@
         .search{font-size: 14px;color: #CCC;font-weight:bold; }
     </style>
 </head>
-<body>
+<body ng-app="page_mail" ng-controller="paging" ng-init="service='/user/mail'">
 <!--------------Header--------------->
 <header>
     <div class="wrap-header zerogrid">
@@ -119,47 +120,45 @@
             <div class="col-xs-offset-1 col-xs-9" style="height: 50px">
             </div>
             <div class="col-xs-offset-1 col-xs-9" style="height: 100px">
-                <h3>信息</h3>
+                <h3>好友信息</h3>
                 <hr/>
             </div>
             <div style="width: 600px">
                 <table class="table table-hover">
                     <thead>
-                    <tr class="text-center">
-                        <td><b>发件人</b></td>
-                        <td><b>内容</b></td>
-                        <td><b>发件时间</b></td>
-                        <td></td>
-                        <td></td>
+                    <tr>
+                        <th>发件人</th>
+                        <th>内容</th>
+                        <th>发件时间</th>
+                        <th>回复</th>
+                        <th>删除</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${list}" var="email">
-                        <tr class="text-center">
-                            <td>${email.addressee.userName}</td>
-                            <td>${email.content}</td>
-                            <td><fmt:formatDate value="${email.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
-                            <td><button type="button" onclick="foo('${email.addressee.userName}',${email.addresseeId})" data-toggle="modal" data-target="#myModal4" class="btn btn-success" style="height: 30px;width: 50px">
-                                回复
-                            </button></td>
-                            <td><a href="/user/delMail?mailId=${email.id}"><button type="button" class="btn btn-danger" style="height: 30px;width: 50px">
-                                删除
-                            </button></a></td>
-                        </tr>
-                    </c:forEach>
-
+                    <tr ng-repeat="mail in list">
+                        <td>{{mail.addressee.userName}}</td>
+                        <td>{{mail.content}}</td>
+                        <td>{{mail.createDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                        <td><button type="button"  data-toggle="modal" data-target="#myModal4"  ng-click="foo(mail.addressee.userName,mail.addresseeId)" class="btn btn-success" style="height: 30px;width: 50px">
+                            回复
+                        </button></td>
+                        <td><button type="button" class="btn btn-danger" style="height: 30px;width: 50px">
+                            <a href="/user/delMail?mailId={{mail.id}}">
+                            删除
+                            </a></button></td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
             <div style="margin-left: 150px">
                 <ul class="pagination">
-                    <li><a href="#">«</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">»</a></li>
+                    <li style="{{pre}}"><a href="#" ng-click="paging(currentPage-1)">«</a></li>
+                    <li style="{{one}}" class="{{oneClass}}"><a href="#" ng-click="paging(-1)">{{oneLi}}</a></li>
+                    <li style="{{two}}" class="{{twoClass}}"><a ng-click="paging(-2)" href="#">{{twoLi}}</a></li>
+                    <li style="{{three}}" class="{{threeClass}}"><a ng-click="paging(-3)" href="#">{{threeLi}}</a></li>
+                    <li style="{{four}}" class="{{fourClass}}"><a ng-click="paging(-4)" href="#">{{fourLi}}</a></li>
+                    <li style="{{five}}" class="{{fiveClass}}"><a ng-click="paging(-5)" href="#">{{fiveLi}}</a></li>
+                    <li style="{{next}}"><a href="#" ng-click="paging(currentPage-0+1)">»</a></li>
                 </ul>
             </div>
         </div>
@@ -204,12 +203,12 @@
                 </button>
                 <h5 class="modal-title">
                     <span style="color: wheat">回复</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span style="color: greenyellow" id="myModalLabel3">好友</span>
+                    <span style="color: greenyellow">{{username}}</span>
                 </h5>
             </div>
             <form action="/user/sendMail" method="post">
                 <div class="modal-body">
-                    <input type="hidden" name="id" id="modalId">
+                    <input type="hidden" name="id" value="{{id}}">
                     <div><label>内容：</label><input type="text" class="form-control" name="content"></div>
                 </div>
                 <div class="modal-footer">
@@ -302,13 +301,5 @@
             </div>
     </div><!-- /.modal -->
 </div>
-<script>
-    function foo(name, id) {
-        var h = document.getElementById("myModalLabel3");
-        h.innerHTML=name;
-        var modalId = document.getElementById("modalId");
-        modalId.value=id;
-    }
-</script>
 ${modal}
 </body></html>

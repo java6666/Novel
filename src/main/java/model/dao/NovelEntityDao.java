@@ -21,4 +21,9 @@ public interface NovelEntityDao {
     Integer readFinishNovel(NovelEntity novelEntity);               //点击未完成的小说的完结按钮，进行完成
 
     NovelEntity novelLatestChapterById(Integer id);                     //根据小说id获取最新章节
+    List<NovelEntity> selectNoFinishNovelByNovelAuthor(UserEntity userEntity);//查看作者所有未完成书籍集合
+
+    List<NovelEntity> selectNovelByPage();//查找所有小说ydp
+
+    List<NovelEntity> selectNovelByClick();//查找点击量高的书籍ydp
 }
