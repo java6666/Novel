@@ -14,7 +14,7 @@ app.controller("paging",function ($scope,$http,$rootScope) {
         $scope.oneClass="active";
         $scope.paging(-1,"/html_main/main.html");
     });
-    $scope.paging=function(num,include,serUrl,novelId) {
+    $scope.paging=function(num,include,serUrl,novelId,authorId) {
         if(serUrl!=undefined){
             $scope.service=serUrl;
         }
@@ -34,7 +34,7 @@ app.controller("paging",function ($scope,$http,$rootScope) {
             default:$scope.currentPage=num;
                 break;
         }
-        var url=$scope.service+"?currentPage="+$scope.currentPage+"&words="+$scope.words+"&novelId="+novelId;
+        var url=$scope.service+"?currentPage="+$scope.currentPage+"&words="+$scope.words+"&novelId="+novelId+"&authorId="+authorId;
         $http.post(url).then(function (data) {
             $scope.obj1=data.data[2];
             $scope.obj2=data.data[3];
