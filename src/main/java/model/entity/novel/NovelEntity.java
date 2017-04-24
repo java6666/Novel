@@ -29,6 +29,7 @@ public class NovelEntity {
     private Date modifyDate;                       //更新日期(从数据库里面取值)
     private Integer createBy;                      //上传者的id
     private Integer modifyBy;                     //修改者的id
+    private Integer novelLatestChapter;          //小说最新章节
     private Author author;                         //作者内置类
 
     public Integer getId() {
@@ -173,6 +174,14 @@ public class NovelEntity {
 
     public void setNovelType(String novelType) {
         this.novelType = novelType;
+    }
+
+    public Integer getNovelLatestChapter() {
+        return novelLatestChapter;
+    }
+
+    public void setNovelLatestChapter(Integer novelLatestChapter) {
+        this.novelLatestChapter = novelLatestChapter;
     }
 
     public Author getAuthor() {

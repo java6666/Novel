@@ -123,14 +123,14 @@
             <div id="base">
                 <ul>
                     <li class="color"><button type="button" name="sel" class="btn btn-info" onclick="noFinishNovelList(this)">未完结</button></li>
-                    <li><button type="button" name="sel" class="btn btn-default" onclick="switchView(this)">已完结</button></li>
+                    <li><button type="button" name="sel" class="btn btn-default" onclick="finishNovel(this)">已完结</button></li>
                     <li><button type="button" name="sel" class="btn btn-default" onclick="switchView(this)">创建新书</button></li>
                 </ul>
                 <hr/>
                 <div id="boss-box">
                     <div id="tab-0" >
                         <img id="noNovel" style="display: none" src="${pageContext.request.contextPath}/images/noWorks.jpg" alt="" width="340px" height="420px">
-                        <table id="noNovelInfoList" style="display: none" class="table">
+                        <table id="noNovelInfoList" style="display: none" class="table text-center">
                         </table>
                         <!-- 续载的模态框（Modal） -->
                         <div class="modal fade" id="novelModal" tabindex="-1" role="dialog" aria-labelledby="#novelModalLabel" aria-hidden="true">
@@ -144,22 +144,44 @@
                                         </h4>
                                     </div>
                                     <div class="modal-body" id="NovelInfo">
-                                        <div id="novelPic">
-                                            <img src="" alt="小说封面" id="pic" width="300px" height="460px"/>
+                                        <div id="novelPic" width="280px" height="420px" style="float: left">
+                                            <form style="float:none" id="continuedNovel">
+                                                <input type="hidden" value="" id="novelId" name="novelId"/>
+                                                <img src="" alt="小说封面" id="pic" style="width:240px;height:320px;"/>
+                                                <div class="input-append">
+                                                    <input type="file" name="uplodNovel" id="uploadSection" style="display:none"><br>
+                                                    <a class="btn btn-default" onclick="$('input[id=uploadSection]').click();">上传章节</a>
+                                                    <input id="section" class="input-large" type="text" style="height:30px;">
+                                                </div>
+                                                <script type="text/javascript">
+                                                    $('input[id=uploadSection]').change(function() {
+                                                        $('#section').val($(this).val());
+                                                    });
+                                                </script>
+                                            </form>
                                         </div>
+                                        <div style="float: left">
+                                            <div id="displayNovelType" style="height: 80px">
+                                            </div>
+                                            <div id="displayNovelSummary" style="white-space: pre-wrap">
+
+                                            </div>
+                                        </div>
+                                        <div style="clear: left"></div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                                        </button>
-                                        <button type="button" class="btn btn-primary">
-                                            提交更改
-                                        </button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <input type="button" class="btn btn-primary" onclick="uploadContinuedNovel()" value="确认">
                                     </div>
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal -->
                         </div>
                     </div>
-                    <div id="tab-1" class="none"><img src="${pageContext.request.contextPath}/images/noComplete.jpg" alt="" width="340px" height="420px"></div>
+                    <div id="tab-1" class="none">
+                        <img id="isFinishNovelPic" src="${pageContext.request.contextPath}/images/noComplete.jpg" alt="" width="340px" height="420px" style="display: none">
+                        <table id="isNovelInfoList" style="display: none" class="table text-center">
+                        </table>
+                    </div>
                     <div id="tab-2" class="none">
                         <div class="wrap-content zerogrid">
                             <div class="row block">
@@ -200,7 +222,7 @@
                                         <div class="form-group agileits w3layouts w3">
                                             <label class="control-label">上 传 封 面</label><br/>
                                             <input type="file" name="novelPhoto" id="attachment" style="display:none">
-                                            <div class="input-append">、
+                                            <div class="input-append">
                                                 <a class="btn btn-default" onclick="$('input[id=attachment]').click();">文件封面</a>
                                                 <input id="photoCover" class="input-large" type="text" style="height:30px;">
                                             </div>

@@ -21,19 +21,29 @@
         <result property="modifyDate" column="modify_date"/>
         <result property="createBy" column="create_by"/>
         <result property="modifyBy" column="modify_by"/>
+        <result property="novelLatestChapter" column="novel_latest_chapter"/>
         <association property="author" select="model.dao.AuthorDao.selectAuthorByUserId" column="novel_author"/>
     </resultMap>
 
     <insert id="insertNewNovel">
-        INSERT INTO `novel_detail` (`novel_name`,`novel_summary`,`novel_author`,`novel_type`,`novel_file_path`,`novel_filename`, `novel_pic_path`,`novel_pic_name`,`novel_click_rate`,`novel_buy_count`,`novel_total`,`novel_is_finish`,`price`,`create_date`,`create_by`)
-        VALUES (#{novelName},#{novelSummary},#{novelAuthor},#{novelType},#{novelFilePath},#{novelFileName},#{novelPicPath},#{novelPicName},#{novelClickRate},#{novelBuyCount},#{novelTotal},#{novelIsFinish},#{price},#{createDate},#{createBy});
+        INSERT INTO `novel_detail` (`novel_name`,`novel_summary`,`novel_author`,`novel_type`,`novel_file_path`,`novel_filename`, `novel_pic_path`,`novel_pic_name`,`novel_click_rate`,`novel_buy_count`,`novel_total`,`novel_is_finish`,`price`,`create_date`,`create_by`,`novel_latest_chapter`)
+        VALUES (#{novelName},#{novelSummary},#{novelAuthor},#{novelType},#{novelFilePath},#{novelFileName},#{novelPicPath},#{novelPicName},#{novelClickRate},#{novelBuyCount},#{novelTotal},#{novelIsFinish},#{price},#{createDate},#{createBy}),#{novelLatestChapter};
     </insert>
+    <update id="readFinishNovel">
+        UPDATE `novel_detail` SET `novel_is_finish`=#{novelIsFinish} where `id`=#{id}
+    </update>
 
     <select id="selectById" resultMap="novelEntity">
         SELECT * from novel_detail WHERE `id`=#{id};
     </select>
     <select id="selectNoFinishNovelByNovelAuthor" resultMap="novelEntity">
-        SELECT  `id`,`novel_name`,`novel_type` FROM `novel_detail` WHERE `novel_author`=#{id}
+        SELECT  `id`,`novel_name`,`novel_type` FROM `novel_detail` WHERE `novel_author`=#{id} and `novel_is_finish`=0;
+    </select>
+    <select id="selectFinishNovelByNovelAuthor" resultMap="novelEntity">
+        SELECT  `id`,`novel_name`,`novel_type` FROM `novel_detail` WHERE `novel_author`=#{id} and `novel_is_finish`=1;
+    </select>
+    <select id="novelLatestChapterById" resultMap="novelEntity">
+        SELECT * FROM `novel_detail` WHERE `id`=#{id}
     </select>
     <select id="selectNovelByPage" resultMap="novelEntity">
         SELECT * FROM novel_detail ORDER BY create_date DESC
@@ -41,5 +51,14 @@
     <select id="selectNovelByClick" resultMap="novelEntity">
         SELECT * FROM novel_detail ORDER BY novel_click_rate DESC limit 0,6
     </select>
-
+    <select id="selectNovelByWords" resultMap="novelEntity">
+        SELECT * FROM novel_detail as n
+        <where>
+        <if test="words!=null">
+            n.`novel_author` IN (SELECT a.user_id FROM novel_user_author AS a WHERE a.pen_name LIKE #{words})
+        or n.novel_type like #{words} or n.novel_name like #{words}
+        </if>
+    </where>
+        ORDER BY n.create_date DESC
+    </select>
 </mapper>

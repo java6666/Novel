@@ -6,7 +6,7 @@ window.onload=function () {
     var sel = document.getElementsByName("sel")[0];
     noFinishNovelList(sel);
 }
-
+/*点击续载后，点击确认*/
 function checkForm() {
     if(checkNovelName(2)&&checkNovelType(2)&&checkBookSummary(2)&&checkNovelPrice(2)){
         return true
@@ -174,25 +174,60 @@ function noFinishNovelList(mark) {
         success:function (novelEntity) {
             if(novelEntity.length>0){
                 $("#noNovelInfoList").css("display","");
-                var str="<tr>+<th>"+"小说名称"+"</th>+<th>"+"小说类型"+"</th>"+"<th>"+"功能"+"</th>"+"</tr>";
+                $("#noNovel").css("display","none");
+                var str="<tr style='font-weight: bold'>+<td>"+"小说名称"+"</td>+<td>"+"小说类型"+"</td>"+"<td>"+"功能"+"</td>"+"</tr>";
+                for(var i=0;i<novelEntity.length;i++){
+                    var novelId=novelEntity[i].id;
+                    str+="<tr>"+
+                        "<td>"+novelEntity[i].novelName +"</td>"+
+                        "<td>"+novelEntity[i].novelType +"</td>"+
+                        "<td>"+
+                        "<button class='btn btn-primary' onclick='noFinishNovelInfo("+novelId+")' data-toggle='modal' data-target='#novelModal'>"+"续载"+"</button>"+"&nbsp;"+
+                        "<button class='btn btn-warning' onclick='readFinishNovel("+novelId+")'>"+"完结"+"</button>"+
+                        "</td>"+
+                        "</tr>";
+                }
+                $("#noNovelInfoList").html(str);
+                $("#noNovel").css("display","none");
+            }else {
+                $("#noNovelInfoList").css("display","none");
+                $("#noNovel").css("display","");
+            }
+        }
+    })
+}
+/*点击已完结时的js代码*/
+function finishNovel(mark){
+    switchView(mark);
+    $.ajax({
+        type:"get",
+        url:"/selectFinishNovelList",
+        dataType:"json",
+        success:function (novelEntity) {
+            if(novelEntity.length>0){
+                $("#isNovelInfoList").css("display","");
+                var str="<tr style='font-weight: bold'>+<td>"+"小说名称"+"</td>+<td>"+"小说类型"+"</td>"+"<td>"+"功能"+"</td>"+"</tr>";
                 for(var i=0;i<novelEntity.length;i++){
                     var novelId=novelEntity[i].id;
                     str+="<tr>"+
                         "<td>"+novelEntity[i].novelName +"</td>"+
                         "<td>"+novelEntity[i].novelType +"</td>"+
                         "<td>"+"<p style='display: none'>"+novelId+"</p>"+
-                        "<button class='btn btn-info' onclick='noFinishNovelInfo(this)' data-toggle='modal' data-target='#novelModal'>"+"续载"+"</button>"+
+                        "<button class='btn btn-primary' onclick='noFinishNovelInfo(this)' data-toggle='modal' data-target='#novelModal'>"+"查看详情"+"</button>"+"&nbsp;"+
+                        "<button class='btn btn-warning' data-toggle='modal' data-target='#novelModal'>"+"完结"+"</button>"+
                         "</td>"+
                         "</tr>";
                 }
-                $("#noNovelInfoList").html(str);
+                $("#isNovelInfoList").html(str);
+                $("#isFinishNovelPic").css("display","none");
             }else {
-                $("#noNovel").css("display","");
+                $("#isNovelInfoList").css("display","none");
+                $("#isFinishNovelPic").css("display","");
             }
         }
     })
 }
-
+/*切换板块*/
 function switchView(mark) {
     var olis = document.getElementsByName("sel");
     for(var i=0;i<olis.length;i++){
@@ -206,9 +241,8 @@ function switchView(mark) {
     }
 }
 /*点击续载后获取书本详细信息*/
-function noFinishNovelInfo(mark) {
-    var p = mark.previousSibling;
-    var novelId = p.innerHTML;
+function noFinishNovelInfo(novelId) {
+    $("#novelId").attr("value",novelId);
     $.ajax({
         type:"post",
         url:"/selectNoFinishNovelInfoByNovelId",
@@ -216,8 +250,46 @@ function noFinishNovelInfo(mark) {
         dataType:"json",
         success:function (novelEntity) {
             $("#novelModalLabel").html(novelEntity.novelName);
-            var novelPic=novelEntity.novelPicPath+novelEntity.novelPicName;
+            var novelPic="/novel/"+novelEntity.novelFileName+"/"+novelEntity.novelPicName;
             $("#pic").attr('src',novelPic);
+            var novelType="小说种类：";
+            novelType+=novelEntity.novelType;
+            $("#displayNovelType").html(novelType);
+            var novelSummary="小说简介：<br>";
+            var split = novelEntity.novelSummary.split("");
+            for(var i=0;i<split.length;i++){
+                if((i+1)%20==0){
+                    split[i]+="<br>";
+                }
+                novelSummary+=split[i];
+            }
+           /*novelEntity.novelSummary;*/
+            $("#displayNovelSummary").html(novelSummary);
         }
     })
+}
+/*点击完结时的js响应代码*/
+function readFinishNovel(novelId) {
+    $.ajax({
+        type: "get",
+        url: "/readFinishNovel",
+        data: {"novelId": novelId},
+        dataType: "json",
+        success: function (mage) {
+            alert(mage);
+        }
+    })
+}
+function uploadContinuedNovel() {
+     var $continuedNovel = $("#continuedNovel")[0];
+     var formData = new FormData($continuedNovel);
+    $.ajax({
+     type:"post",
+     url:"/continuedNovel",
+     data:formData,
+     async: false,
+     cache: false,
+     contentType: false,
+     processData: false
+     })
 }

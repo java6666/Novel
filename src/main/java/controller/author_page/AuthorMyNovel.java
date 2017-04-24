@@ -68,4 +68,33 @@ public class AuthorMyNovel {
         System.out.println(novelEntity);
         return novelEntity;
     }
+
+    /*点击已完结时的操作*/
+    @RequestMapping(path = "/selectFinishNovelList",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public List<NovelEntity> selectFinishNovelList(HttpSession session){
+        Object superUser = session.getAttribute("superUser");
+        List<NovelEntity> novelEntities = authorMyNovelService.selectFinishNovelList(superUser);
+        return novelEntities;
+    }
+
+    /*在未完结的板块中，点击完结的按钮的操作代码*/
+    @RequestMapping(path = "/readFinishNovel",produces="application/json;charset=utf-8")
+    @ResponseBody
+    public String readFinishNovel(Integer novelId){
+        Boolean flag = authorMyNovelService.readFinishNovel(novelId);
+        if(flag){
+            return "完结成功";
+        }else {
+            return "完结失败";
+        }
+    }
+
+    /*点击续载的时候的服务*/
+    @RequestMapping(path = "/continuedNovel",method = RequestMethod.POST)
+    @ResponseBody
+    public String continuedNovel(Integer novelId,MultipartFile uplodNovel){
+        authorMyNovelService.continuedNovel(novelId,uplodNovel);
+        return "";
+    }
 }

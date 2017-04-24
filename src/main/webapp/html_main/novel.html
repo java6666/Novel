@@ -1,0 +1,113 @@
+<div class="wrap-col">
+        <div class=" col-xs-4">
+            <img src="images/timg.jpg" style="height: 250px">
+        </div>
+        <div class="col-xs-7" style="height: 200px">
+            <h3>无限恐怖</h3>
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <td>作者</td>
+                    <td>鱼鱼</td>
+                </tr>
+                <tr>
+                    <td>类型</td>
+                    <td>穿越、玄幻、修真</td>
+                </tr>
+                <tr>
+                    <td>更新至</td>
+                    <td>完结</td>
+                </tr>
+                <tr>
+                    <td>点击量</td>
+                    <td>341</td>
+                </tr>
+                </tbody>
+            </table>
+            <!-- <div style="float: left">
+             <button type="button" class="btn btn-success btn-lg">
+                 <span class="glyphicon glyphicon-eye-open"></span> 点击阅读
+             </button>
+         </div>
+             <div style="float: left;margin-left: 70px">
+                 <button type="button" class="btn btn-info btn-lg">
+                     <span class="glyphicon glyphicon-arrow-down"></span> 点击下载
+                 </button>
+             </div>-->
+            <div style="float: left">
+                <button type="button" class="btn btn-success btn-lg">
+                    <span class="glyphicon glyphicon-eye-open"></span> 免费试读
+                </button>
+            </div>
+            <div style="float: left;margin-left: 70px">
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">
+                    <span class="glyphicon glyphicon-credit-card"></span> 点击购买
+                </button>
+            </div>
+
+        </div>
+        <div class="col-xs-11" style="margin-top: 50px">
+            <div>
+                <h4 style="background-color:#a6e1ec">小说简介</h4>
+                《无限恐怖》是zhttty所写的著名网络小说。开创了国内网络原创文学“无限流”的第一本作品。被誉为2007年度最值得看的小说。确立了后世无限流小说的主要样式：由现世所未知的科技创造的独特空间；把现世之人召唤过去并且将人送往类似电影的平行宇宙进行历练；获得各种奖励由此可促进人体进化等。作者不走老套的玄幻的小说路线，而是采用了用电影来铺设情节，使情节更加的充满变数。其创作的意义在于开创了“无限流”的先河。
+            </div>
+
+            <div style="margin-top: 20px">
+                <h4 style="background-color:#a6e1ec">相关小说</h4>
+                <div style="width: 100px;height: 120px;float: left;margin-left: 20px">
+                    <img src="images/timg.jpg" style="height: 100px;width: 100px">
+                    <br/><a>[玄幻]无限恐怖</a>
+                </div>
+                <div style="width: 100px;height: 120px;float: left;margin-left: 20px">
+                    <img src="images/timg.jpg" style="height: 100px;width: 100px">
+                    <br/><a>[玄幻]无限恐怖</a>
+                </div>
+                <div style="width: 100px;height: 120px;float: left;margin-left: 20px">
+                    <img src="images/timg.jpg" style="height: 100px;width: 100px">
+                    <br/><a>[玄幻]无限恐怖</a>
+                </div>
+                <div style="width: 100px;height: 120px;float: left;margin-left: 20px">
+                    <img src="images/timg.jpg" style="height: 100px;width: 100px">
+                    <br/><a>[玄幻]无限恐怖</a>
+                </div>
+                <div style="float: left;width: 20px;margin-left: 20px">
+                    <a><span class="glyphicon glyphicon-chevron-right"></span> 查看更多</a>
+                </div>
+            </div>
+            <div style="margin-top: 20px;float: left;width: 555px">
+                <h4 style="background-color:#a6e1ec">精彩评论</h4>
+                <div style="float: left;margin-left: 10px;margin-top: 15px;width: 555px">
+                    <div>
+                        <textarea style="border: solid 1px;width: 530px" placeholder=" 评论"></textarea>
+                    </div>
+                    <button style="float: right;margin-right: 50px;font-size: 15px" >提交评论</button>
+                    <div style="float: left;width: 555px">
+                        <p><a>途途</a>：这本书很精彩</p>
+                        <p style="float: right;margin-right: 15px;font-size: 10px"><i>2017年05月13日 13:30</i></p>
+                        <div style="margin-top: 40px"><hr/></div>
+                    </div>
+                    <div style="float: left;width: 555px">
+                        <p><a>哈哈</a>：这本书很精彩</p>
+                        <p style="float: right;margin-right: 15px;font-size: 10px"><i>2017年05月13日 13:30</i></p>
+                        <div style="margin-top: 40px"><hr/></div>
+                    </div>
+                    <div style="float: left;width: 555px">
+                        <p><a>哈哈</a>：这本书很精彩</p>
+                        <p style="float: right;margin-right: 15px;font-size: 10px"><i>2017年05月13日 13:30</i></p>
+                        <div style="margin-top: 40px"><hr/></div>
+                    </div>
+                </div>
+                <div style="margin-left: 200px"><ul class="pagination">
+                    <li style="{{pre}}"><a href="#" ng-click="paging(currentPage-1)">«</a></li>
+                    <li style="{{one}}" class="{{oneClass}}"><a href="#" ng-click="paging(-1)">{{oneLi}}</a></li>
+                    <li style="{{two}}" class="{{twoClass}}"><a ng-click="paging(-2)" href="#">{{twoLi}}</a></li>
+                    <li style="{{three}}" class="{{threeClass}}"><a ng-click="paging(-3)" href="#">{{threeLi}}</a></li>
+                    <li style="{{four}}" class="{{fourClass}}"><a ng-click="paging(-4)" href="#">{{fourLi}}</a></li>
+                    <li style="{{five}}" class="{{fiveClass}}"><a ng-click="paging(-5)" href="#">{{fiveLi}}</a></li>
+                    <li style="{{next}}"><a href="#" ng-click="paging(currentPage-0+1)">»</a></li>
+                </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
