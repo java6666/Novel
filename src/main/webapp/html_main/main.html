@@ -1,0 +1,26 @@
+<div class="wrap-col">
+    <article ng-repeat="novel in list">
+        <div class="heading">
+            <h2><a href="#" ng-click="paging(-1,'/html_main/novel.html','/showNovel',novel.id)">{{novel.novelName}}</a></h2>
+            <div class="info"><a href="#" ng-click="paging(-1,'/html_main/author.html','/showAuthor',novel.id,novel.novelAuthor)">{{novel.author.penName}}</a></div>
+        </div>
+        <div class="content">
+            <img src="images/timg.jpg" style="height: 300px;width: 300px"/>
+            <p>{{novel.novelSummary}}</p>
+            <p class="more"><a class="button" href="#">阅读小说</a></p>
+        </div>
+    </article>
+    <article>
+        <div style="margin-left: 150px">
+            <ul class="pagination">
+                <li style="{{pre}}"><a href="#" ng-click="paging(currentPage-1)">«</a></li>
+                <li style="{{one}}" class="{{oneClass}}"><a href="#" ng-click="paging(-1)">{{oneLi}}</a></li>
+                <li style="{{two}}" class="{{twoClass}}"><a ng-click="paging(-2)" href="#">{{twoLi}}</a></li>
+                <li style="{{three}}" class="{{threeClass}}"><a ng-click="paging(-3)" href="#">{{threeLi}}</a></li>
+                <li style="{{four}}" class="{{fourClass}}"><a ng-click="paging(-4)" href="#">{{fourLi}}</a></li>
+                <li style="{{five}}" class="{{fiveClass}}"><a ng-click="paging(-5)" href="#">{{fiveLi}}</a></li>
+                <li style="{{next}}"><a href="#" ng-click="paging(currentPage-0+1)">»</a></li>
+            </ul>
+        </div>
+    </article>
+</div>

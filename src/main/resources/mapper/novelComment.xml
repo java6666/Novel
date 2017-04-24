@@ -2,5 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="model.dao.NovelCommentDao" >
 
+    <resultMap id="novelComment" type="model.entity.novel.NovelComment">
+        <id property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="createBy" column="create_by"/>
+        <result property="novelDetailId" column="novel_detail_id"/>
+        <result property="createDate" column="create_date"/>
+    </resultMap>
 
+    <select id="selectByNovelId" resultMap="novelComment">
+        SELECT* FROM novel_comment where novel_detail_id=#{novelId}
+    </select>
 </mapper>

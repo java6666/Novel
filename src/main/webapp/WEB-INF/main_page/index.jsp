@@ -44,9 +44,37 @@
     <link href='./images/favicon.ico' rel='icon' type='image/x-icon'/>
     <style rel="stylesheet">
         .search{font-size: 14px;color: #CCC;font-weight:bold; }
+        em{
+            float: left;width: 20px; height: 19px; line-height: 19px;
+            text-align: center;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-top: 0px;
+            background: #b0b0b0;
+            background-image: initial;
+            background-position-x: initial;
+            background-position-y: initial;
+            background-size: initial;
+            background-repeat-x: initial;
+            background-repeat-y: initial;
+            background-attachment: initial;
+            background-origin: initial;
+            background-clip: initial;
+            background-color: rgb(176, 176, 176);
+            margin-right: 10px;
+        }
+        .Bianse{
+            background: #ed1c24;
+        }
+        .family{
+            font-family: 宋体;
+        }
+        .kong{
+            margin-left: 20px
+        }
     </style>
 </head>
-<body ng-app="page_mail" ng-controller="paging" ng-init="service='/main'" onload="loadFoo()">
+<body ng-app="page_mail" ng-controller="paging" ng-init="service='/main'" >
 <!--------------Header--------------->
 <header>
     <div style="margin-left: 1200px"><span style="color: red">${sessionScope.message}</span></div>
@@ -89,9 +117,9 @@
                 <div>
                     <form class="bs-example bs-example-form" role="form" style="width: 300px">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="请输入关键字">
+                            <input ng-model="words" type="text" class="form-control" placeholder="请输入关键字">
                             <span class="input-group-addon">
-								<button ng-click="includeMod='/html_main/search.html'" class="glyphicon glyphicon-search" style="width: 100%;height: 100%"></button>
+								<button ng-click="paging(-1,'/html_main/search.html','/searchNovel')" class="glyphicon glyphicon-search" style="width: 100%;height: 100%"></button>
 							</span>
                         </div>
                     </form>
@@ -103,8 +131,8 @@
     <div class="menu" style="width:100%">
         <ul>
             <li><a href="#">分类作品</a></li>
-            <li><a href="#">全部作品</a></li>
-            <li><a href="#">排行</a></li>
+            <li><a href="#" ng-click="paging(-1,'/html_main/main.html','/main')">全部作品</a></li>
+            <li><a href="#" ng-click="paging(-1,'/html_main/ranking.html','/ranking')">排行</a></li>
             <li><a href="#">完结</a></li>
             <li><a href="#">免费</a></li>
             <c:if test="${sessionScope.superUser.userType==1}">
@@ -131,7 +159,7 @@
                 <div class="wrap-col">
                     <article ng-repeat="novel in list">
                         <div class="heading">
-                            <h2><a href="#" ng-click="showNovel(novel.id)">{{novel.novelName}}</a></h2>
+                            <h2><a href="#">{{novel.novelName}}</a></h2>
                             <div class="info"><a href="#">{{novel.author.penName}}</a></div>
                         </div>
                         <div class="content">
