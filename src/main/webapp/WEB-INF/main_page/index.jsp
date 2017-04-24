@@ -27,7 +27,8 @@
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script src="${pageContext.request.contextPath}/js/angular.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/paging/paging.js"></script>
     <!--[if lt IE 8]>
     <div style=' clear: both; text-align:center; position: relative;'>
         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -45,10 +46,10 @@
         .search{font-size: 14px;color: #CCC;font-weight:bold; }
     </style>
 </head>
-<body>
+<body ng-app="page_mail" ng-controller="paging" ng-init="service='/main'" >
 <!--------------Header--------------->
 <header>
-    <div style="margin-left: 1200px"><span style="color: red">${message}</span></div>
+    <div style="margin-left: 1200px"><span style="color: red">${sessionScope.message}</span></div>
     <c:if test="${sessionScope.superUser==null}">
         <div class="log-inBox">
 
@@ -88,9 +89,9 @@
                 <div>
                     <form class="bs-example bs-example-form" role="form" style="width: 300px">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="请输入关键字">
+                            <input ng-model="words" type="text" class="form-control" placeholder="请输入关键字">
                             <span class="input-group-addon">
-								<button class="glyphicon glyphicon-search" style="width: 100%;height: 100%"></button>
+								<button ng-click="paging(-1,'/html_main/search.html','/searchNovel')" class="glyphicon glyphicon-search" style="width: 100%;height: 100%"></button>
 							</span>
                         </div>
                     </form>
@@ -126,58 +127,36 @@
 <section id="">
     <div class="wrap-content zerogrid">
         <div class="row block">
-            <div id="main-content" class="col-2-3">
+            <div id="main-content" class="col-2-3" ng-include="includeMod">
                 <div class="wrap-col">
-                    <article>
+                    <article ng-repeat="novel in list">
                         <div class="heading">
-                            <h2><a href="#">无限恐怖</a></h2>
-                            <div class="info"><a href="#">鱼鱼</a></div>
+                            <h2><a href="#" ng-click="showNovel(novel.id)">{{novel.novelName}}</a></h2>
+                            <div class="info"><a href="#">{{novel.author.penName}}</a></div>
                         </div>
                         <div class="content">
                             <img src="images/timg.jpg" style="height: 300px;width: 300px"/>
-                            <p>《无限恐怖》是zhttty所写的著名网络小说。开创了国内网络原创文学“无限流”的第一本作品。被誉为2007年度最值得看的小说。确立了后世无限流小说的主要样式：由现世所未知的科技创造的独特空间；把现世之人召唤过去并且将人送往类似电影的平行宇宙进行历练；获得各种奖励由此可促进人体进化等。作者不走老套的玄幻的小说路线，而是采用了用电影来铺设情节，使情节更加的充满变数。其创作的意义在于开创了“无限流”的先河。</p>
-                            <p>  </p>
+                            <p>{{novel.novelSummary}}</p>
                             <p class="more"><a class="button" href="#">阅读小说</a></p>
                         </div>
                     </article>
                     <article>
-                        <div class="heading">
-                            <h2><a href="#">无限恐怖</a></h2>
-                            <div class="info"><a href="#">鱼鱼</a></div>
-                        </div>
-                        <div class="content">
-                            <img src="images/timg.jpg" style="height: 300px;width: 300px"/>
-                            <p>《无限恐怖》是zhttty所写的著名网络小说。开创了国内网络原创文学“无限流”的第一本作品。被誉为2007年度最值得看的小说。确立了后世无限流小说的主要样式：由现世所未知的科技创造的独特空间；把现世之人召唤过去并且将人送往类似电影的平行宇宙进行历练；获得各种奖励由此可促进人体进化等。作者不走老套的玄幻的小说路线，而是采用了用电影来铺设情节，使情节更加的充满变数。其创作的意义在于开创了“无限流”的先河。</p>
-                            <p>  </p>
-                            <p class="more"><a class="button" href="#">阅读小说</a></p>
-                        </div>
-                    </article>
-                    <article>
-                        <div class="heading">
-                            <h2><a href="#">无限恐怖</a></h2>
-                            <div class="info"><a href="#">鱼鱼</a></div>
-                        </div>
-                        <div class="content">
-                            <img src="images/timg.jpg" style="height: 300px;width: 300px"/>
-                            <p>《无限恐怖》是zhttty所写的著名网络小说。开创了国内网络原创文学“无限流”的第一本作品。被誉为2007年度最值得看的小说。确立了后世无限流小说的主要样式：由现世所未知的科技创造的独特空间；把现世之人召唤过去并且将人送往类似电影的平行宇宙进行历练；获得各种奖励由此可促进人体进化等。作者不走老套的玄幻的小说路线，而是采用了用电影来铺设情节，使情节更加的充满变数。其创作的意义在于开创了“无限流”的先河。</p>
-                            <p>  </p>
-                            <p class="more"><a class="button" href="#">阅读小说</a></p>
-                        </div>
-                    </article>
-                    <article>
-                        <div>
-                            <ul id="pagi">
-                                <li><a class="current" href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">next</a></li>
+                        <div style="margin-left: 150px">
+                            <ul class="pagination">
+                                <li style="{{pre}}"><a href="#" ng-click="paging(currentPage-1)">«</a></li>
+                                <li style="{{one}}" class="{{oneClass}}"><a href="#" ng-click="paging(-1)">{{oneLi}}</a></li>
+                                <li style="{{two}}" class="{{twoClass}}"><a ng-click="paging(-2)" href="#">{{twoLi}}</a></li>
+                                <li style="{{three}}" class="{{threeClass}}"><a ng-click="paging(-3)" href="#">{{threeLi}}</a></li>
+                                <li style="{{four}}" class="{{fourClass}}"><a ng-click="paging(-4)" href="#">{{fourLi}}</a></li>
+                                <li style="{{five}}" class="{{fiveClass}}"><a ng-click="paging(-5)" href="#">{{fiveLi}}</a></li>
+                                <li style="{{next}}"><a href="#" ng-click="paging(currentPage-0+1)">»</a></li>
                             </ul>
                         </div>
                     </article>
                 </div>
 
             </div>
+
             <div id="sidebar" class="col-1-3">
                 <div class="wrap-col">
                     <div class="box">
@@ -211,36 +190,13 @@
                     <div class="box">
                         <div class="heading"><h2>小说排行</h2></div>
                         <div class="content">
+                            <c:forEach items="${clickNovel}" var="novel">
                             <div class="post">
                                 <img src="images/timg.jpg" style="width: 50px;height: 50px"/>
-                                <h4><a href="#">无限恐怖</a></h4>
-                                <p>鲜花量 ,12012</p>
+                                <h4><a href="#">${novel.novelName}</a></h4>
+                                <p>鲜花量 ,${novel.novelClickRate}</p>
                             </div>
-                            <div class="post">
-                                <img src="images/timg.jpg" style="width: 50px;height: 50px"/>
-                                <h4><a href="#">无限恐怖</a></h4>
-                                <p>鲜花量 ,12012</p>
-                            </div>
-                            <div class="post">
-                                <img src="images/timg.jpg" style="width: 50px;height: 50px"/>
-                                <h4><a href="#">无限恐怖</a></h4>
-                                <p>鲜花量 ,12012</p>
-                            </div>
-                            <div class="post">
-                                <img src="images/timg.jpg" style="width: 50px;height: 50px"/>
-                                <h4><a href="#">无限恐怖</a></h4>
-                                <p>鲜花量 ,12012</p>
-                            </div>
-                            <div class="post">
-                                <img src="images/timg.jpg" style="width: 50px;height: 50px"/>
-                                <h4><a href="#">无限恐怖</a></h4>
-                                <p>鲜花量 ,12012</p>
-                            </div>
-                            <div class="post">
-                                <img src="images/timg.jpg" style="width: 50px;height: 50px"/>
-                                <h4><a href="#">无限恐怖</a></h4>
-                                <p>鲜花量 ,12012</p>
-                            </div>
+                        </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -290,7 +246,13 @@
                 <div>
                     <input type="password" placeholder="密码" required="" id="password" name="password" />
                 </div>
-                <div>
+                <div style="margin-left: 36px">
+                    <input placeholder="验证码" name="code" class="" style="border:1px solid #B9B9B9;width: 100px;height: 50px;float: left"/>
+                    <div style="float: left">
+                        <img src="/code.jpg" id="codeImg" style="height: 50px;width: 100px"><a href="#" onclick="flushCode()">看不清</a>
+                    </div>
+                </div>
+                <div style="margin-top: 60px">
                     <input type="submit" value="Log in" />
                     <a href="#">Lost your password?</a>
                     <a href="#">Register</a>
@@ -302,4 +264,11 @@
         </section><!-- content -->
     </div><!-- container -->
 </div>
-</body></html>
+</body>
+<script>
+    function flushCode() {
+        var number = Math.floor(Math.random()*1000+1);
+        $("#codeImg").attr("src","/code.jpg?random="+number)
+    }
+</script>
+</html>
