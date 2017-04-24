@@ -27,7 +27,7 @@
 
     <insert id="insertNewNovel">
         INSERT INTO `novel_detail` (`novel_name`,`novel_summary`,`novel_author`,`novel_type`,`novel_file_path`,`novel_filename`, `novel_pic_path`,`novel_pic_name`,`novel_click_rate`,`novel_buy_count`,`novel_total`,`novel_is_finish`,`price`,`create_date`,`create_by`,`novel_latest_chapter`)
-        VALUES (#{novelName},#{novelSummary},#{novelAuthor},#{novelType},#{novelFilePath},#{novelFileName},#{novelPicPath},#{novelPicName},#{novelClickRate},#{novelBuyCount},#{novelTotal},#{novelIsFinish},#{price},#{createDate},#{createBy}),#{novelLatestChapter};
+        VALUES (#{novelName},#{novelSummary},#{novelAuthor},#{novelType},#{novelFilePath},#{novelFileName},#{novelPicPath},#{novelPicName},#{novelClickRate},#{novelBuyCount},#{novelTotal},#{novelIsFinish},#{price},#{createDate},#{createBy},#{novelLatestChapter});
     </insert>
     <update id="readFinishNovel">
         UPDATE `novel_detail` SET `novel_is_finish`=#{novelIsFinish} where `id`=#{id}

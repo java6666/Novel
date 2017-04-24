@@ -177,24 +177,23 @@ public class AuthorMyNovelService {
             }
             int fileNum=novelEntity.getNovelLatestChapter();
             Map<String, String> titles = new LinkedHashMap<>();
-            Pattern regex = Pattern.compile("第.*章.*");
+            Pattern regex = Pattern.compile(".*第.{1,4}章.*");
             inputStream = novel.getInputStream();
             is= new InputStreamReader(inputStream,"utf-8");
             bfr=new BufferedReader(is);
             String line=null;
-            bfr.readLine();
             while((line=bfr.readLine())!=null){
                 Matcher matcher = regex.matcher(line);
-                if(matcher.find()){
+                if(matcher.matches()){
                     fileNum++;
                     title=line;
-                    titles.put(line,line);
+                    titles.put(title,line);
                     file = new File(path+fileNum+".txt");
                     if(!file.exists()){
                         file.createNewFile();
                     }
                     bfw=new BufferedWriter(new FileWriter(file,true));
-                    bfw.write(line);
+                    bfw.write(line+"\r\n");
                     bfw.flush();
                 }else {
                     if(titles.containsKey(title)){
@@ -207,6 +206,7 @@ public class AuthorMyNovelService {
                     }
                 }
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }finally {
