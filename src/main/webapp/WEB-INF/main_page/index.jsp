@@ -44,6 +44,34 @@
     <link href='./images/favicon.ico' rel='icon' type='image/x-icon'/>
     <style rel="stylesheet">
         .search{font-size: 14px;color: #CCC;font-weight:bold; }
+        em{
+            float: left;width: 20px; height: 19px; line-height: 19px;
+            text-align: center;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-top: 0px;
+            background: #b0b0b0;
+            background-image: initial;
+            background-position-x: initial;
+            background-position-y: initial;
+            background-size: initial;
+            background-repeat-x: initial;
+            background-repeat-y: initial;
+            background-attachment: initial;
+            background-origin: initial;
+            background-clip: initial;
+            background-color: rgb(176, 176, 176);
+            margin-right: 10px;
+        }
+        .Bianse{
+            background: #ed1c24;
+        }
+        .family{
+            font-family: 宋体;
+        }
+        .kong{
+            margin-left: 20px
+        }
     </style>
 </head>
 <body ng-app="page_mail" ng-controller="paging" ng-init="service='/main'" >
@@ -103,8 +131,8 @@
     <div class="menu" style="width:100%">
         <ul>
             <li><a href="#">分类作品</a></li>
-            <li><a href="#">全部作品</a></li>
-            <li><a href="#">排行</a></li>
+            <li><a href="#" ng-click="paging(-1,'/html_main/main.html','/main')">全部作品</a></li>
+            <li><a href="#" ng-click="paging(-1,'/html_main/ranking.html','/ranking')">排行</a></li>
             <li><a href="#">完结</a></li>
             <li><a href="#">免费</a></li>
             <c:if test="${sessionScope.superUser.userType==1}">

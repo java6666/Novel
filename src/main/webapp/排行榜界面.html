@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>排行榜界面</title>
+    <meta name="description"
+          content="Free Html5 Templates and Free Responsive Themes Designed by Kimmy | zerotheme.com">
+    <meta name="author" content="www.zerotheme.com">
+
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" href="css/main/zerogrid.css">
+    <link rel="stylesheet" href="css/main/divStyle.css">
+    <link rel="stylesheet" href="css/main/responsive.css">
+    <link rel="stylesheet" href="css/main/login.css">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--[if lt IE 8]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0"
+                 height="42" width="820"
+                 alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."/>
+        </a>
+    </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5.js"></script>
+    <script src="js/css3-mediaqueries.js"></script>
+    <![endif]-->
+
+    <link href='./images/favicon.ico' rel='icon' type='image/x-icon'/>
+    <style rel="stylesheet">
+        .search {
+            font-size: 14px;
+            color: #CCC;
+            font-weight: bold;
+        }
+        em{
+            float: left;width: 20px; height: 19px; line-height: 19px;
+            text-align: center;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-top: 0px;
+            background: #b0b0b0;
+            background-image: initial;
+            background-position-x: initial;
+            background-position-y: initial;
+            background-size: initial;
+            background-repeat-x: initial;
+            background-repeat-y: initial;
+            background-attachment: initial;
+            background-origin: initial;
+            background-clip: initial;
+            background-color: rgb(176, 176, 176);
+            margin-right: 10px;
+        }
+        .Bianse{
+            background: #ed1c24;
+        }
+        .family{
+            font-family: 宋体;
+        }
+        .kong{
+            margin-left: 20px
+        }
+    </style>
+</head>
+<body>
+<!--------------Header--------------->
+<header>
+    <div class="log-inBox">
+			<span>
+		<a href="#" data-toggle="modal" data-target="#myModal">
+			登录&nbsp;
+		</a>
+	</span>
+        |
+        <span>
+		<a href="#">
+			&nbsp;注册
+		</a>
+	</span>
+    </div>
+
+    <!--<span style="margin-left: 90%;font: normal bold 15px 宋体">登录&nbsp;|&nbsp;注册</span>-->
+    <div id="logo"><a href="#"><img src="./images/indexLogo.jpg"/></a></div>
+
+    <div class="wrap-header zerogrid">
+        <nav>
+            <div class="wrap-nav">
+                <div>
+                    <form class="bs-example bs-example-form" role="form" style="width: 300px">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="请输入关键字">
+                            <span class="input-group-addon">
+								<button class="glyphicon glyphicon-search" style="width: 30px;height: 20px"></button>
+							</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div style="clear: both"></div>
+        </nav>
+    </div>
+    <div class="menu" style="width:100%">
+        <ul>
+            <li><a href="#">分类作品</a></li>
+            <li><a href="#">全部作品</a></li>
+            <li><a href="#">排行</a></li>
+            <li><a href="#">完结</a></li>
+            <li><a href="#">免费</a></li>
+            <li><a href="#">作者中心</a></li>
+            <!--这里新增一个浮动-->
+            <div style="clear: both"></div>
+        </ul>
+    </div>
+</header>
+<div class="copyrights">Collect from <a href="http://www.cssmoban.com/">Website Template</a></div>
+
+<!--------------Content--------------->
+<section id="">
+    <div class="wrap-content zerogrid">
+        <div class="row block">
+            <div id="main-content" class="col-2-3" style="height: 1050px">
+                <div class="wrap-col" style="width: 100%;height: 100%;">
+                    <div style="float: left;width: 46%;height: 100%">
+
+                        <!--<div style="width: 100%;height: 13%">
+                            <div style="float: left;width:30%;height: 100% "><img src="images/艳客劫.jpg" style="height: 100%">
+                            </div>
+                            <div style="float:left;width: 70%">
+                                <p><h4 style="margin-top: -5px;float: left"><a>艳客劫</a></h4>
+                                作者：<a>小鱼大心</a><br/>
+                                类型：<a>言情</a><br/>
+                                摘要：有一种女子，她叫胡颜，她是女祭司，无论她一举一动一嗤一笑，都格外招人恨...
+                                </p>
+                            </div>
+                        </div>-->
+
+                        <table class="table"style="width: 500px">
+                            <caption><h3>排行榜单</h3></caption>
+                            <thead>
+                            <tr>
+                                <th colspan="2"><h3>热销榜</h3></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <a target="_blank" href="#" title="最强狂兵" data-ack="196_1|196">最强狂兵</a>
+                                    <span class="ffs" class="family">
+                                    <a target="_blank" href="#" title="都市" data-ack="196_0|196" class="kong">都市</a></span>
+                                    <em class="Bianse">1</em>
+                                </td>
+                                <td>月销量：1240</td>
+                            </tr>
+                            <tr>
+                                <td><a target="_blank" href="#" title="超品透视" data-ack="196_3|196">超品透视</a>
+                                    <em class="Bianse">2</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="都市" data-ack="196_2|196" class="kong" >都市</a></span>
+                                </td>
+                                <td>月销量：1150</td>
+                            </tr>
+                            <tr>
+                                <td><a target="_blank" href="#" title="无敌剑域" data-ack="196_5|196">无敌剑域</a>
+                                    <em class="Bianse">3</em>
+                                    <span class="ffs" class="family">
+									<a target="_blank" href="#" title="玄幻" data-ack="196_4|196" class="kong">玄幻</a></span>
+                                </td>
+                                <td>月销量：1118</td>
+                            </tr> <tr>
+                                <td> <a target="_blank" href="#" title="盖世帝尊" data-ack="196_7|196">盖世帝尊</a>
+                                    <em>4</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="玄幻" data-ack="196_6|196" class="kong">玄幻</a></span>
+                                </td>
+                                <td>月销量：1111</td>
+                            </tr>
+
+
+                            <tr>
+                                <td><a target="_blank" href="#" title="十方神王" data-ack="196_9|196">十方神王</a>
+                                    <em>5</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="玄幻" data-ack="196_8|196" class="kong">玄幻</a></span>
+                                </td>
+                                <td>月销量：1105</td>
+                            </tr>
+
+                            <tr>
+                                <td><a target="_blank" href="#" title="龙符" data-ack="196_11|196">龙符</a>
+                                    <em>6</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="玄幻" data-ack="196_10|196"
+                                               style="margin-left: 50px">玄幻</a></span>
+                                </td>
+                                <td>月销量：998</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a target="_blank" href="#" title="近身狂兵" data-ack="196_13|196">近身狂兵</a>
+                                    <em>7</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="都市" data-ack="196_12|196" class="kong">都市</a></span>
+                                </td>
+                                <td>月销量：997</td>
+                            </tr> <tr>
+                                <td>
+                                    <a target="_blank" href="#" title="医品宗师" data-ack="196_15|196">医品宗师</a>
+                                    <em>8</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="都市" data-ack="196_14|196" class="kong">都市</a></span>
+
+                                </td>
+                                <td>月销量：888</td>
+                            </tr> <tr>
+                                <td> <a target="_blank" href="#" title="末日刁民" data-ack="196_17|196">末日刁民</a>
+                                    <em>9</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="都市" data-ack="196_16|196" class="kong">都市</a></span>
+
+                                </td>
+                                <td>月销量：699</td>
+                            </tr>
+                            <tr>
+                                <td> <a target="_blank" href="#" title="超品战兵" data-ack="196_19|196">超品战兵</a>
+                                    <em>10</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="都市" data-ack="196_18|196" class="kong">都市</a></span>
+                                </td>
+                                <td>月销量：599</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table"style="width: 500px">
+
+                            <thead>
+                            <tr>
+                                <th colspan="2"><h3>点击榜</h3></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <a target="_blank" href="#" title="最强狂兵" data-ack="196_1|196">最强狂兵</a>
+                                    <span class="ffs" class="family">
+                                    <a target="_blank" href="#" title="都市" data-ack="196_0|196" class="kong">都市</a></span>
+                                    <em class="Bianse">1</em>
+                                </td>
+                                <td>点击量：1240</td>
+                            </tr>
+                            <tr>
+                                <td><a target="_blank" href="#" title="超品透视" data-ack="196_3|196">超品透视</a>
+                                    <em class="Bianse">2</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="都市" data-ack="196_2|196" class="kong" >都市</a></span>
+                                </td>
+                                <td>点击量：1150</td>
+                            </tr>
+                            <tr>
+                                <td><a target="_blank" href="#" title="无敌剑域" data-ack="196_5|196">无敌剑域</a>
+                                    <em class="Bianse">3</em>
+                                    <span class="ffs" class="family">
+									<a target="_blank" href="#" title="玄幻" data-ack="196_4|196" class="kong">玄幻</a></span>
+                                </td>
+                                <td>点击量：1118</td>
+                            </tr> <tr>
+                                <td> <a target="_blank" href="#" title="盖世帝尊" data-ack="196_7|196">盖世帝尊</a>
+                                    <em>4</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="玄幻" data-ack="196_6|196" class="kong">玄幻</a></span>
+                                </td>
+                                <td>点击量：1111</td>
+                            </tr>
+
+
+                            <tr>
+                                <td><a target="_blank" href="#" title="十方神王" data-ack="196_9|196">十方神王</a>
+                                    <em>5</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="玄幻" data-ack="196_8|196" class="kong">玄幻</a></span>
+                                </td>
+                                <td>点击量：1105</td>
+                            </tr>
+
+                            <tr>
+                                <td><a target="_blank" href="#" title="龙符" data-ack="196_11|196">龙符</a>
+                                    <em>6</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="玄幻" data-ack="196_10|196"
+                                               style="margin-left: 50px">玄幻</a></span>
+                                </td>
+                                <td>点击量：998</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a target="_blank" href="#" title="近身狂兵" data-ack="196_13|196">近身狂兵</a>
+                                    <em>7</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="都市" data-ack="196_12|196" class="kong">都市</a></span>
+                                </td>
+                                <td>点击量：997</td>
+                            </tr> <tr>
+                                <td>
+                                    <a target="_blank" href="#" title="医品宗师" data-ack="196_15|196">医品宗师</a>
+                                    <em>8</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="都市" data-ack="196_14|196" class="kong">都市</a></span>
+
+                                </td>
+                                <td>点击量：888</td>
+                            </tr> <tr>
+                                <td> <a target="_blank" href="#" title="末日刁民" data-ack="196_17|196">末日刁民</a>
+                                    <em>9</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="都市" data-ack="196_16|196" class="kong">都市</a></span>
+
+                                </td>
+                                <td>点击量：699</td>
+                            </tr>
+                            <tr>
+                                <td> <a target="_blank" href="#" title="超品战兵" data-ack="196_19|196">超品战兵</a>
+                                    <em>10</em>
+                                    <span class="ffs" class="family">
+											<a target="_blank" href="#" title="都市" data-ack="196_18|196" class="kong">都市</a></span>
+                                </td>
+                                <td>点击量：599</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div id="sidebar" class="col-1-3">
+                <div class="wrap-col">
+                    <div class="box">
+                        <div class="heading"><h2>免费办理信用卡</h2></div>
+                        <div class="content">
+                            <a href="http://www.cssmoban.com" target="_blank"><img src="images/banklogo.png"
+                                                                                   style="border:none;"/></a>
+                            <p><a href="http://www.cssmoban.com" target="_blank" style="color: #DA251D;">光大银行</a>－阳光信用卡：喜欢，就不要等
+
+                                招商银行－VISA MINI：爱怎么show，就怎么show
+                                <a href="http://www.cssmoban.com" target="_blank" style="color: #DA251D;">招商银行</a>－百盛双币购物卡：刷出时尚生活，尽享时时刻刻
+                                中国银行－中银信用卡：方寸之间，信用无限
+                                招商银行－贝塔斯曼书友信用卡：让心灵在书香中升华
+                                民生银行－民生信用卡：一卡平天下
+                                招商银行－公务卡：纵横寰宇尊容备至，拓展无限商机
+                                招商银行－携程旅行信用卡：携卡旅行，全程无忧
+                                广东发展银行—广发商务卡：一切自在掌控
+                                上海浦东发展银行—浦发信用卡：小财大用
+                                广东发展银行－广发真情卡：真女人，真性情</p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="heading"><h2>小说分类</h2></div>
+                        <div class="content">
+                            <ul>
+                                <li><a href="#">玄幻</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="#">言情</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                                            href="#">修真</a></li>
+                                <li><a href="#">科幻</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                                        href="#">军事</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                                        href="#">校园</a></li>
+                                <li><a href="#">武侠</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                                        href="#">悬疑</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                                        href="#">科幻</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="heading"><h2>小说排行</h2></div>
+                        <div class="content">
+                            <div class="post">
+                                <img src="images/timg.jpg" style="width: 50px;height: 50px"/>
+                                <h4><a href="#">无限恐怖</a></h4>
+                                <p>鲜花量 ,12012</p>
+                            </div>
+                            <div class="post">
+                                <img src="images/timg.jpg" style="width: 50px;height: 50px"/>
+                                <h4><a href="#">无限恐怖</a></h4>
+                                <p>鲜花量 ,12012</p>
+                            </div>
+                            <div class="post">
+                                <img src="images/timg.jpg" style="width: 50px;height: 50px"/>
+                                <h4><a href="#">无限恐怖</a></h4>
+                                <p>鲜花量 ,12012</p>
+                            </div>
+                            <div class="post">
+                                <img src="images/timg.jpg" style="width: 50px;height: 50px"/>
+                                <h4><a href="#">无限恐怖</a></h4>
+                                <p>鲜花量 ,12012</p>
+                            </div>
+                            <div class="post">
+                                <img src="images/timg.jpg" style="width: 50px;height: 50px"/>
+                                <h4><a href="#">无限恐怖</a></h4>
+                                <p>鲜花量 ,12012</p>
+                            </div>
+                            <div class="post">
+                                <img src="images/timg.jpg" style="width: 50px;height: 50px"/>
+                                <h4><a href="#">无限恐怖</a></h4>
+                                <p>鲜花量 ,12012</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--------------Footer--------------->
+<footer>
+    <div class="wrap-footer zerogrid">
+        <div class="row">
+            <div class="col-1-3">
+                <div class="wrap-col">
+                    <div class="box">
+                        <div class="heading"><h2>小说网重要声明</h2></div>
+                        <div class="content">
+                            <p>本网站为网友写作提供上传空间储存平台，请上传有合法版权的作品，如发现本站有侵犯权利人版权内容的，请向本站投诉，投诉邮箱：tousu@hongxiu.com
+                                一经核实，本站将立即删除相关作品并对上传人作封号处理。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2-3">
+                <div class="wrap-col">
+                    <div class="box">
+                        <div class="heading"><h2>Novel network important declaration</h2></div>
+                        <div class="content">
+                            <p>This website to provide online writing upload space storage platform, please upload have
+                                legitimate copyright works, if any infringement of the right holder of copyright content
+                                found on this site, please complain to the site, the complaint email: tousu@hongxiu.com
+                                upon verification, the site will be deleted immediately descendants on the related works
+                                and titles processing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright © 2012 - <a href="http://www.cssmoban.com" target="_blank">Free Basic Html5 Templates</a> by
+            Zerotheme.com</p>
+    </div>
+</footer>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="container" style="margin-top: 130px">
+        <section id="content">
+            <form action="">
+                <h1>登录</h1>
+                <div>
+                    <input type="text" placeholder="用户名" required="" id="username"/>
+                </div>
+                <div>
+                    <input type="password" placeholder="密码" required="" id="password"/>
+                </div>
+                <div>
+                    <input type="submit" value="Log in"/>
+                    <a href="#">Lost your password?</a>
+                    <a href="#">Register</a>
+                </div>
+            </form><!-- form -->
+            <div class="button">
+                <a href="#">Download source file</a>
+            </div><!-- button -->
+        </section><!-- content -->
+    </div><!-- container -->
+</div>
+</body>
+</html>

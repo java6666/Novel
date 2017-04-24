@@ -33,7 +33,7 @@ public class Search {
             if (words.isEmpty()){
                 novelEntities = novelEntityDao.selectNovelByWords(null);
             }else {
-                novelEntities = novelEntityDao.selectNovelByWords(words);
+                novelEntities = novelEntityDao.selectNovelByWords("%"+words+"%");
             }
         }else {
             novelEntities = novelEntityDao.selectNovelByWords(null);
