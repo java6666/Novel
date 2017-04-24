@@ -40,7 +40,7 @@
                 </button>
             </div>
             <div style="float: left;margin-left: 70px">
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#buyNovel">
                     <span class="glyphicon glyphicon-credit-card"></span> 点击购买
                 </button>
             </div>
@@ -109,5 +109,21 @@
                 </div>
             </div>
         </div>
-
     </div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="buyNovel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 400px;margin-top: 130px">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #2a6496">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel" style="color: white;text-align: center">支付方式</h4>
+            </div>
+            <div class="modal-body">《无限恐怖》：600金币/6元</div>
+            <div class="modal-footer" style="margin-right: 80px">
+                <button type="button" class="btn btn-warning">余额支付</button>
+                <button type="button" class="btn btn-primary">支付宝</button>
+                <button type="button" class="btn btn-success">微信</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
