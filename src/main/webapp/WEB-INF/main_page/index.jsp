@@ -131,7 +131,7 @@
                 <div class="wrap-col">
                     <article ng-repeat="novel in list">
                         <div class="heading">
-                            <h2><a href="#" ng-click="showNovel(novel.id)">{{novel.novelName}}</a></h2>
+                            <h2><a href="#">{{novel.novelName}}</a></h2>
                             <div class="info"><a href="#">{{novel.author.penName}}</a></div>
                         </div>
                         <div class="content">

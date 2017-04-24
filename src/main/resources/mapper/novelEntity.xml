@@ -61,5 +61,4 @@
     </where>
         ORDER BY n.create_date DESC
     </select>
-
 </mapper>

@@ -14,7 +14,7 @@ app.controller("paging",function ($scope,$http,$rootScope) {
         $scope.oneClass="active";
         $scope.paging(-1,"/html_main/main.html");
     });
-    $scope.paging=function(num,include,serUrl) {
+    $scope.paging=function(num,include,serUrl,novelId) {
         if(serUrl!=undefined){
             $scope.service=serUrl;
         }
@@ -34,8 +34,10 @@ app.controller("paging",function ($scope,$http,$rootScope) {
             default:$scope.currentPage=num;
                 break;
         }
-        var url=$scope.service+"?currentPage="+$scope.currentPage+"&words="+$scope.words;
+        var url=$scope.service+"?currentPage="+$scope.currentPage+"&words="+$scope.words+"&novelId="+novelId;
         $http.post(url).then(function (data) {
+            $scope.obj1=data.data[2];
+            $scope.obj2=data.data[3];
             if ($scope.currentPage==1&&$scope.currentPage==data.data[1].lastPage){
                 $scope.one="display:none";
                 $scope.pre="display:none";

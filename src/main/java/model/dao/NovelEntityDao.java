@@ -27,5 +27,5 @@ public interface NovelEntityDao {
 
     List<NovelEntity> selectNovelByClick();//查找点击量高的书籍ydp
 
-    List<NovelEntity> selectNovelByWords(@Param("words")String words);//通过关键字搜索小说ydp
+    List<NovelEntity> selectNovelByWords(@Param("words")String word);//通过关键字搜索小说ydp
 }
