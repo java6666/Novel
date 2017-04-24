@@ -142,7 +142,7 @@
                         <td><button type="button"  data-toggle="modal" data-target="#myModal4"  ng-click="foo(mail.addressee.userName,mail.addresseeId)" class="btn btn-success" style="height: 30px;width: 50px">
                             回复
                         </button></td>
-                        <td><button type="button" class="btn btn-danger" style="height: 30px;width: 50px">
+                        <td><button type="button" class="btn btn-danger" style="height: 30px;width: 50px;color: #d4d4d4;text-decoration: none">
                             <a href="/user/delMail?mailId={{mail.id}}">
                             删除
                             </a></button></td>
