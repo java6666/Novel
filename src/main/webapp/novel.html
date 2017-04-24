@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/paging/paging.js"></script>
 
     <!--[if lt IE 8]>
     <div style=' clear: both; text-align:center; position: relative;'>
@@ -44,7 +46,7 @@
         .search{font-size: 14px;color: #CCC;font-weight:bold; }
     </style>
 </head>
-<body>
+<body ng-app="page_mail" ng-controller="paging">
 <!--------------Header--------------->
 <header>
     <div class="log-inBox">
@@ -151,9 +153,10 @@
                     </div>
                     <div class="col-xs-11" style="margin-top: 50px">
                         <div>
-                            <h4 style="background-color:#a6e1ec">小说简介</h4>
-                            《无限恐怖》是zhttty所写的著名网络小说。开创了国内网络原创文学“无限流”的第一本作品。被誉为2007年度最值得看的小说。确立了后世无限流小说的主要样式：由现世所未知的科技创造的独特空间；把现世之人召唤过去并且将人送往类似电影的平行宇宙进行历练；获得各种奖励由此可促进人体进化等。作者不走老套的玄幻的小说路线，而是采用了用电影来铺设情节，使情节更加的充满变数。其创作的意义在于开创了“无限流”的先河。
-                        </div>
+                        <h4 style="background-color:#a6e1ec">小说简介</h4>
+                        《无限恐怖》是zhttty所写的著名网络小说。开创了国内网络原创文学“无限流”的第一本作品。被誉为2007年度最值得看的小说。确立了后世无限流小说的主要样式：由现世所未知的科技创造的独特空间；把现世之人召唤过去并且将人送往类似电影的平行宇宙进行历练；获得各种奖励由此可促进人体进化等。作者不走老套的玄幻的小说路线，而是采用了用电影来铺设情节，使情节更加的充满变数。其创作的意义在于开创了“无限流”的先河。
+                    </div>
+
                         <div style="margin-top: 20px">
                             <h4 style="background-color:#a6e1ec">相关小说</h4>
                             <div style="width: 100px;height: 120px;float: left;margin-left: 20px">
@@ -176,13 +179,42 @@
                                 <a><span class="glyphicon glyphicon-chevron-right"></span> 查看更多</a>
                             </div>
                         </div>
-                        <div style="float: left;margin-top: 40px">
-                            <img src="images/guanggao1.gif" width="650" height="220">
-                        </div>
-                        <div style="float: left;margin-top: 40px">
-                            <img src="images/guanggao2.gif" width="650" height="220">
+                        <div style="margin-top: 20px;float: left;width: 555px">
+                            <h4 style="background-color:#a6e1ec">精彩评论</h4>
+                            <div style="float: left;margin-left: 10px;margin-top: 15px;width: 555px">
+                                <div>
+                                    <textarea style="border: solid 1px;width: 530px" placeholder=" 评论"></textarea>
+                                </div>
+                                <button style="float: right;margin-right: 50px;font-size: 15px" >提交评论</button>
+                                <div style="float: left;width: 555px">
+                                    <p><a>途途</a>：这本书很精彩</p>
+                                    <p style="float: right;margin-right: 15px;font-size: 10px"><i>2017年05月13日 13:30</i></p>
+                                    <div style="margin-top: 40px"><hr/></div>
+                                </div>
+                                <div style="float: left;width: 555px">
+                                    <p><a>哈哈</a>：这本书很精彩</p>
+                                    <p style="float: right;margin-right: 15px;font-size: 10px"><i>2017年05月13日 13:30</i></p>
+                                    <div style="margin-top: 40px"><hr/></div>
+                                </div>
+                                <div style="float: left;width: 555px">
+                                    <p><a>哈哈</a>：这本书很精彩</p>
+                                    <p style="float: right;margin-right: 15px;font-size: 10px"><i>2017年05月13日 13:30</i></p>
+                                    <div style="margin-top: 40px"><hr/></div>
+                                </div>
+                            </div>
+                            <div style="margin-left: 200px"><ul class="pagination">
+                                <li style="{{pre}}"><a href="#" ng-click="paging(currentPage-1)">«</a></li>
+                                <li style="{{one}}" class="{{oneClass}}"><a href="#" ng-click="paging(-1)">{{oneLi}}</a></li>
+                                <li style="{{two}}" class="{{twoClass}}"><a ng-click="paging(-2)" href="#">{{twoLi}}</a></li>
+                                <li style="{{three}}" class="{{threeClass}}"><a ng-click="paging(-3)" href="#">{{threeLi}}</a></li>
+                                <li style="{{four}}" class="{{fourClass}}"><a ng-click="paging(-4)" href="#">{{fourLi}}</a></li>
+                                <li style="{{five}}" class="{{fiveClass}}"><a ng-click="paging(-5)" href="#">{{fiveLi}}</a></li>
+                                <li style="{{next}}"><a href="#" ng-click="paging(currentPage-0+1)">»</a></li>
+                            </ul>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div id="sidebar" class="col-1-3">
