@@ -58,7 +58,7 @@
         </style>
     </head>
 </head>
-<body style="padding-right: 0!important;">
+<body>
 <!--------------Header--------------->
 <header>
     <div class="wrap-header zerogrid">
@@ -116,14 +116,16 @@
                     </div>
                 </nav>
             </div>
+
+
         </div>
         <div class="col-xs-offset-1 col-xs-8">
             <div style="height: 30px">
             </div>
             <div id="base">
                 <ul>
-                    <li class="color"><button type="button" name="sel" class="btn btn-info" onclick="noFinishNovelList(this)">未完结</button></li>
-                    <li><button type="button" name="sel" class="btn btn-default" onclick="finishNovel(this)">已完结</button></li>
+                    <li class="color"><button id="first" type="button" name="sel" class="btn btn-info" onclick="noFinishNovelList(this)">未完结</button></li>
+                    <li><button id="second" type="button" name="sel" class="btn btn-default" onclick="finishNovel(this)">已完结</button></li>
                     <li><button type="button" name="sel" class="btn btn-default" onclick="switchView(this)">创建新书</button></li>
                 </ul>
                 <hr/>
@@ -132,50 +134,7 @@
                         <img id="noNovel" style="display: none" src="${pageContext.request.contextPath}/images/noWorks.jpg" alt="" width="340px" height="420px">
                         <table id="noNovelInfoList" style="display: none" class="table text-center">
                         </table>
-                        <!-- 续载的模态框（Modal） -->
-                        <div class="modal fade" id="novelModal" tabindex="-1" role="dialog" aria-labelledby="#novelModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                            &times;
-                                        </button>
-                                        <h4 class="modal-title" id="novelModalLabel">
-                                        </h4>
-                                    </div>
-                                    <div class="modal-body" id="NovelInfo">
-                                        <div id="novelPic" width="280px" height="420px" style="float: left">
-                                            <form style="float:none" id="continuedNovel">
-                                                <input type="hidden" value="" id="novelId" name="novelId"/>
-                                                <img src="" alt="小说封面" id="pic" style="width:240px;height:320px;"/>
-                                                <div class="input-append">
-                                                    <input type="file" name="uplodNovel" id="uploadSection" style="display:none"><br>
-                                                    <a class="btn btn-default" onclick="$('input[id=uploadSection]').click();">上传章节</a>
-                                                    <input id="section" class="input-large" type="text" style="height:30px;">
-                                                </div>
-                                                <script type="text/javascript">
-                                                    $('input[id=uploadSection]').change(function() {
-                                                        $('#section').val($(this).val());
-                                                    });
-                                                </script>
-                                            </form>
-                                        </div>
-                                        <div style="float: left">
-                                            <div id="displayNovelType" style="height: 80px">
-                                            </div>
-                                            <div id="displayNovelSummary" style="white-space: pre-wrap">
 
-                                            </div>
-                                        </div>
-                                        <div style="clear: left"></div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                        <input type="button" class="btn btn-primary" onclick="uploadContinuedNovel()" value="确认">
-                                    </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal -->
-                        </div>
                     </div>
                     <div id="tab-1" class="none">
                         <img id="isFinishNovelPic" src="${pageContext.request.contextPath}/images/noComplete.jpg" alt="" width="340px" height="420px" style="display: none">
@@ -232,6 +191,7 @@
                                                 });
                                             </script>
                                         </div>
+                                        <div id="novelPicInfo"></div>
                                         <div class="form-group">
                                             <input id="check_id" type="checkbox" onclick="foo()"> 同意小说网协议<br/><br/>
                                         </div>
@@ -348,6 +308,69 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                 <button type="button" class="btn btn-primary">确认修改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- 有关操作后的相关提示模态框（Modal） -->
+<div class="modal fade" id="aboutNovelFinish" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <%--                        <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            &times;
+                                        </button>
+                                    </div>--%>
+            <div class="modal-body" id="aboutNovelFinishInfo">
+            </div>
+            <div class="modal-footer">
+                <button id="aboutAction" type="button" class="btn btn-default" data-dismiss="modal" onclick="dropHidden()">确认</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div>
+</div><!-- /.modal -->
+<!-- 续载的模态框（Modal） -->
+<div class="modal fade" id="novelModal" tabindex="-1" role="dialog" aria-labelledby="#novelModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="novelModalLabel">
+                </h4>
+            </div>
+            <div class="modal-body" id="NovelInfo">
+                <div id="novelPic" width="280px" height="420px" style="float: left">
+                    <form style="float:none" id="continuedNovel">
+                        <input type="hidden" value="" id="novelId" name="novelId"/>
+                        <img src="" alt="小说封面" id="pic" style="width:240px;height:320px;"/>
+                        <div class="input-append">
+                            <input type="file" name="uplodNovel" id="uploadSection" style="display:none"><br>
+                            <a class="btn btn-default" onclick="$('input[id=uploadSection]').click();">上传章节</a>
+                            <input id="section" class="input-large" type="text" style="height:30px;" placeholder="小说暂只支持txt文档，文字编码'utf-8'">
+                            <div id="uploadNovelInfo">
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $('input[id=uploadSection]').change(function() {
+                                $('#section').val($(this).val());
+                            });
+                        </script>
+                    </form>
+                </div>
+                <div style="float: left">
+                    <div id="displayNovelType" style="height: 80px">
+                    </div>
+                    <div id="displayNovelSummary" style="white-space: pre-wrap">
+
+                    </div>
+                </div>
+                <div style="clear: left"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <input id="rightUpload" type="button" class="btn btn-primary" onclick="uploadContinuedNovel()" value="确认">
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
