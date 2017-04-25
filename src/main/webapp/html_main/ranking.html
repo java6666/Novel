@@ -22,11 +22,17 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="novel in obj1">
-                    <td>
+                    <td  ng-if="$index<3">
                         <a target="_blank" href="#" data-ack="196_1|196">{{novel.novelName}}</a>
                         <span class="ffs" class="family">
                                     <a target="_blank" href="#" data-ack="196_0|196" class="kong">{{novel.novelType}}</a></span>
                         <em class="Bianse">{{$index+1}}</em>
+                    </td>
+                    <td  ng-if="$index>=3">
+                        <a target="_blank" href="#" data-ack="196_1|196">{{novel.novelName}}</a>
+                        <span class="ffs" class="family">
+                                    <a target="_blank" href="#" data-ack="196_0|196" class="kong">{{novel.novelType}}</a></span>
+                        <em>{{$index+1}}</em>
                     </td>
                     <td>月销量：{{novel.novelBuyCount}}</td>
                 </tr>
@@ -42,11 +48,17 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="novel in obj2">
-                    <td>
+                    <td  ng-if="$index<3">
                         <a target="_blank" href="#" data-ack="196_1|196">{{novel.novelName}}</a>
                         <span class="ffs" class="family">
-                                    <a target="_blank" href="#"  data-ack="196_0|196" class="kong">{{novel.novelType}}</a></span>
+                                    <a target="_blank" href="#" data-ack="196_0|196" class="kong">{{novel.novelType}}</a></span>
                         <em class="Bianse">{{$index+1}}</em>
+                    </td>
+                    <td  ng-if="$index>=3">
+                        <a target="_blank" href="#" data-ack="196_1|196">{{novel.novelName}}</a>
+                        <span class="ffs" class="family">
+                                    <a target="_blank" href="#" data-ack="196_0|196" class="kong">{{novel.novelType}}</a></span>
+                        <em>{{$index+1}}</em>
                     </td>
                     <td>点击量：{{novel.novelClickRate}}</td>
                 </tr>
