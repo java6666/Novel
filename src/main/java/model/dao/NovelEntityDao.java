@@ -30,4 +30,7 @@ public interface NovelEntityDao {
     List<NovelEntity> selectNovelByWords(@Param("words")String word);//通过关键字搜索小说ydp
 
     Integer updateNovelLatestChapterById(NovelEntity novelEntity);
+
+    List<NovelEntity> selectNovelByBuyCount();
+    List<NovelEntity> selectNovelClickRate();
 }

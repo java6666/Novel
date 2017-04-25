@@ -64,4 +64,13 @@
     </where>
         ORDER BY n.create_date DESC
     </select>
+    <select id="selectNovelByBuyCount" resultMap="novelEntity">
+        SELECT * FROM novel_detail
+        order BY novel_buy_count DESC limit 0,10
+    </select>
+    <select id="selectNovelClickRate" resultMap="novelEntity">
+        SELECT  * FROM novel_detail
+        ORDER BY novel_click_rate DESC limit 0,10
+    </select>
+
 </mapper>
