@@ -32,6 +32,9 @@
     <update id="readFinishNovel">
         UPDATE `novel_detail` SET `novel_is_finish`=#{novelIsFinish} where `id`=#{id}
     </update>
+    <update id="updateNovelLatestChapterById">
+        UPDATE `novel_detail` SET `novel_latest_chapter`=#{novelLatestChapter} where `id`=#{id}
+    </update>
 
     <select id="selectById" resultMap="novelEntity">
         SELECT * from novel_detail WHERE `id`=#{id};
