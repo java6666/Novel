@@ -3,99 +3,36 @@
         <img src="images/lx.jpg" style="height: 200px;width: 600px;">
     </div>
     <div style="margin-right: 100px">
-        <h4>关键字"<span style="color: red">鱼鱼</span>"</h4>
+        <h4>关键字"<span style="color: red">{{words}}</span>"</h4>
         <table class="table table-striped">
             <thead>
-            <tr>
-                <th>小说名</th>
-                <th>作者</th>
-                <th>类型</th>
-                <th>更新至</th>
-                <th>更新时间</th>
+            <tr class="text-center">
+                <td><b>小说名</b></td>
+                <td><b>作者</b></td>
+                <td><b>类型</b></td>
+                <td><b>更新至</b></td>
+                <td><b>更新时间</b></td>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="novel in list">
+            <tr ng-repeat="novel in list" class="text-center">
                 <td><a href="#">{{novel.novelName}}</a></td>
-                <td><a href="#">鱼鱼</a></td>
-                <td><a href="#">玄幻</a></td>
-                <td>28章</td>
-                <td>2017-05-23</td>
-            </tr>
-            <tr>
-                <td><a href="#">无限恐怖</a></td>
-                <td><a href="#">鱼鱼</a></td>
-                <td><a href="#">玄幻</a></td>
-                <td>28章</td>
-                <td>2017-05-23</td>
-            </tr>
-            <tr>
-                <td><a href="#">无限恐怖</a></td>
-                <td><a href="#">鱼鱼</a></td>
-                <td><a href="#">玄幻</a></td>
-                <td>28章</td>
-                <td>2017-05-23</td>
-            </tr>
-            <tr>
-                <td><a href="#">无限恐怖</a></td>
-                <td><a href="#">鱼鱼</a></td>
-                <td><a href="#">玄幻</a></td>
-                <td>28章</td>
-                <td>2017-05-23</td>
-            </tr>
-            <tr>
-                <td><a href="#">无限恐怖</a></td>
-                <td><a href="#">鱼鱼</a></td>
-                <td><a href="#">玄幻</a></td>
-                <td>28章</td>
-                <td>2017-05-23</td>
-            </tr>
-            <tr>
-                <td><a href="#">无限恐怖</a></td>
-                <td><a href="#">鱼鱼</a></td>
-                <td><a href="#">玄幻</a></td>
-                <td>28章</td>
-                <td>2017-05-23</td>
-            </tr>
-            <tr>
-                <td><a href="#">无限恐怖</a></td>
-                <td><a href="#">鱼鱼</a></td>
-                <td><a href="#">玄幻</a></td>
-                <td>28章</td>
-                <td>2017-05-23</td>
-            </tr>
-            <tr>
-                <td><a href="#">无限恐怖</a></td>
-                <td><a href="#">鱼鱼</a></td>
-                <td><a href="#">玄幻</a></td>
-                <td>28章</td>
-                <td>2017-05-23</td>
-            </tr>
-            <tr>
-                <td><a href="#">无限恐怖</a></td>
-                <td><a href="#">鱼鱼</a></td>
-                <td><a href="#">玄幻</a></td>
-                <td>28章</td>
-                <td>2017-05-23</td>
-            </tr>
-            <tr>
-                <td><a href="#">无限恐怖</a></td>
-                <td><a href="#">鱼鱼</a></td>
-                <td><a href="#">玄幻</a></td>
-                <td>28章</td>
-                <td>2017-05-23</td>
+                <td><a href="#">{{novel.author.penName}}</a></td>
+                <td><a href="#">{{novel.novelType}}</a></td>
+                <td>{{novel.novelLatestChapter}}</td>
+                <td>{{novel.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
             </tr>
             </tbody>
         </table>
         <div style="margin-left: 120px;margin-top: -30px">
             <ul class="pagination">
-                <li><a href="#">&laquo;</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li class="disabled"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
+                <li style="{{pre}}"><a href="#" ng-click="paging(currentPage-1)">«</a></li>
+                <li style="{{one}}" class="{{oneClass}}"><a href="#" ng-click="paging(-1)">{{oneLi}}</a></li>
+                <li style="{{two}}" class="{{twoClass}}"><a ng-click="paging(-2)" href="#">{{twoLi}}</a></li>
+                <li style="{{three}}" class="{{threeClass}}"><a ng-click="paging(-3)" href="#">{{threeLi}}</a></li>
+                <li style="{{four}}" class="{{fourClass}}"><a ng-click="paging(-4)" href="#">{{fourLi}}</a></li>
+                <li style="{{five}}" class="{{fiveClass}}"><a ng-click="paging(-5)" href="#">{{fiveLi}}</a></li>
+                <li style="{{next}}"><a href="#" ng-click="paging(currentPage-0+1)">»</a></li>
             </ul>
         </div>
         <div>
