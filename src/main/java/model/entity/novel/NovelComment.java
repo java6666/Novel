@@ -1,5 +1,7 @@
 package model.entity.novel;
 
+import model.entity.user.UserEntity;
+
 import java.util.Date;
 
 /**
@@ -14,6 +16,15 @@ public class NovelComment {
     private String content;        //评论内容
     private Date createDate;       //评论日期
     private Integer createBy;      //评论者id
+    private UserEntity userEntity;  //评论者对象
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
 
     public Integer getId() {
         return id;

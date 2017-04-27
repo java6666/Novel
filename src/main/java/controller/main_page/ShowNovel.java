@@ -29,12 +29,23 @@ public class ShowNovel {
     @ResponseBody
     public List<Object> showNovel(Integer currentPage,Integer novelId){
         ArrayList<Object> objects = new ArrayList<>();
-        PageHelper.startPage(currentPage,3);
-        NovelEntity novelEntity = novelEntityDao.novelLatestChapterById(novelId);
 
-        List<NovelComment> novelComments = novelCommentDao.selectByNovelId(novelId);
-        PageInfo<NovelComment> novelCommentPageInfo = new PageInfo<>(novelComments);
-        PageInfo<Object> pageInfo = new PageInfo<>();
+        NovelEntity novelEntity = novelEntityDao.novelLatestChapterById(novelId);//小说信息
+
+        String novelType = novelEntity.getNovelType();
+        String[] split = novelType.split("/");
+        for (int i = 0; i < split.length; i++) {
+            split[i]="%"+split[i]+"%";
+        }
+        List<NovelEntity> novelEntities = novelEntityDao.selectByNovelType(split);
+        PageHelper.startPage(currentPage,3);
+        List<NovelComment> novelComments = novelCommentDao.selectByNovelId(novelId);//评论集合
+        PageInfo<NovelComment> novelCommentPageInfo = new PageInfo<>(novelComments);//分页对象
+
+        objects.add(novelComments);
+        objects.add(novelCommentPageInfo);
+        objects.add(novelEntity);
+        objects.add(novelEntities);
         return objects;
     }
 }

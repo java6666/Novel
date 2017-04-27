@@ -61,4 +61,11 @@
     </where>
         ORDER BY n.create_date DESC
     </select>
+    <select id="selectByNovelType" resultMap="novelEntity">
+        SELECT * FROM novel_detail <where>
+        <foreach item="item" index="index" collection="strs">
+            OR novel_type LIKE #{item}
+        </foreach>
+    </where>
+    </select>
 </mapper>
