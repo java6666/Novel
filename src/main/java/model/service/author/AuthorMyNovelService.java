@@ -1,6 +1,7 @@
 package model.service.author;
 
 import com.alibaba.druid.sql.visitor.functions.If;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import model.dao.AuthorDao;
 import model.dao.NovelCategoryDao;
 import model.dao.NovelEntityDao;
@@ -59,6 +60,7 @@ public class AuthorMyNovelService {
      * @param session       用于创建动态路径*/
     @Transient
     public Boolean insertNewNovel(String novelName, String novelTypeValue, Integer novelPrice, String novelSummary,Object obj,  @RequestParam("novelPhoto")MultipartFile novelPhoto, HttpSession session){
+        Boolean flag=false;
         NovelEntity novelEntity = new NovelEntity();            //创建小说类
         novelEntity.setNovelName(novelName);        //设置接收的小说名
         /*创建小说封面动态路径*/
@@ -101,14 +103,12 @@ public class AuthorMyNovelService {
             FileUtils.copyInputStreamToFile(novelPhoto.getInputStream(),savePhtotPath);
             Integer integer = novelEntityDao.insertNewNovel(novelEntity);
             if(integer!=0){
-                return true;
-            }else {
-                return false;
+                flag= true;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
+        return flag;
     }
 
     /**获取作者未完成的作品集合
@@ -159,7 +159,8 @@ public class AuthorMyNovelService {
 
     /**将上传的章节先储存到本地*/
     @Transient
-    public void continuedNovel(Integer novelId,MultipartFile novel){
+    public Boolean continuedNovel(Integer novelId,MultipartFile novel){
+        Boolean flag=false;
         InputStream inputStream=null;
         InputStreamReader is=null;
         BufferedReader bfr=null;
@@ -177,24 +178,23 @@ public class AuthorMyNovelService {
             }
             int fileNum=novelEntity.getNovelLatestChapter();
             Map<String, String> titles = new LinkedHashMap<>();
-            Pattern regex = Pattern.compile("第.*章.*");
+            Pattern regex = Pattern.compile(".*第.{1,4}章.*");
             inputStream = novel.getInputStream();
             is= new InputStreamReader(inputStream,"utf-8");
             bfr=new BufferedReader(is);
             String line=null;
-            bfr.readLine();
             while((line=bfr.readLine())!=null){
                 Matcher matcher = regex.matcher(line);
-                if(matcher.find()){
+                if(matcher.matches()){
                     fileNum++;
                     title=line;
-                    titles.put(line,line);
+                    titles.put(title,line);
                     file = new File(path+fileNum+".txt");
                     if(!file.exists()){
                         file.createNewFile();
                     }
                     bfw=new BufferedWriter(new FileWriter(file,true));
-                    bfw.write(line);
+                    bfw.write(line+"\r\n");
                     bfw.flush();
                 }else {
                     if(titles.containsKey(title)){
@@ -207,6 +207,11 @@ public class AuthorMyNovelService {
                     }
                 }
             }
+            novelEntity.setNovelLatestChapter(fileNum);
+            Integer ok = novelEntityDao.updateNovelLatestChapterById(novelEntity);
+            if(ok!=0){
+                flag= true;
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }finally {
@@ -217,5 +222,6 @@ public class AuthorMyNovelService {
                 e.printStackTrace();
             }
         }
+        return flag;
     }
 }

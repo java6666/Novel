@@ -82,19 +82,20 @@ CREATE TABLE `novel_detail` (
   `novel_click_rate` int(11) DEFAULT NULL COMMENT '小说点击量',
   `novel_buy_count` int(11) DEFAULT NULL COMMENT '小说购买量',
   `novel_total` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '小说总章数',
-  `novel_is_finish` tinyint(4) DEFAULT NULL COMMENT '0.未完结1.完结',
+  `novel_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '小说类型',
   `price` int(11) DEFAULT NULL COMMENT '小说价格 单位:游戏币',
+  `novel_is_finish` tinyint(4) DEFAULT NULL COMMENT '0.未完结1.完结',
+  `novel_latest_chapter` int(11) DEFAULT NULL COMMENT '最新章节',
   `create_date` datetime DEFAULT NULL COMMENT '小说发布日期',
   `modify_date` datetime DEFAULT NULL COMMENT '小说更新日期',
   `create_by` int(11) DEFAULT NULL COMMENT '小说发布者',
   `modify_by` int(11) DEFAULT NULL COMMENT '小说更新者',
-  `novel_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '小说类型',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_detail` */
 
-insert  into `novel_detail`(`id`,`novel_name`,`novel_summary`,`novel_author`,`novel_file_path`,`novel_filename`,`novel_pic_path`,`novel_pic_name`,`novel_click_rate`,`novel_buy_count`,`novel_total`,`novel_is_finish`,`price`,`create_date`,`modify_date`,`create_by`,`modify_by`,`novel_type`) values (1,'凡人修仙','《凡人修仙传》是网络作家忘语连载于起点中文网的一部玄幻修仙型小说。小说讲述了一个普通的山村穷小子，偶然之下，跨入到一个江湖小门派，成了一名记名弟子。虽然资质平庸，但依靠自身的坚持不懈和合理算计一步步渐成大道。',2,NULL,NULL,NULL,NULL,334,122,'43242',1,0,'2017-04-11 13:11:45','2017-04-11 13:11:48',2,2,'玄幻/修真'),(2,'穿越黑棺','告诉你们一个秘密，李阳有一口铁箱子，称之为黑棺，居然能穿越世界，电影、电视剧、动漫……',2,NULL,NULL,NULL,NULL,231,3123,'321',1,0,'2017-04-13 15:50:54','2017-04-11 13:19:07',2,2,'都市/爱情');
+insert  into `novel_detail`(`id`,`novel_name`,`novel_summary`,`novel_author`,`novel_file_path`,`novel_filename`,`novel_pic_path`,`novel_pic_name`,`novel_click_rate`,`novel_buy_count`,`novel_total`,`novel_type`,`price`,`novel_is_finish`,`novel_latest_chapter`,`create_date`,`modify_date`,`create_by`,`modify_by`) values (1,'凡人修仙','《凡人修仙传》是网络作家忘语连载于起点中文网的一部玄幻修仙型小说。小说讲述了一个普通的山村穷小子，偶然之下，跨入到一个江湖小门派，成了一名记名弟子。虽然资质平庸，但依靠自身的坚持不懈和合理算计一步步渐成大道。',2,NULL,NULL,NULL,NULL,334,122,'43242','玄幻/修真',0,1,NULL,'2017-04-11 13:11:45','2017-04-11 13:11:48',2,2),(2,'穿越黑棺','告诉你们一个秘密，李阳有一口铁箱子，称之为黑棺，居然能穿越世界，电影、电视剧、动漫……',2,NULL,NULL,NULL,NULL,231,3123,'321','都市/爱情',0,1,NULL,'2017-04-13 15:50:54','2017-04-11 13:19:07',2,2),(3,'撒发生','大大',3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL),(4,'阿斯达四大','阿斯达四大所大所大所多撒大所大所多',2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,2,2),(5,'发飒飒发','斯达舒大所多撒多',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `novel_emailbox` */
 
@@ -108,11 +109,11 @@ CREATE TABLE `novel_emailbox` (
   `create_date` datetime DEFAULT NULL COMMENT '发件时间',
   `mail_type` int(11) DEFAULT NULL COMMENT '消息类型1.普通消息2.申请作者3.举报信息',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_emailbox` */
 
-insert  into `novel_emailbox`(`id`,`addressee_id`,`recipinents_id`,`content`,`create_date`,`mail_type`) values (2,3,2,'嗨!','2017-04-11 13:30:27',1),(25,3,1,'普通用户申请升级为作者,请管理员处理','2017-04-12 22:07:31',2),(27,3,1,'普通用户申请升级为作者,请管理员处理','2017-04-12 22:32:39',2),(33,1,3,'asfa','2017-04-13 15:53:11',1),(34,2,3,'safsafds','2017-04-13 15:53:26',1),(35,3,2,'很久以前。。。','2017-04-13 18:16:30',1);
+insert  into `novel_emailbox`(`id`,`addressee_id`,`recipinents_id`,`content`,`create_date`,`mail_type`) values (2,3,2,'嗨!','2017-04-11 13:30:27',1),(25,3,1,'普通用户申请升级为作者,请管理员处理','2017-04-12 22:07:31',2),(27,3,1,'普通用户申请升级为作者,请管理员处理','2017-04-12 22:32:39',2),(33,1,3,'asfa','2017-04-13 15:53:11',1),(34,2,3,'safsafds','2017-04-13 15:53:26',1),(35,3,2,'很久以前。。。','2017-04-13 18:16:30',1),(36,2,3,'一','2017-04-14 20:05:28',NULL),(37,2,3,'二','2017-04-14 20:05:30',NULL),(38,2,3,'三','2017-04-14 20:05:32',NULL),(39,2,3,'四','2017-04-14 20:05:34',NULL),(40,2,3,'五','2017-04-14 20:05:36',NULL),(41,2,3,'六','2017-04-14 20:05:39',NULL),(42,2,3,'七','2017-04-14 20:05:41',NULL),(43,2,3,'八','2017-04-14 20:05:43',NULL),(44,2,3,'九','2017-04-14 20:05:44',NULL),(45,2,3,'十','2017-04-14 20:05:46',NULL),(46,2,3,'十一','2017-04-14 20:05:47',NULL),(47,2,3,'十二','2017-04-14 20:05:50',NULL),(48,2,3,'十三','2017-04-14 20:05:51',NULL),(50,3,NULL,'sdads','2017-04-18 16:39:46',1);
 
 /*Table structure for table `novel_user` */
 
@@ -129,7 +130,7 @@ CREATE TABLE `novel_user` (
 
 /*Data for the table `novel_user` */
 
-insert  into `novel_user`(`id`,`username`,`password`,`user_type`,`account_type`) values (1,'zhangsan','123',1,1),(2,'xiaoming','123',2,1),(3,'biaojie','123',3,1);
+insert  into `novel_user`(`id`,`username`,`password`,`user_type`,`account_type`) values (1,'zhangsan','202cb962ac59075b964b07152d234b70',1,1),(2,'xiaoming','202cb962ac59075b964b07152d234b70',2,1),(3,'biaojie','202cb962ac59075b964b07152d234b70',3,1);
 
 /*Table structure for table `novel_user_author` */
 
@@ -159,7 +160,7 @@ CREATE TABLE `novel_user_buy` (
   `create_date` datetime DEFAULT NULL COMMENT '购买日期',
   `read_now` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '阅读至',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `novel_user_buy` */
 
@@ -198,7 +199,7 @@ CREATE TABLE `novel_user_info` (
 
 /*Data for the table `novel_user_info` */
 
-insert  into `novel_user_info`(`user_id`,`real_name`,`phone`,`money`,`gender`,`head_sculpture_path`,`create_date`) values (1,'张三',2147483647,0,1,NULL,'2017-04-11 12:46:17'),(2,'小明',2147483647,0,1,NULL,'2017-04-11 12:46:51'),(3,'李杰',2147483647,NULL,0,'head\\1492095775394.jpg',NULL);
+insert  into `novel_user_info`(`user_id`,`real_name`,`phone`,`money`,`gender`,`head_sculpture_path`,`create_date`) values (1,'张三',2147483647,0,1,NULL,'2017-04-11 12:46:17'),(2,'小明',2147483647,0,1,NULL,'2017-04-11 12:46:51'),(3,'李杰',2147483647,NULL,0,'head\\1492521925141.jpg',NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
